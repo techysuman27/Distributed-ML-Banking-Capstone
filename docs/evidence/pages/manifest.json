@@ -1,0 +1,272 @@
+[
+  {
+    "key": "01_hadoop_q1",
+    "title": "Hadoop Q1 Data ingestion",
+    "url": "http://localhost:8012/01_hadoop_q1.html",
+    "screenshot": "docs/evidence/01_hadoop_q1.jpg"
+  },
+  {
+    "key": "01_mr_job_balance",
+    "title": "Hadoop MapReduce Average balance by job",
+    "url": "http://localhost:8012/01_mr_job_balance.html",
+    "screenshot": "docs/evidence/01_mr_job_balance.jpg"
+  },
+  {
+    "key": "01_mr_education_housing",
+    "title": "Hadoop MapReduce Housing loan counts by education",
+    "url": "http://localhost:8012/01_mr_education_housing.html",
+    "screenshot": "docs/evidence/01_mr_education_housing.jpg"
+  },
+  {
+    "key": "01_mr_month_subscription",
+    "title": "Hadoop MapReduce Monthly contacts and subscriptions",
+    "url": "http://localhost:8012/01_mr_month_subscription.html",
+    "screenshot": "docs/evidence/01_mr_month_subscription.jpg"
+  },
+  {
+    "key": "01_mr_outcome_duration",
+    "title": "Hadoop MapReduce Call duration by previous outcome",
+    "url": "http://localhost:8012/01_mr_outcome_duration.html",
+    "screenshot": "docs/evidence/01_mr_outcome_duration.jpg"
+  },
+  {
+    "key": "01_mr_age_balance",
+    "title": "Hadoop MapReduce Average balance by age decade",
+    "url": "http://localhost:8012/01_mr_age_balance.html",
+    "screenshot": "docs/evidence/01_mr_age_balance.jpg"
+  },
+  {
+    "key": "01_hive_q1",
+    "title": "Hive Q1 Typed table creation",
+    "url": "http://localhost:8012/01_hive_q1.html",
+    "screenshot": "docs/evidence/01_hive_q1.jpg"
+  },
+  {
+    "key": "01_hive_q2",
+    "title": "Hive Q2 Count and first rows",
+    "url": "http://localhost:8012/01_hive_q2.html",
+    "screenshot": "docs/evidence/01_hive_q2.jpg"
+  },
+  {
+    "key": "01_hive_q3",
+    "title": "Hive Q3 Filtering and sorting",
+    "url": "http://localhost:8012/01_hive_q3.html",
+    "screenshot": "docs/evidence/01_hive_q3.jpg"
+  },
+  {
+    "key": "01_hive_q4",
+    "title": "Hive Q4 Aggregation by occupation and education",
+    "url": "http://localhost:8012/01_hive_q4.html",
+    "screenshot": "docs/evidence/01_hive_q4.jpg"
+  },
+  {
+    "key": "01_hive_q5",
+    "title": "Hive Q5 Balances and campaign success",
+    "url": "http://localhost:8012/01_hive_q5.html",
+    "screenshot": "docs/evidence/01_hive_q5.jpg"
+  },
+  {
+    "key": "01_hive_q6",
+    "title": "Hive Q6 Age balance correlation",
+    "url": "http://localhost:8012/01_hive_q6.html",
+    "screenshot": "docs/evidence/01_hive_q6.jpg"
+  },
+  {
+    "key": "01_hive_q7",
+    "title": "Hive Q7 Yearly trend limitation",
+    "url": "http://localhost:8012/01_hive_q7.html",
+    "screenshot": "docs/evidence/01_hive_q7.jpg"
+  },
+  {
+    "key": "01_hive_q8",
+    "title": "Hive Q8 Unusual balance patterns",
+    "url": "http://localhost:8012/01_hive_q8.html",
+    "screenshot": "docs/evidence/01_hive_q8.jpg"
+  },
+  {
+    "key": "01_hive_q9",
+    "title": "Hive Q9 Previous outcomes and call duration",
+    "url": "http://localhost:8012/01_hive_q9.html",
+    "screenshot": "docs/evidence/01_hive_q9.jpg"
+  },
+  {
+    "key": "02_q1",
+    "title": "Q1. Know your data: loading, schema, summary, missing values and duplicates",
+    "url": "http://localhost:8012/02_q1.html",
+    "screenshot": "docs/evidence/02_q1.jpg"
+  },
+  {
+    "key": "02_q2",
+    "title": "Q2. Filtering and quarter",
+    "url": "http://localhost:8012/02_q2.html",
+    "screenshot": "docs/evidence/02_q2.jpg"
+  },
+  {
+    "key": "02_q3",
+    "title": "Q3. GroupBy and aggregation",
+    "url": "http://localhost:8012/02_q3.html",
+    "screenshot": "docs/evidence/02_q3.jpg"
+  },
+  {
+    "key": "02_q4",
+    "title": "Q4. Age-group UDF",
+    "url": "http://localhost:8012/02_q4.html",
+    "screenshot": "docs/evidence/02_q4.jpg"
+  },
+  {
+    "key": "02_q5",
+    "title": "Q5. Education subscription rate and default prevalence",
+    "url": "http://localhost:8012/02_q5.html",
+    "screenshot": "docs/evidence/02_q5.jpg"
+  },
+  {
+    "key": "02_q6",
+    "title": "Q6. String transformations",
+    "url": "http://localhost:8012/02_q6.html",
+    "screenshot": "docs/evidence/02_q6.jpg"
+  },
+  {
+    "key": "02_q7",
+    "title": "Q7. Visualization",
+    "url": "http://localhost:8012/02_q7.html",
+    "screenshot": "docs/evidence/02_q7.jpg"
+  },
+  {
+    "key": "02_q8",
+    "title": "Q8. Contact volumes, campaign success and duration",
+    "url": "http://localhost:8012/02_q8.html",
+    "screenshot": "docs/evidence/02_q8.jpg"
+  },
+  {
+    "key": "02_q9",
+    "title": "Q9. Age/balance correlation",
+    "url": "http://localhost:8012/02_q9.html",
+    "screenshot": "docs/evidence/02_q9.jpg"
+  },
+  {
+    "key": "02_q10",
+    "title": "Q10. Credit default proportions",
+    "url": "http://localhost:8012/02_q10.html",
+    "screenshot": "docs/evidence/02_q10.jpg"
+  },
+  {
+    "key": "02_q11",
+    "title": "Q11. Contact-method subscription rate",
+    "url": "http://localhost:8012/02_q11.html",
+    "screenshot": "docs/evidence/02_q11.jpg"
+  },
+  {
+    "key": "02_q12",
+    "title": "Q12. Spark SQL and business interpretation",
+    "url": "http://localhost:8012/02_q12.html",
+    "screenshot": "docs/evidence/02_q12.jpg"
+  },
+  {
+    "key": "03_q1",
+    "title": "Q1. Loading and initial exploration",
+    "url": "http://localhost:8012/03_q1.html",
+    "screenshot": "docs/evidence/03_q1.jpg"
+  },
+  {
+    "key": "03_q2",
+    "title": "Q2. Preprocessing and outliers",
+    "url": "http://localhost:8012/03_q2.html",
+    "screenshot": "docs/evidence/03_q2.jpg"
+  },
+  {
+    "key": "03_q4",
+    "title": "Q4 and Q6. Classification, model selection and hyperparameter tuning",
+    "url": "http://localhost:8012/03_q4.html",
+    "screenshot": "docs/evidence/03_q4.jpg"
+  },
+  {
+    "key": "03_q5",
+    "title": "Q5. Held-out evaluation and baseline",
+    "url": "http://localhost:8012/03_q5.html",
+    "screenshot": "docs/evidence/03_q5.jpg"
+  },
+  {
+    "key": "03_q7",
+    "title": "Q7. Model interpretation",
+    "url": "http://localhost:8012/03_q7.html",
+    "screenshot": "docs/evidence/03_q7.jpg"
+  },
+  {
+    "key": "05_q1",
+    "title": "Q1. Data loading and partition strategy",
+    "url": "http://localhost:8012/05_q1.html",
+    "screenshot": "docs/evidence/05_q1.jpg"
+  },
+  {
+    "key": "05_q2",
+    "title": "Q2. Parallel analysis: average balance and the unavailable loan amount",
+    "url": "http://localhost:8012/05_q2.html",
+    "screenshot": "docs/evidence/05_q2.jpg"
+  },
+  {
+    "key": "05_q3",
+    "title": "Q3. Train on partitioned data",
+    "url": "http://localhost:8012/05_q3.html",
+    "screenshot": "docs/evidence/05_q3.jpg"
+  },
+  {
+    "key": "05_q4",
+    "title": "Q4. Partition benchmark and resource monitoring",
+    "url": "http://localhost:8012/05_q4.html",
+    "screenshot": "docs/evidence/05_q4.jpg"
+  },
+  {
+    "key": "03_q3",
+    "title": "Q3. Reusable feature pipeline",
+    "url": "http://localhost:8012/03_q3.html",
+    "screenshot": "docs/evidence/03_q3.jpg"
+  },
+  {
+    "key": "03_q6",
+    "title": "Q6. Hyperparameter tuning",
+    "url": "http://localhost:8012/03_q6.html",
+    "screenshot": "docs/evidence/03_q6.jpg"
+  },
+  {
+    "key": "04_q1",
+    "title": "Streaming Q1: Updated job aggregates",
+    "url": "http://localhost:8012/04_q1.html",
+    "screenshot": "docs/evidence/04_q1.jpg"
+  },
+  {
+    "key": "04_q2",
+    "title": "Streaming Q2: Saved-pipeline predictions",
+    "url": "http://localhost:8012/04_q2.html",
+    "screenshot": "docs/evidence/04_q2.jpg"
+  },
+  {
+    "key": "04_q3",
+    "title": "Streaming Q3: Event-time windows",
+    "url": "http://localhost:8012/04_q3.html",
+    "screenshot": "docs/evidence/04_q3.jpg"
+  },
+  {
+    "key": "04_q4",
+    "title": "Streaming Q4: Verified watermark behavior",
+    "url": "http://localhost:8012/04_q4.html",
+    "screenshot": "docs/evidence/04_q4.jpg"
+  },
+  {
+    "key": "05_q2_loans",
+    "title": "Q2. Personal-loan counts by age decade",
+    "url": "http://localhost:8012/05_q2_loans.html",
+    "screenshot": "docs/evidence/05_q2_loans.jpg"
+  },
+  {
+    "key": "05_q4_resources",
+    "title": "Q4. Resource monitoring",
+    "url": "http://localhost:8012/05_q4_resources.html",
+    "screenshot": "docs/evidence/05_q4_resources.jpg"
+  },
+  {
+    "key": "05_q5",
+    "title": "Q5. Concurrent summaries and FAIR task scheduling",
+    "url": "http://localhost:8012/05_q5.html",
+    "screenshot": "docs/evidence/05_q5.jpg"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "verified_at_utc": "2026-10-21T04:58:55.533143+00:00",
+  "checks": [
+    "source SHA256 and 4521x17 dimensions",
+    "no duplicate or null source records",
+    "independent Hadoop CSV aggregation parity",
+    "Hive typed count 4521",
+    "training CV selects maximum PR-AUC",
+    "held-out metric bounds and confusion count",
+    "17 distinct streaming predictions",
+    "independent streaming job means and counts",
+    "one watermark rejection per window query",
+    "independent closed-window means and counts",
+    "three timing repetitions for 1/2/4 partitions",
+    "five executed error-free notebooks"
+  ]
+}

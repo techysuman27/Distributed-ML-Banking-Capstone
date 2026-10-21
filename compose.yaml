@@ -1,0 +1,57 @@
+name: banking-distributed-ml
+x-spark: &spark
+  image: banking-spark:local
+  build:
+    context: .
+    dockerfile: docker/Dockerfile.spark
+  user: root
+  volumes:
+    - .:/workspace
+  environment:
+    SPARK_NO_DAEMONIZE: 'true'
+  networks: [banking]
+services:
+  spark-master:
+    <<: *spark
+    hostname: spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --host spark-master
+    ports: ['127.0.0.1:8088:8080']
+  spark-worker-1:
+    <<: *spark
+    hostname: spark-worker-1
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker --cores 1 --memory 768m spark://spark-master:7077
+    depends_on: [spark-master]
+  spark-worker-2:
+    <<: *spark
+    hostname: spark-worker-2
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker --cores 1 --memory 768m spark://spark-master:7077
+    depends_on: [spark-master]
+  spark-driver:
+    <<: *spark
+    hostname: spark-driver
+    command: sleep infinity
+    environment:
+      SPARK_MASTER: spark://spark-master:7077
+      SPARK_LOCAL_IP: spark-driver
+      PYSPARK_PYTHON: python3
+      PYSPARK_DRIVER_PYTHON: python3
+    ports: ['127.0.0.1:4040:4040']
+    depends_on: [spark-worker-1, spark-worker-2]
+  hadoop-hive:
+    image: banking-hadoop-hive:local
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.hadoop
+    user: root
+    hostname: hadoop-hive
+    entrypoint: [bash, /workspace/hadoop/start.sh]
+    volumes:
+      - .:/workspace
+      - hdfs-data:/hdfs
+    ports: ['127.0.0.1:9870:9870', '127.0.0.1:10002:10002']
+    profiles: [hadoop]
+    networks: [banking]
+volumes:
+  hdfs-data:
+networks:
+  banking:

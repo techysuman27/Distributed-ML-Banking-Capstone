@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Streaming Q2: Saved-pipeline predictions</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Streaming Q2: Saved-pipeline predictions</h1>
+<p>Actual Structured Streaming outputs; marketing records with synthetic timestamps. Full per-batch outputs and query progress accompany the submission.</p><h2>Code excerpt</h2><pre>pipeline=PipelineModel.load(&#x27;/workspace/models/subscription_pipeline&#x27;)
+predictions=pipeline.transform(features(raw))
+predictions=predictions.withColumn(&#x27;subscription_probability&#x27;,vector_to_array(&#x27;probability&#x27;)[1])
+execute(predictions.select(&#x27;event_id&#x27;,&#x27;prediction&#x27;,&#x27;subscription_probability&#x27;),&#x27;bank_predictions&#x27;)</pre>
+<h2>Recorded output excerpt</h2><pre>{&quot;event_id&quot;: &quot;event_000&quot;, &quot;prediction&quot;: 0.0, &quot;subscription_probability&quot;: 0.09437751004016064}
+{&quot;event_id&quot;: &quot;event_001&quot;, &quot;prediction&quot;: 0.0, &quot;subscription_probability&quot;: 0.09437751004016064}
+{&quot;event_id&quot;: &quot;event_002&quot;, &quot;prediction&quot;: 0.0, &quot;subscription_probability&quot;: 0.09437751004016064}
+{&quot;event_id&quot;: &quot;event_003&quot;, &quot;prediction&quot;: 0.0, &quot;subscription_probability&quot;: 0.09437751004016064}
+{&quot;event_id&quot;: &quot;event_004&quot;, &quot;prediction&quot;: 0.0, &quot;subscription_probability&quot;: 0.13636363636363635}
+{&quot;event_id&quot;: &quot;event_005&quot;, &quot;prediction&quot;: 0.0, &quot;subscription_probability&quot;: 0.09437751004016064}</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

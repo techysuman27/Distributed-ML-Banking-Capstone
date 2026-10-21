@@ -1,0 +1,51 @@
+{
+  "candidates": [
+    {
+      "model": "logistic_regression",
+      "cv_pr_auc": 0.36572544455690476,
+      "grid_scores": [
+        0.3599725007123868,
+        0.3618471271560073,
+        0.36572544455690476,
+        0.2025250606048392
+      ],
+      "best_params": {
+        "regParam": 0.1,
+        "elasticNetParam": 0.0
+      }
+    },
+    {
+      "model": "decision_tree",
+      "cv_pr_auc": 0.3990482012855083,
+      "grid_scores": [
+        0.3990482012855083,
+        0.3623931886309035
+      ],
+      "best_params": {
+        "maxDepth": 3,
+        "minInstancesPerNode": 10
+      }
+    }
+  ],
+  "winner": {
+    "model": "decision_tree",
+    "cv_pr_auc": 0.3990482012855083,
+    "grid_scores": [
+      0.3990482012855083,
+      0.3623931886309035
+    ],
+    "best_params": {
+      "maxDepth": 3,
+      "minInstancesPerNode": 10
+    }
+  },
+  "train_rows": 3645,
+  "test_rows": 876,
+  "seed": 42,
+  "threshold": 0.5,
+  "excluded": [
+    "duration",
+    "y"
+  ],
+  "split": "xxhash64 full source row, modulo 5; bucket 0 held out"
+}

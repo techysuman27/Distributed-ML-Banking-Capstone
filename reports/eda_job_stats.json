@@ -1,0 +1,74 @@
+[
+  {
+    "job": "retired",
+    "clients": 230,
+    "avg_balance": 2319.191304347826,
+    "median_age": 59
+  },
+  {
+    "job": "housemaid",
+    "clients": 112,
+    "avg_balance": 2083.8035714285716,
+    "median_age": 49
+  },
+  {
+    "job": "management",
+    "clients": 969,
+    "avg_balance": 1766.9287925696594,
+    "median_age": 38
+  },
+  {
+    "job": "entrepreneur",
+    "clients": 168,
+    "avg_balance": 1645.125,
+    "median_age": 41
+  },
+  {
+    "job": "student",
+    "clients": 84,
+    "avg_balance": 1543.8214285714287,
+    "median_age": 26
+  },
+  {
+    "job": "unknown",
+    "clients": 38,
+    "avg_balance": 1501.7105263157894,
+    "median_age": 49
+  },
+  {
+    "job": "self-employed",
+    "clients": 183,
+    "avg_balance": 1392.4098360655737,
+    "median_age": 40
+  },
+  {
+    "job": "technician",
+    "clients": 768,
+    "avg_balance": 1330.99609375,
+    "median_age": 38
+  },
+  {
+    "job": "admin.",
+    "clients": 478,
+    "avg_balance": 1226.73640167364,
+    "median_age": 38
+  },
+  {
+    "job": "services",
+    "clients": 417,
+    "avg_balance": 1103.9568345323742,
+    "median_age": 37
+  },
+  {
+    "job": "unemployed",
+    "clients": 128,
+    "avg_balance": 1089.421875,
+    "median_age": 41
+  },
+  {
+    "job": "blue-collar",
+    "clients": 946,
+    "avg_balance": 1085.161733615222,
+    "median_age": 39
+  }
+]

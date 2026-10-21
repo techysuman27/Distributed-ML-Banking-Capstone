@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q5. Concurrent summaries and FAIR task scheduling</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q5. Concurrent summaries and FAIR task scheduling</h1>
+<p>Both futures completed. Each thread has a separate job group and scheduling pool; full resource samples are stored separately.</p><h2>Code excerpt</h2><pre>def summary_task(name,column):
+    sc=spark.sparkContext
+    sc.setLocalProperty(&#x27;spark.scheduler.pool&#x27;,name)
+    sc.setJobGroup(name,&#x27;Parallel &#x27;+name)
+    try: return name,rows(df.groupBy(column).count().orderBy(column))
+    finally:
+        sc.setLocalProperty(&#x27;spark.scheduler.pool&#x27;,None)
+        sc.setLocalProperty(&#x27;spark.jobGroup.id&#x27;,None)
+with ThreadPoolExecutor(max_workers=2) as executor:
+    futures=[executor.submit(summary_task,&#x27;education_summary&#x27;,&#x27;education&#x27;),
+             executor.submit(summary_task,&#x27;contact_summary&#x27;,&#x27;contact&#x27;)]
+    concurrent=dict(f.result() for f in futures)
+print(concurrent)</pre>
+<h2>Recorded output excerpt</h2><pre>education_summary: [{&quot;education&quot;: &quot;primary&quot;, &quot;count&quot;: 678}, {&quot;education&quot;: &quot;secondary&quot;, &quot;count&quot;: 2306}, {&quot;education&quot;: &quot;tertiary&quot;, &quot;count&quot;: 1350}, {&quot;education&quot;: &quot;unknown&quot;, &quot;count&quot;: 187}]
+contact_summary: [{&quot;contact&quot;: &quot;cellular&quot;, &quot;count&quot;: 2896}, {&quot;contact&quot;: &quot;telephone&quot;, &quot;count&quot;: 301}, {&quot;contact&quot;: &quot;unknown&quot;, &quot;count&quot;: 1324}]</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

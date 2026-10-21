@@ -1,0 +1,17 @@
+[
+  {
+    "contact": "telephone",
+    "contacts": 301,
+    "subscription_rate": 0.1461794019933555
+  },
+  {
+    "contact": "cellular",
+    "contacts": 2896,
+    "subscription_rate": 0.143646408839779
+  },
+  {
+    "contact": "unknown",
+    "contacts": 1324,
+    "subscription_rate": 0.04607250755287009
+  }
+]

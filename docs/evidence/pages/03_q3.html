@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q3. Reusable feature pipeline</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q3. Reusable feature pipeline</h1>
+<p>Implementation source; the executed notebook prints these stage names. All learned preprocessing remains within each training-fold pipeline.</p><h2>Code excerpt</h2><pre>def make_pipeline(model):
+    numeric=[{&#x27;balance&#x27;:&#x27;balance_log&#x27;,&#x27;campaign&#x27;:&#x27;campaign_log&#x27;,&#x27;previous&#x27;:&#x27;previous_log&#x27;}.get(c,c) for c in NUM]
+    indexed=[c+&#x27;_idx&#x27; for c in CAT]
+    encoded=[c+&#x27;_vec&#x27; for c in CAT]
+    imputed=[c+&#x27;_imputed&#x27; for c in numeric]
+    return Pipeline(stages=[
+        SQLTransformer(statement=transform_statement()),
+        Imputer(inputCols=numeric,outputCols=imputed,strategy=&#x27;median&#x27;),
+        StringIndexer(inputCols=CAT,outputCols=indexed,handleInvalid=&#x27;keep&#x27;),
+        OneHotEncoder(inputCols=indexed,outputCols=encoded,handleInvalid=&#x27;keep&#x27;),
+        VectorAssembler(inputCols=imputed+encoded,outputCol=&#x27;raw_features&#x27;),
+        StandardScaler(inputCol=&#x27;raw_features&#x27;,outputCol=&#x27;features&#x27;,withMean=False,withStd=True),
+        model])</pre>
+<h2>Recorded output excerpt</h2><pre>SQLTransformer → Imputer → StringIndexer → OneHotEncoder → VectorAssembler → StandardScaler → classifier</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

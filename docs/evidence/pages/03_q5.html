@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q5. Held-out evaluation and baseline</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q5. Held-out evaluation and baseline</h1>
+<p>PR-AUC is an area under the precision–recall curve, not accuracy. The no-skill PR baseline is test prevalence. A majority classifier has zero positive recall, despite high accuracy. Confidence is limited by the small test sample, random source sampling and absent customer identifiers; repeat clients cannot be grouped reliably. No results are interpreted as future default prediction.</p><h2>Code excerpt</h2><pre>metrics=evaluate(winner.transform(test))
+positives=test.filter(F.col(&#x27;label&#x27;)==1).count();total=test.count()
+baseline={&#x27;accuracy&#x27;:1-positives/total,&#x27;positive_recall&#x27;:0.0,&#x27;pr_auc_no_skill&#x27;:positives/total}
+print(&#x27;Held-out metrics:&#x27;,metrics)
+print(&#x27;Majority/no-skill baseline:&#x27;,baseline)
+save_json(&#x27;model_metrics.json&#x27;,{&#x27;selected_model&#x27;:winner_summary[&#x27;model&#x27;],&#x27;test&#x27;:metrics,&#x27;baseline&#x27;:baseline})
+pred=winner.transform(test)
+pred.select(&#x27;label&#x27;,&#x27;prediction&#x27;,&#x27;probability&#x27;).show(12,truncate=False)
+test.select(SCHEMA.fieldNames()).coalesce(1).write.mode(&#x27;overwrite&#x27;).option(&#x27;header&#x27;,True).csv(&#x27;/workspace/artifacts/heldout_source&#x27;)</pre>
+<h2>Recorded output excerpt</h2><pre>Held-out metrics: {&#x27;accuracy&#x27;: 0.889269406392694, &#x27;precision&#x27;: 0.5, &#x27;recall&#x27;: 0.13402061855670103, &#x27;f1&#x27;: 0.21138211382113822, &#x27;confusion&#x27;: {&#x27;tn&#x27;: 766, &#x27;fp&#x27;: 13, &#x27;fn&#x27;: 84, &#x27;tp&#x27;: 13}, &#x27;roc_auc&#x27;: 0.5797083228564244, &#x27;pr_auc&#x27;: 0.32642806091780463}
+Majority/no-skill baseline: {&#x27;accuracy&#x27;: 0.889269406392694, &#x27;positive_recall&#x27;: 0.0, &#x27;pr_auc_no_skill&#x27;: 0.11073059360730593}
+
++-----+----------+----------------------------------------+
+|label|prediction|probability                             |
++-----+----------+----------------------------------------+
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |0.0       |[0.8636363636363636,0.13636363636363635]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |1.0       |[0.23943661971830985,0.7605633802816901]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+|0.0  |0.0       |[0.9056224899598394,0.09437751004016064]|
+... additional output is retained in the notebook or transcript.</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

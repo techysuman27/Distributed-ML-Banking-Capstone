@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q11. Contact-method subscription rate</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q11. Contact-method subscription rate</h1>
+<p></p><h2>Code excerpt</h2><pre>contact=df.groupBy(&#x27;contact&#x27;).agg(F.count(&#x27;*&#x27;).alias(&#x27;contacts&#x27;),F.avg((F.col(&#x27;y&#x27;)==&#x27;yes&#x27;).cast(&#x27;double&#x27;)).alias(&#x27;subscription_rate&#x27;)).orderBy(F.desc(&#x27;subscription_rate&#x27;))
+contact.show()
+save_json(&#x27;eda_contact.json&#x27;,rows(contact))</pre>
+<h2>Recorded output excerpt</h2><pre>+---------+--------+-------------------+
+|  contact|contacts|  subscription_rate|
++---------+--------+-------------------+
+|telephone|     301| 0.1461794019933555|
+| cellular|    2896|  0.143646408839779|
+|  unknown|    1324|0.04607250755287009|
++---------+--------+-------------------+</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

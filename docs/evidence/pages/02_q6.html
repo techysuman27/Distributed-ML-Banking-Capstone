@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q6. String transformations</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q6. String transformations</h1>
+<p></p><h2>Code excerpt</h2><pre>df=df.withColumn(&#x27;job_marital&#x27;,F.concat_ws(&#x27;_&#x27;,&#x27;job&#x27;,&#x27;marital&#x27;)).withColumn(&#x27;contact_upper&#x27;,F.upper(&#x27;contact&#x27;))
+df.select(&#x27;job_marital&#x27;,&#x27;contact_upper&#x27;).show(8,truncate=False)</pre>
+<h2>Recorded output excerpt</h2><pre>+-------------------+-------------+
+|job_marital        |contact_upper|
++-------------------+-------------+
+|blue-collar_married|CELLULAR     |
+|management_single  |CELLULAR     |
+|technician_single  |CELLULAR     |
+|management_married |CELLULAR     |
+|admin._divorced    |CELLULAR     |
+|management_married |CELLULAR     |
+|blue-collar_single |UNKNOWN      |
+|management_married |CELLULAR     |
++-------------------+-------------+
+only showing top 8 rows</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

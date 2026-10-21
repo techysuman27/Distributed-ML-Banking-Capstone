@@ -1,0 +1,751 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000/default
+Connected to: Apache Hive (version 4.0.0)
+Driver: Hive JDBC (version 4.0.0)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://localhost:10000/default> SET hive.execution.engine=mr;
+No rows affected (0.161 seconds)
+0: jdbc:hive2://localhost:10000/default> SET hive.exec.mode.local.auto=true;
+No rows affected (0.014 seconds)
+0: jdbc:hive2://localhost:10000/default> SET hive.auto.convert.join=false;
+No rows affected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/default> CREATE DATABASE IF NOT EXISTS banking_data;
+INFO  : Compiling command(queryId=root_20261020185352_7c3ce85e-4ff4-4f0d-8c52-04b3b1685aca): CREATE DATABASE IF NOT EXISTS banking_data
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185352_7c3ce85e-4ff4-4f0d-8c52-04b3b1685aca); Time taken: 0.024 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185352_7c3ce85e-4ff4-4f0d-8c52-04b3b1685aca): CREATE DATABASE IF NOT EXISTS banking_data
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261020185352_7c3ce85e-4ff4-4f0d-8c52-04b3b1685aca); Time taken: 0.112 seconds
+No rows affected (0.165 seconds)
+0: jdbc:hive2://localhost:10000/default> USE banking_data;
+INFO  : Compiling command(queryId=root_20261020185353_bbf9225c-4553-4a7b-a067-57bbcaaf3904): USE banking_data
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185353_bbf9225c-4553-4a7b-a067-57bbcaaf3904); Time taken: 0.014 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185353_bbf9225c-4553-4a7b-a067-57bbcaaf3904): USE banking_data
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261020185353_bbf9225c-4553-4a7b-a067-57bbcaaf3904); Time taken: 0.011 seconds
+No rows affected (0.049 seconds)
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> -- Q1: quote-aware CSV staging, followed by a typed ORC client_info table.
+0: jdbc:hive2://localhost:10000/default> DROP TABLE IF EXISTS raw_bank;
+INFO  : Compiling command(queryId=root_20261020185353_f1f96a1b-3979-49c4-80bc-47b871c4ef7e): DROP TABLE IF EXISTS raw_bank
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185353_f1f96a1b-3979-49c4-80bc-47b871c4ef7e); Time taken: 0.075 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185353_f1f96a1b-3979-49c4-80bc-47b871c4ef7e): DROP TABLE IF EXISTS raw_bank
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261020185353_f1f96a1b-3979-49c4-80bc-47b871c4ef7e); Time taken: 0.14 seconds
+No rows affected (0.239 seconds)
+0: jdbc:hive2://localhost:10000/default> CREATE EXTERNAL TABLE raw_bank (
+. . . . . . . . . . . . . . . . . . . .>  age STRING, job STRING, marital STRING, education STRING, `default` STRING,
+. . . . . . . . . . . . . . . . . . . .>  balance STRING, housing STRING, loan STRING, contact STRING, day STRING,
+. . . . . . . . . . . . . . . . . . . .>  month STRING, duration STRING, campaign STRING, pdays STRING, previous STRING,
+. . . . . . . . . . . . . . . . . . . .>  poutcome STRING, y STRING
+. . . . . . . . . . . . . . . . . . . .> )
+. . . . . . . . . . . . . . . . . . . .> ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+. . . . . . . . . . . . . . . . . . . .> WITH SERDEPROPERTIES ('separatorChar'=',', 'quoteChar'='"')
+. . . . . . . . . . . . . . . . . . . .> STORED AS TEXTFILE LOCATION '/banking/raw'
+. . . . . . . . . . . . . . . . . . . .> TBLPROPERTIES ('skip.header.line.count'='1');
+INFO  : Compiling command(queryId=root_20261020185353_cd520685-a657-463b-a8a4-aa12a90c341a): CREATE EXTERNAL TABLE raw_bank (
+age STRING, job STRING, marital STRING, education STRING, `default` STRING,
+balance STRING, housing STRING, loan STRING, contact STRING, day STRING,
+month STRING, duration STRING, campaign STRING, pdays STRING, previous STRING,
+poutcome STRING, y STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES ('separatorChar'=',', 'quoteChar'='"')
+STORED AS TEXTFILE LOCATION '/banking/raw'
+TBLPROPERTIES ('skip.header.line.count'='1')
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185353_cd520685-a657-463b-a8a4-aa12a90c341a); Time taken: 0.026 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185353_cd520685-a657-463b-a8a4-aa12a90c341a): CREATE EXTERNAL TABLE raw_bank (
+age STRING, job STRING, marital STRING, education STRING, `default` STRING,
+balance STRING, housing STRING, loan STRING, contact STRING, day STRING,
+month STRING, duration STRING, campaign STRING, pdays STRING, previous STRING,
+poutcome STRING, y STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES ('separatorChar'=',', 'quoteChar'='"')
+STORED AS TEXTFILE LOCATION '/banking/raw'
+TBLPROPERTIES ('skip.header.line.count'='1')
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261020185353_cd520685-a657-463b-a8a4-aa12a90c341a); Time taken: 0.104 seconds
+No rows affected (0.169 seconds)
+0: jdbc:hive2://localhost:10000/default> DROP TABLE IF EXISTS client_info;
+INFO  : Compiling command(queryId=root_20261020185354_3149973f-a821-4714-b453-4c0544ad50f8): DROP TABLE IF EXISTS client_info
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185354_3149973f-a821-4714-b453-4c0544ad50f8); Time taken: 0.015 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185354_3149973f-a821-4714-b453-4c0544ad50f8): DROP TABLE IF EXISTS client_info
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261020185354_3149973f-a821-4714-b453-4c0544ad50f8); Time taken: 0.178 seconds
+No rows affected (0.207 seconds)
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE client_info STORED AS ORC AS SELECT
+. . . . . . . . . . . . . . . . . . . .>  CAST(age AS INT) age, job, marital, education, `default`,
+. . . . . . . . . . . . . . . . . . . .>  CAST(balance AS INT) balance, housing, loan, contact, CAST(day AS INT) day,
+. . . . . . . . . . . . . . . . . . . .>  month, CAST(duration AS INT) duration, CAST(campaign AS INT) campaign,
+. . . . . . . . . . . . . . . . . . . .>  CAST(pdays AS INT) pdays, CAST(previous AS INT) previous, poutcome, y FROM raw_bank
+. . . . . . . . . . . . . . . . . . . .>  WHERE age RLIKE '^[0-9]+$' AND y IN ('yes','no');
+INFO  : Compiling command(queryId=root_20261020185354_4e7b5367-e0c3-48e5-b5b8-d6cd82e51b8b): CREATE TABLE client_info STORED AS ORC AS SELECT
+CAST(age AS INT) age, job, marital, education, `default`,
+CAST(balance AS INT) balance, housing, loan, contact, CAST(day AS INT) day,
+month, CAST(duration AS INT) duration, CAST(campaign AS INT) campaign,
+CAST(pdays AS INT) pdays, CAST(previous AS INT) previous, poutcome, y FROM raw_bank
+WHERE age RLIKE '^[0-9]+$' AND y IN ('yes','no')
+INFO  : No Stats for banking_data@raw_bank, Columns: loan, education, previous, housing, poutcome, duration, marital, default, balance, month, contact, campaign, y, job, day, age, pdays
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:age, type:int, comment:null), FieldSchema(name:job, type:string, comment:null), FieldSchema(name:marital, type:string, comment:null), FieldSchema(name:education, type:string, comment:null), FieldSchema(name:default, type:string, comment:null), FieldSchema(name:balance, type:int, comment:null), FieldSchema(name:housing, type:string, comment:null), FieldSchema(name:loan, type:string, comment:null), FieldSchema(name:contact, type:string, comment:null), FieldSchema(name:day, type:int, comment:null), FieldSchema(name:month, type:string, comment:null), FieldSchema(name:duration, type:int, comment:null), FieldSchema(name:campaign, type:int, comment:null), FieldSchema(name:pdays, type:int, comment:null), FieldSchema(name:previous, type:int, comment:null), FieldSchema(name:poutcome, type:string, comment:null), FieldSchema(name:y, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185354_4e7b5367-e0c3-48e5-b5b8-d6cd82e51b8b); Time taken: 0.97 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185354_4e7b5367-e0c3-48e5-b5b8-d6cd82e51b8b): CREATE TABLE client_info STORED AS ORC AS SELECT
+CAST(age AS INT) age, job, marital, education, `default`,
+CAST(balance AS INT) balance, housing, loan, contact, CAST(day AS INT) day,
+month, CAST(duration AS INT) duration, CAST(campaign AS INT) campaign,
+CAST(pdays AS INT) pdays, CAST(previous AS INT) previous, poutcome, y FROM raw_bank
+WHERE age RLIKE '^[0-9]+$' AND y IN ('yes','no')
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185354_4e7b5367-e0c3-48e5-b5b8-d6cd82e51b8b
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local2065519349_0031
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:02,053 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-20 18:54:04,057 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 9.78 sec
+INFO  : MapReduce Total cumulative CPU time: 9 seconds 780 msec
+INFO  : Ended Job = job_local2065519349_0031
+INFO  : Starting task [Stage-7:CONDITIONAL] in serial mode
+INFO  : Stage-4 is selected by condition resolver.
+INFO  : Stage-3 is filtered out by condition resolver.
+INFO  : Stage-5 is filtered out by condition resolver.
+INFO  : Starting task [Stage-4:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://hadoop-hive:9000/user/hive/warehouse/banking_data.db/.hive-staging_hive_2026-10-20_18-53-54_504_8424903879930530753-23/-ext-10002 from hdfs://hadoop-hive:9000/user/hive/warehouse/banking_data.db/.hive-staging_hive_2026-10-20_18-53-54_504_8424903879930530753-23/-ext-10004
+INFO  : Starting task [Stage-0:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://hadoop-hive:9000/user/hive/warehouse/banking_data.db/client_info from hdfs://hadoop-hive:9000/user/hive/warehouse/banking_data.db/.hive-staging_hive_2026-10-20_18-53-54_504_8424903879930530753-23/-ext-10002
+INFO  : Starting task [Stage-8:DDL] in serial mode
+INFO  : Starting task [Stage-2:STATS] in serial mode
+INFO  : Executing stats task
+INFO  : Table banking_data.client_info stats: [numFiles=1, numRows=4521, totalSize=41435, rawDataSize=4136715, numFilesErasureCoded=0]
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 9.78 sec   HDFS Read: 3662962 HDFS Write: 283247 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 9 seconds 780 msec
+INFO  : Completed executing command(queryId=root_20261020185354_4e7b5367-e0c3-48e5-b5b8-d6cd82e51b8b); Time taken: 9.025 seconds
+4,521 rows affected (10.038 seconds)
+0: jdbc:hive2://localhost:10000/default> DESCRIBE client_info;
+INFO  : Compiling command(queryId=root_20261020185404_b99207fc-bc08-4b2f-bc17-885551e55a91): DESCRIBE client_info
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:col_name, type:string, comment:from deserializer), FieldSchema(name:data_type, type:string, comment:from deserializer), FieldSchema(name:comment, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185404_b99207fc-bc08-4b2f-bc17-885551e55a91); Time taken: 0.053 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185404_b99207fc-bc08-4b2f-bc17-885551e55a91): DESCRIBE client_info
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261020185404_b99207fc-bc08-4b2f-bc17-885551e55a91); Time taken: 0.045 seconds
+17 rows selected (0.271 seconds)
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> -- Q2
+0: jdbc:hive2://localhost:10000/default> SELECT 'Q2_count' AS question,COUNT(*) AS clients FROM client_info;
+INFO  : Compiling command(queryId=root_20261020185404_44948883-a02c-4f44-9cd3-fff7bf47ecbb): SELECT 'Q2_count' AS question,COUNT(*) AS clients FROM client_info
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:question, type:string, comment:null), FieldSchema(name:clients, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185404_44948883-a02c-4f44-9cd3-fff7bf47ecbb); Time taken: 0.176 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185404_44948883-a02c-4f44-9cd3-fff7bf47ecbb): SELECT 'Q2_count' AS question,COUNT(*) AS clients FROM client_info
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185404_44948883-a02c-4f44-9cd3-fff7bf47ecbb
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1928293914_0032
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:06,745 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.19 sec
+INFO  : MapReduce Total cumulative CPU time: 1 seconds 190 msec
+INFO  : Ended Job = job_local1928293914_0032
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 1.19 sec   HDFS Read: 3706122 HDFS Write: 287961 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 1 seconds 190 msec
+INFO  : Completed executing command(queryId=root_20261020185404_44948883-a02c-4f44-9cd3-fff7bf47ecbb); Time taken: 1.629 seconds
+1 row selected (1.926 seconds)
+0: jdbc:hive2://localhost:10000/default> SELECT * FROM client_info LIMIT 10;
+INFO  : Compiling command(queryId=root_20261020185406_d4c0c7f2-67f4-4ac3-b7b9-9ef81415b226): SELECT * FROM client_info LIMIT 10
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:client_info.age, type:int, comment:null), FieldSchema(name:client_info.job, type:string, comment:null), FieldSchema(name:client_info.marital, type:string, comment:null), FieldSchema(name:client_info.education, type:string, comment:null), FieldSchema(name:client_info.default, type:string, comment:null), FieldSchema(name:client_info.balance, type:int, comment:null), FieldSchema(name:client_info.housing, type:string, comment:null), FieldSchema(name:client_info.loan, type:string, comment:null), FieldSchema(name:client_info.contact, type:string, comment:null), FieldSchema(name:client_info.day, type:int, comment:null), FieldSchema(name:client_info.month, type:string, comment:null), FieldSchema(name:client_info.duration, type:int, comment:null), FieldSchema(name:client_info.campaign, type:int, comment:null), FieldSchema(name:client_info.pdays, type:int, comment:null), FieldSchema(name:client_info.previous, type:int, comment:null), FieldSchema(name:client_info.poutcome, type:string, comment:null), FieldSchema(name:client_info.y, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185406_d4c0c7f2-67f4-4ac3-b7b9-9ef81415b226); Time taken: 0.17 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185406_d4c0c7f2-67f4-4ac3-b7b9-9ef81415b226): SELECT * FROM client_info LIMIT 10
+INFO  : Completed executing command(queryId=root_20261020185406_d4c0c7f2-67f4-4ac3-b7b9-9ef81415b226); Time taken: 0.001 seconds
+10 rows selected (0.319 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Q3
+0: jdbc:hive2://localhost:10000/default> SELECT * FROM client_info WHERE marital='married' AND loan='yes';
+INFO  : Compiling command(queryId=root_20261020185407_95fedf1a-6cce-491c-a5a3-55013b4182ab): SELECT * FROM client_info WHERE marital='married' AND loan='yes'
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:client_info.age, type:int, comment:null), FieldSchema(name:client_info.job, type:string, comment:null), FieldSchema(name:client_info.marital, type:string, comment:null), FieldSchema(name:client_info.education, type:string, comment:null), FieldSchema(name:client_info.default, type:string, comment:null), FieldSchema(name:client_info.balance, type:int, comment:null), FieldSchema(name:client_info.housing, type:string, comment:null), FieldSchema(name:client_info.loan, type:string, comment:null), FieldSchema(name:client_info.contact, type:string, comment:null), FieldSchema(name:client_info.day, type:int, comment:null), FieldSchema(name:client_info.month, type:string, comment:null), FieldSchema(name:client_info.duration, type:int, comment:null), FieldSchema(name:client_info.campaign, type:int, comment:null), FieldSchema(name:client_info.pdays, type:int, comment:null), FieldSchema(name:client_info.previous, type:int, comment:null), FieldSchema(name:client_info.poutcome, type:string, comment:null), FieldSchema(name:client_info.y, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185407_95fedf1a-6cce-491c-a5a3-55013b4182ab); Time taken: 0.543 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185407_95fedf1a-6cce-491c-a5a3-55013b4182ab): SELECT * FROM client_info WHERE marital='married' AND loan='yes'
+INFO  : Completed executing command(queryId=root_20261020185407_95fedf1a-6cce-491c-a5a3-55013b4182ab); Time taken: 0.0 seconds
+453 rows selected (1.337 seconds)
+0: jdbc:hive2://localhost:10000/default> SELECT job,marital,balance FROM client_info ORDER BY balance DESC LIMIT 10;
+INFO  : Compiling command(queryId=root_20261020185408_571f9a72-b425-4147-a222-2f5e3cf28f25): SELECT job,marital,balance FROM client_info ORDER BY balance DESC LIMIT 10
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:job, type:string, comment:null), FieldSchema(name:marital, type:string, comment:null), FieldSchema(name:balance, type:int, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185408_571f9a72-b425-4147-a222-2f5e3cf28f25); Time taken: 0.354 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185408_571f9a72-b425-4147-a222-2f5e3cf28f25): SELECT job,marital,balance FROM client_info ORDER BY balance DESC LIMIT 10
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185408_571f9a72-b425-4147-a222-2f5e3cf28f25
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1034742321_0033
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:11,233 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 0.5 sec
+INFO  : 2026-10-20 18:54:12,236 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.1 sec
+INFO  : MapReduce Total cumulative CPU time: 1 seconds 100 msec
+INFO  : Ended Job = job_local1034742321_0033
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 1.1 sec   HDFS Read: 4023214 HDFS Write: 288519 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 1 seconds 100 msec
+INFO  : Completed executing command(queryId=root_20261020185408_571f9a72-b425-4147-a222-2f5e3cf28f25); Time taken: 3.152 seconds
+10 rows selected (3.583 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Q4
+0: jdbc:hive2://localhost:10000/default> SELECT job,COUNT(*) clients,AVG(age) avg_age FROM client_info GROUP BY job ORDER BY job;
+INFO  : Compiling command(queryId=root_20261020185412_079a60de-d061-4594-96ff-52f7be343df7): SELECT job,COUNT(*) clients,AVG(age) avg_age FROM client_info GROUP BY job ORDER BY job
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:job, type:string, comment:null), FieldSchema(name:clients, type:bigint, comment:null), FieldSchema(name:avg_age, type:double, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185412_079a60de-d061-4594-96ff-52f7be343df7); Time taken: 0.415 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185412_079a60de-d061-4594-96ff-52f7be343df7): SELECT job,COUNT(*) clients,AVG(age) avg_age FROM client_info GROUP BY job ORDER BY job
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185412_079a60de-d061-4594-96ff-52f7be343df7
+INFO  : Total jobs = 2
+INFO  : Launching Job 1 out of 2
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local788151995_0034
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:14,367 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 0.42 sec
+INFO  : MapReduce Total cumulative CPU time: 420 msec
+INFO  : Ended Job = job_local788151995_0034
+INFO  : Launching Job 2 out of 2
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1950415994_0035
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:15,777 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.69 sec
+INFO  : MapReduce Total cumulative CPU time: 690 msec
+INFO  : Ended Job = job_local1950415994_0035
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 0.42 sec   HDFS Read: 4068484 HDFS Write: 288964 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.69 sec   HDFS Read: 4068484 HDFS Write: 289574 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 1 seconds 110 msec
+INFO  : Completed executing command(queryId=root_20261020185412_079a60de-d061-4594-96ff-52f7be343df7); Time taken: 2.979 seconds
+12 rows selected (3.504 seconds)
+0: jdbc:hive2://localhost:10000/default> SELECT education,COUNT(*) default_count FROM client_info WHERE `default`='yes' GROUP BY education ORDER BY education;
+INFO  : Compiling command(queryId=root_20261020185415_f39727bc-9bff-44a2-9cd5-1c1bd421b2de): SELECT education,COUNT(*) default_count FROM client_info WHERE `default`='yes' GROUP BY education ORDER BY education
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:education, type:string, comment:null), FieldSchema(name:default_count, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185415_f39727bc-9bff-44a2-9cd5-1c1bd421b2de); Time taken: 0.253 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185415_f39727bc-9bff-44a2-9cd5-1c1bd421b2de): SELECT education,COUNT(*) default_count FROM client_info WHERE `default`='yes' GROUP BY education ORDER BY education
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185415_f39727bc-9bff-44a2-9cd5-1c1bd421b2de
+INFO  : Total jobs = 2
+INFO  : Launching Job 1 out of 2
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1952336570_0036
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:17,736 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 0.23 sec
+INFO  : MapReduce Total cumulative CPU time: 230 msec
+INFO  : Ended Job = job_local1952336570_0036
+INFO  : Launching Job 2 out of 2
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local480074718_0037
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:19,129 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.16 sec
+INFO  : MapReduce Total cumulative CPU time: 160 msec
+INFO  : Ended Job = job_local480074718_0037
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 0.23 sec   HDFS Read: 4107374 HDFS Write: 290184 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.16 sec   HDFS Read: 4107374 HDFS Write: 290365 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 390 msec
+INFO  : Completed executing command(queryId=root_20261020185415_f39727bc-9bff-44a2-9cd5-1c1bd421b2de); Time taken: 2.948 seconds
+4 rows selected (3.293 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Q5
+0: jdbc:hive2://localhost:10000/default> SELECT job,COUNT(*) clients,AVG(balance) avg_balance,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+. . . . . . . . . . . . . . . . . . . .> FROM client_info GROUP BY job ORDER BY avg_balance DESC LIMIT 5;
+INFO  : Compiling command(queryId=root_20261020185419_5bbcdc60-d963-4448-a048-951105705c11): SELECT job,COUNT(*) clients,AVG(balance) avg_balance,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+FROM client_info GROUP BY job ORDER BY avg_balance DESC LIMIT 5
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:job, type:string, comment:null), FieldSchema(name:clients, type:bigint, comment:null), FieldSchema(name:avg_balance, type:double, comment:null), FieldSchema(name:subscription_pct, type:decimal(38,15), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185419_5bbcdc60-d963-4448-a048-951105705c11); Time taken: 0.237 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185419_5bbcdc60-d963-4448-a048-951105705c11): SELECT job,COUNT(*) clients,AVG(balance) avg_balance,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+FROM client_info GROUP BY job ORDER BY avg_balance DESC LIMIT 5
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185419_5bbcdc60-d963-4448-a048-951105705c11
+INFO  : Total jobs = 2
+INFO  : Launching Job 1 out of 2
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1582635806_0038
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:21,221 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 0.4 sec
+INFO  : MapReduce Total cumulative CPU time: 400 msec
+INFO  : Ended Job = job_local1582635806_0038
+INFO  : Launching Job 2 out of 2
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1312963968_0039
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:22,873 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.15 sec
+INFO  : MapReduce Total cumulative CPU time: 150 msec
+INFO  : Ended Job = job_local1312963968_0039
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 0.4 sec   HDFS Read: 4162666 HDFS Write: 290546 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.15 sec   HDFS Read: 4162666 HDFS Write: 290940 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 550 msec
+INFO  : Completed executing command(queryId=root_20261020185419_5bbcdc60-d963-4448-a048-951105705c11); Time taken: 3.254 seconds
+5 rows selected (3.617 seconds)
+0: jdbc:hive2://localhost:10000/default> SELECT month,COUNT(*) contacts,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+. . . . . . . . . . . . . . . . . . . .> FROM client_info GROUP BY month ORDER BY contacts DESC LIMIT 1;
+INFO  : Compiling command(queryId=root_20261020185423_277cf96e-b7ef-4f96-bb6d-6712fcf78ee2): SELECT month,COUNT(*) contacts,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+FROM client_info GROUP BY month ORDER BY contacts DESC LIMIT 1
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:month, type:string, comment:null), FieldSchema(name:contacts, type:bigint, comment:null), FieldSchema(name:subscription_pct, type:decimal(38,15), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185423_277cf96e-b7ef-4f96-bb6d-6712fcf78ee2); Time taken: 0.375 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185423_277cf96e-b7ef-4f96-bb6d-6712fcf78ee2): SELECT month,COUNT(*) contacts,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+FROM client_info GROUP BY month ORDER BY contacts DESC LIMIT 1
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185423_277cf96e-b7ef-4f96-bb6d-6712fcf78ee2
+INFO  : Total jobs = 2
+INFO  : Launching Job 1 out of 2
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1487618859_0040
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:25,325 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 0.41 sec
+INFO  : MapReduce Total cumulative CPU time: 410 msec
+INFO  : Ended Job = job_local1487618859_0040
+INFO  : Launching Job 2 out of 2
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local784807460_0041
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:27,930 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.3 sec
+INFO  : MapReduce Total cumulative CPU time: 300 msec
+INFO  : Ended Job = job_local784807460_0041
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 0.41 sec   HDFS Read: 4202896 HDFS Write: 291334 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.3 sec   HDFS Read: 4202896 HDFS Write: 291460 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 710 msec
+INFO  : Completed executing command(queryId=root_20261020185423_277cf96e-b7ef-4f96-bb6d-6712fcf78ee2); Time taken: 4.499 seconds
+1 row selected (5.821 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Q6
+0: jdbc:hive2://localhost:10000/default> SELECT CORR(age,balance) age_balance_pearson FROM client_info;
+INFO  : Compiling command(queryId=root_20261020185430_7af62e24-826b-40f2-8a05-baa34e0a4241): SELECT CORR(age,balance) age_balance_pearson FROM client_info
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:age_balance_pearson, type:double, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185430_7af62e24-826b-40f2-8a05-baa34e0a4241); Time taken: 1.95 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185430_7af62e24-826b-40f2-8a05-baa34e0a4241): SELECT CORR(age,balance) age_balance_pearson FROM client_info
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185430_7af62e24-826b-40f2-8a05-baa34e0a4241
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local308219355_0042
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:34,935 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 0.87 sec
+INFO  : MapReduce Total cumulative CPU time: 870 msec
+INFO  : Ended Job = job_local308219355_0042
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 0.87 sec   HDFS Read: 4258742 HDFS Write: 291705 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 870 msec
+INFO  : Completed executing command(queryId=root_20261020185430_7af62e24-826b-40f2-8a05-baa34e0a4241); Time taken: 2.85 seconds
+1 row selected (4.847 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Q7: no year exists. Report the limitation; month is not a substitute for year.
+0: jdbc:hive2://localhost:10000/default> SELECT 'Year over year contact trends cannot be computed because no year or full date is supplied' AS q7_limitation;
+INFO  : Compiling command(queryId=root_20261020185435_ae70c1f4-c860-4e8d-a6cd-d078e46b9c2b): SELECT 'Year over year contact trends cannot be computed because no year or full date is supplied' AS q7_limitation
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:q7_limitation, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185435_ae70c1f4-c860-4e8d-a6cd-d078e46b9c2b); Time taken: 0.12 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185435_ae70c1f4-c860-4e8d-a6cd-d078e46b9c2b): SELECT 'Year over year contact trends cannot be computed because no year or full date is supplied' AS q7_limitation
+INFO  : Completed executing command(queryId=root_20261020185435_ae70c1f4-c860-4e8d-a6cd-d078e46b9c2b); Time taken: 0.0 seconds
+1 row selected (0.15 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Q8: balance is an average yearly balance, with no multiple-year time series.
+0: jdbc:hive2://localhost:10000/default> SELECT education,COUNT(*) clients,AVG(balance) avg_yearly_balance,STDDEV_POP(balance) balance_sd,
+. . . . . . . . . . . . . . . . . . . .>        MIN(balance) minimum_balance,MAX(balance) maximum_balance
+. . . . . . . . . . . . . . . . . . . .> FROM client_info GROUP BY education ORDER BY avg_yearly_balance DESC;
+INFO  : Compiling command(queryId=root_20261020185435_185ac845-2de0-442f-b269-99061847dd96): SELECT education,COUNT(*) clients,AVG(balance) avg_yearly_balance,STDDEV_POP(balance) balance_sd,
+MIN(balance) minimum_balance,MAX(balance) maximum_balance
+FROM client_info GROUP BY education ORDER BY avg_yearly_balance DESC
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:education, type:string, comment:null), FieldSchema(name:clients, type:bigint, comment:null), FieldSchema(name:avg_yearly_balance, type:double, comment:null), FieldSchema(name:balance_sd, type:double, comment:null), FieldSchema(name:minimum_balance, type:int, comment:null), FieldSchema(name:maximum_balance, type:int, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185435_185ac845-2de0-442f-b269-99061847dd96); Time taken: 0.255 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185435_185ac845-2de0-442f-b269-99061847dd96): SELECT education,COUNT(*) clients,AVG(balance) avg_yearly_balance,STDDEV_POP(balance) balance_sd,
+MIN(balance) minimum_balance,MAX(balance) maximum_balance
+FROM client_info GROUP BY education ORDER BY avg_yearly_balance DESC
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185435_185ac845-2de0-442f-b269-99061847dd96
+INFO  : Total jobs = 2
+INFO  : Launching Job 1 out of 2
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1502938378_0043
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:37,231 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.49 sec
+INFO  : MapReduce Total cumulative CPU time: 1 seconds 490 msec
+INFO  : Ended Job = job_local1502938378_0043
+INFO  : Launching Job 2 out of 2
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local436281843_0044
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:38,774 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.17 sec
+INFO  : MapReduce Total cumulative CPU time: 170 msec
+INFO  : Ended Job = job_local436281843_0044
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 1.49 sec   HDFS Read: 4311500 HDFS Write: 291824 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.17 sec   HDFS Read: 4311500 HDFS Write: 292209 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 1 seconds 660 msec
+INFO  : Completed executing command(queryId=root_20261020185435_185ac845-2de0-442f-b269-99061847dd96); Time taken: 3.104 seconds
+4 rows selected (3.409 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Describe unusually large within-education balances using an explicit 3 SD heuristic.
+0: jdbc:hive2://localhost:10000/default> SELECT education,COUNT(*) unusual_records FROM (
+. . . . . . . . . . . . . . . . . . . .>  SELECT education,balance,AVG(balance) OVER (PARTITION BY education) mu,
+. . . . . . . . . . . . . . . . . . . .>         STDDEV_POP(balance) OVER (PARTITION BY education) sd FROM client_info
+. . . . . . . . . . . . . . . . . . . .> ) stats WHERE sd>0 AND ABS(balance-mu)>3*sd
+. . . . . . . . . . . . . . . . . . . .> GROUP BY education ORDER BY unusual_records DESC;
+INFO  : Compiling command(queryId=root_20261020185439_ec1b8604-c04c-4620-aefa-1796806a95c1): SELECT education,COUNT(*) unusual_records FROM (
+SELECT education,balance,AVG(balance) OVER (PARTITION BY education) mu,
+STDDEV_POP(balance) OVER (PARTITION BY education) sd FROM client_info
+) stats WHERE sd>0 AND ABS(balance-mu)>3*sd
+GROUP BY education ORDER BY unusual_records DESC
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:education, type:string, comment:null), FieldSchema(name:unusual_records, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185439_ec1b8604-c04c-4620-aefa-1796806a95c1); Time taken: 0.64 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185439_ec1b8604-c04c-4620-aefa-1796806a95c1): SELECT education,COUNT(*) unusual_records FROM (
+SELECT education,balance,AVG(balance) OVER (PARTITION BY education) mu,
+STDDEV_POP(balance) OVER (PARTITION BY education) sd FROM client_info
+) stats WHERE sd>0 AND ABS(balance-mu)>3*sd
+GROUP BY education ORDER BY unusual_records DESC
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185439_ec1b8604-c04c-4620-aefa-1796806a95c1
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1096927658_0045
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:41,476 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.85 sec
+INFO  : MapReduce Total cumulative CPU time: 1 seconds 850 msec
+INFO  : Ended Job = job_local1096927658_0045
+INFO  : Launching Job 2 out of 3
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local962108994_0046
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:43,334 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.07 sec
+INFO  : MapReduce Total cumulative CPU time: 70 msec
+INFO  : Ended Job = job_local962108994_0046
+INFO  : Launching Job 3 out of 3
+INFO  : Starting task [Stage-3:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local335680924_0047
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:44,863 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 0.22 sec
+INFO  : MapReduce Total cumulative CPU time: 220 msec
+INFO  : Ended Job = job_local335680924_0047
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 1.85 sec   HDFS Read: 4364790 HDFS Write: 292594 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.07 sec   HDFS Read: 4364790 HDFS Write: 292594 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-3:  Cumulative CPU: 0.22 sec   HDFS Read: 4364790 HDFS Write: 292774 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 2 seconds 140 msec
+INFO  : Completed executing command(queryId=root_20261020185439_ec1b8604-c04c-4620-aefa-1796806a95c1); Time taken: 4.935 seconds
+4 rows selected (5.812 seconds)
+0: jdbc:hive2://localhost:10000/default> -- Q9
+0: jdbc:hive2://localhost:10000/default> SELECT poutcome,COUNT(*) clients,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+. . . . . . . . . . . . . . . . . . . .> FROM client_info GROUP BY poutcome ORDER BY subscription_pct DESC;
+INFO  : Compiling command(queryId=root_20261020185445_867e4695-49be-4428-a0e2-f4e21e6c4597): SELECT poutcome,COUNT(*) clients,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+FROM client_info GROUP BY poutcome ORDER BY subscription_pct DESC
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:poutcome, type:string, comment:null), FieldSchema(name:clients, type:bigint, comment:null), FieldSchema(name:subscription_pct, type:decimal(38,15), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185445_867e4695-49be-4428-a0e2-f4e21e6c4597); Time taken: 0.334 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185445_867e4695-49be-4428-a0e2-f4e21e6c4597): SELECT poutcome,COUNT(*) clients,100.0*SUM(CASE WHEN y='yes' THEN 1 ELSE 0 END)/COUNT(*) subscription_pct
+FROM client_info GROUP BY poutcome ORDER BY subscription_pct DESC
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185445_867e4695-49be-4428-a0e2-f4e21e6c4597
+INFO  : Total jobs = 2
+INFO  : Launching Job 1 out of 2
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1045169317_0048
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:47,404 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 0.24 sec
+INFO  : MapReduce Total cumulative CPU time: 240 msec
+INFO  : Ended Job = job_local1045169317_0048
+INFO  : Launching Job 2 out of 2
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1732335158_0049
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:48,914 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.16 sec
+INFO  : MapReduce Total cumulative CPU time: 160 msec
+INFO  : Ended Job = job_local1732335158_0049
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 0.24 sec   HDFS Read: 4402870 HDFS Write: 292954 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.16 sec   HDFS Read: 4402870 HDFS Write: 293211 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 400 msec
+INFO  : Completed executing command(queryId=root_20261020185445_867e4695-49be-4428-a0e2-f4e21e6c4597); Time taken: 3.158 seconds
+4 rows selected (3.569 seconds)
+0: jdbc:hive2://localhost:10000/default> SELECT y,COUNT(*) clients,AVG(duration) avg_call_seconds FROM client_info GROUP BY y ORDER BY y;
+INFO  : Compiling command(queryId=root_20261020185449_d7a8d9e7-6982-471b-b620-77b064a8974e): SELECT y,COUNT(*) clients,AVG(duration) avg_call_seconds FROM client_info GROUP BY y ORDER BY y
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:y, type:string, comment:null), FieldSchema(name:clients, type:bigint, comment:null), FieldSchema(name:avg_call_seconds, type:double, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261020185449_d7a8d9e7-6982-471b-b620-77b064a8974e); Time taken: 0.479 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261020185449_d7a8d9e7-6982-471b-b620-77b064a8974e): SELECT y,COUNT(*) clients,AVG(duration) avg_call_seconds FROM client_info GROUP BY y ORDER BY y
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261020185449_d7a8d9e7-6982-471b-b620-77b064a8974e
+INFO  : Total jobs = 2
+INFO  : Launching Job 1 out of 2
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local1409280278_0050
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:51,151 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 0.42 sec
+INFO  : MapReduce Total cumulative CPU time: 420 msec
+INFO  : Ended Job = job_local1409280278_0050
+INFO  : Launching Job 2 out of 2
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_local195791357_0051
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://localhost:8080/
+INFO  : Job running in-process (local Hadoop)
+INFO  : 2026-10-20 18:54:52,971 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 0.21 sec
+INFO  : MapReduce Total cumulative CPU time: 210 msec
+INFO  : Ended Job = job_local195791357_0051
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1:  Cumulative CPU: 0.42 sec   HDFS Read: 4452078 HDFS Write: 293468 HDFS EC Read: 0 SUCCESS
+INFO  : Stage-Stage-2:  Cumulative CPU: 0.21 sec   HDFS Read: 4452078 HDFS Write: 293622 HDFS EC Read: 0 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 630 msec
+INFO  : Completed executing command(queryId=root_20261020185449_d7a8d9e7-6982-471b-b620-77b064a8974e); Time taken: 3.375 seconds
+2 rows selected (3.897 seconds)
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> Closing: 0: jdbc:hive2://localhost:10000/default

@@ -1,0 +1,34 @@
+{
+  "education_summary": [
+    {
+      "education": "primary",
+      "count": 678
+    },
+    {
+      "education": "secondary",
+      "count": 2306
+    },
+    {
+      "education": "tertiary",
+      "count": 1350
+    },
+    {
+      "education": "unknown",
+      "count": 187
+    }
+  ],
+  "contact_summary": [
+    {
+      "contact": "cellular",
+      "count": 2896
+    },
+    {
+      "contact": "telephone",
+      "count": 301
+    },
+    {
+      "contact": "unknown",
+      "count": 1324
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "job": "entrepreneur",
+    "clients": 168,
+    "default_count": 7,
+    "default_pct": 4.166666666666667
+  },
+  {
+    "job": "unemployed",
+    "clients": 128,
+    "default_count": 3,
+    "default_pct": 2.34375
+  },
+  {
+    "job": "self-employed",
+    "clients": 183,
+    "default_count": 4,
+    "default_pct": 2.185792349726776
+  },
+  {
+    "job": "technician",
+    "clients": 768,
+    "default_count": 15,
+    "default_pct": 1.953125
+  },
+  {
+    "job": "housemaid",
+    "clients": 112,
+    "default_count": 2,
+    "default_pct": 1.7857142857142858
+  },
+  {
+    "job": "services",
+    "clients": 417,
+    "default_count": 7,
+    "default_pct": 1.6786570743405276
+  },
+  {
+    "job": "blue-collar",
+    "clients": 946,
+    "default_count": 14,
+    "default_pct": 1.4799154334038056
+  },
+  {
+    "job": "management",
+    "clients": 969,
+    "default_count": 14,
+    "default_pct": 1.4447884416924666
+  },
+  {
+    "job": "retired",
+    "clients": 230,
+    "default_count": 3,
+    "default_pct": 1.3043478260869565
+  },
+  {
+    "job": "admin.",
+    "clients": 478,
+    "default_count": 6,
+    "default_pct": 1.2552301255230125
+  },
+  {
+    "job": "student",
+    "clients": 84,
+    "default_count": 1,
+    "default_pct": 1.1904761904761905
+  },
+  {
+    "job": "unknown",
+    "clients": 38,
+    "default_count": 0,
+    "default_pct": 0.0
+  }
+]

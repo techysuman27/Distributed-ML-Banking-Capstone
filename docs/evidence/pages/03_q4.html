@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q4 and Q6. Classification, model selection and hyperparameter tuning</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q4 and Q6. Classification, model selection and hyperparameter tuning</h1>
+<p>Three-fold CrossValidator uses a fixed seed and PR-AUC to focus on the rare positive class. The tree is an interpretable nonlinear comparison. Cross-validation scores select the winning family; test results never select a model or threshold. Default threshold 0.5 is retained and its limitations are reported.</p><h2>Code excerpt</h2><pre>from pyspark.ml.tuning import CrossValidator,ParamGridBuilder
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+metric=BinaryClassificationEvaluator(labelCol=&#x27;label&#x27;,rawPredictionCol=&#x27;probability&#x27;,metricName=&#x27;areaUnderPR&#x27;)
+candidates=[]
+for name,model,grid in [
+    (&#x27;logistic_regression&#x27;,lr,ParamGridBuilder().addGrid(lr.regParam,[0.01,0.1]).addGrid(lr.elasticNetParam,[0.0,1.0]).build()),
+    (&#x27;decision_tree&#x27;,dt,ParamGridBuilder().addGrid(dt.maxDepth,[3,5]).addGrid(dt.minInstancesPerNode,[10]).build())]:
+    cv=CrossValidator(estimator=make_pipeline(model),estimatorParamMaps=grid,evaluator=metric,numFolds=3,seed=42,parallelism=1)
+    # Optional resume reuses only the already verified logistic CV result. Logistic raw-score and
+    # probability rankings are monotonic equivalents. Fresh reproduction trains every candidate.
+    if name==&#x27;logistic_regression&#x27; and os.environ.get(&#x27;REUSE_LOGISTIC_CV&#x27;)==&#x27;1&#x27;:
+        from pyspark.ml import PipelineModel
+        cached=json.loads((ROOT/&#x27;artifacts/resume_lr_cv.json&#x27;).read_text())
+        print(&#x27;Resuming verified logistic CV; positive-class probability ranking is equivalent:&#x27;,cached)
+# ... full code is included in the source notebook or script.</pre>
+<h2>Recorded output excerpt</h2><pre>Resuming verified logistic CV; positive-class probability ranking is equivalent: {&#x27;model&#x27;: &#x27;logistic_regression&#x27;, &#x27;cv_pr_auc&#x27;: 0.36572544455690476, &#x27;grid_scores&#x27;: [0.3599725007123868, 0.3618471271560073, 0.36572544455690476, 0.2025250606048392], &#x27;best_params&#x27;: {&#x27;regParam&#x27;: 0.1, &#x27;elasticNetParam&#x27;: 0.0}}
+
+{&#x27;model&#x27;: &#x27;decision_tree&#x27;, &#x27;cv_pr_auc&#x27;: 0.3990482012855083, &#x27;grid_scores&#x27;: [0.3990482012855083, 0.3623931886309035], &#x27;best_params&#x27;: {&#x27;maxDepth&#x27;: 3, &#x27;minInstancesPerNode&#x27;: 10}}
+Selected using training CV only: {&#x27;model&#x27;: &#x27;decision_tree&#x27;, &#x27;cv_pr_auc&#x27;: 0.3990482012855083, &#x27;grid_scores&#x27;: [0.3990482012855083, 0.3623931886309035], &#x27;best_params&#x27;: {&#x27;maxDepth&#x27;: 3, &#x27;minInstancesPerNode&#x27;: 10}}</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

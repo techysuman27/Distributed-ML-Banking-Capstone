@@ -1,0 +1,74 @@
+[
+  {
+    "month": "may",
+    "month_num": 5,
+    "contacts": 1398,
+    "subscription_rate": 0.06652360515021459
+  },
+  {
+    "month": "jul",
+    "month_num": 7,
+    "contacts": 706,
+    "subscription_rate": 0.08640226628895184
+  },
+  {
+    "month": "aug",
+    "month_num": 8,
+    "contacts": 633,
+    "subscription_rate": 0.12480252764612954
+  },
+  {
+    "month": "jun",
+    "month_num": 6,
+    "contacts": 531,
+    "subscription_rate": 0.10357815442561205
+  },
+  {
+    "month": "nov",
+    "month_num": 11,
+    "contacts": 389,
+    "subscription_rate": 0.10025706940874037
+  },
+  {
+    "month": "apr",
+    "month_num": 4,
+    "contacts": 293,
+    "subscription_rate": 0.19112627986348124
+  },
+  {
+    "month": "feb",
+    "month_num": 2,
+    "contacts": 222,
+    "subscription_rate": 0.17117117117117117
+  },
+  {
+    "month": "jan",
+    "month_num": 1,
+    "contacts": 148,
+    "subscription_rate": 0.10810810810810811
+  },
+  {
+    "month": "oct",
+    "month_num": 10,
+    "contacts": 80,
+    "subscription_rate": 0.4625
+  },
+  {
+    "month": "sep",
+    "month_num": 9,
+    "contacts": 52,
+    "subscription_rate": 0.3269230769230769
+  },
+  {
+    "month": "mar",
+    "month_num": 3,
+    "contacts": 49,
+    "subscription_rate": 0.42857142857142855
+  },
+  {
+    "month": "dec",
+    "month_num": 12,
+    "contacts": 20,
+    "subscription_rate": 0.45
+  }
+]

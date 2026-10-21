@@ -1,0 +1,2626 @@
+{
+  "run_id": "1792557887333004753",
+  "input_count": 17,
+  "events": [
+    {
+      "age": 52,
+      "job": "admin.",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 199,
+      "housing": "no",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 28,
+      "month": "jan",
+      "duration": 978,
+      "campaign": 2,
+      "pdays": 189,
+      "previous": 1,
+      "poutcome": "other",
+      "y": "no",
+      "event_id": "event_000",
+      "event_time": "2026-01-01T00:00:00+00:00",
+      "arrival_batch": 1,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 40,
+      "job": "management",
+      "marital": "married",
+      "education": "tertiary",
+      "default": "no",
+      "balance": 10786,
+      "housing": "no",
+      "loan": "no",
+      "contact": "unknown",
+      "day": 20,
+      "month": "jun",
+      "duration": 111,
+      "campaign": 3,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_001",
+      "event_time": "2026-01-01T00:00:01+00:00",
+      "arrival_batch": 1,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 44,
+      "job": "services",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 0,
+      "housing": "yes",
+      "loan": "yes",
+      "contact": "cellular",
+      "day": 11,
+      "month": "may",
+      "duration": 161,
+      "campaign": 1,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_002",
+      "event_time": "2026-01-01T00:00:02+00:00",
+      "arrival_batch": 1,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 34,
+      "job": "technician",
+      "marital": "married",
+      "education": "tertiary",
+      "default": "no",
+      "balance": 691,
+      "housing": "yes",
+      "loan": "yes",
+      "contact": "unknown",
+      "day": 2,
+      "month": "jun",
+      "duration": 70,
+      "campaign": 1,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_003",
+      "event_time": "2026-01-01T00:00:12+00:00",
+      "arrival_batch": 2,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 63,
+      "job": "retired",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 415,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 7,
+      "month": "oct",
+      "duration": 323,
+      "campaign": 1,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_004",
+      "event_time": "2026-01-01T00:00:13+00:00",
+      "arrival_batch": 2,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 35,
+      "job": "technician",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 13658,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "telephone",
+      "day": 9,
+      "month": "dec",
+      "duration": 220,
+      "campaign": 2,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_005",
+      "event_time": "2026-01-01T00:00:14+00:00",
+      "arrival_batch": 2,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 34,
+      "job": "blue-collar",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 1221,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 6,
+      "month": "may",
+      "duration": 182,
+      "campaign": 1,
+      "pdays": 90,
+      "previous": 8,
+      "poutcome": "failure",
+      "y": "no",
+      "event_id": "event_006",
+      "event_time": "2026-01-01T00:00:07+00:00",
+      "arrival_batch": 3,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 58,
+      "job": "admin.",
+      "marital": "single",
+      "education": "secondary",
+      "default": "no",
+      "balance": 2223,
+      "housing": "no",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 4,
+      "month": "dec",
+      "duration": 1139,
+      "campaign": 2,
+      "pdays": 114,
+      "previous": 1,
+      "poutcome": "success",
+      "y": "no",
+      "event_id": "event_007",
+      "event_time": "2026-01-01T00:00:08+00:00",
+      "arrival_batch": 3,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 31,
+      "job": "admin.",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 88,
+      "housing": "yes",
+      "loan": "yes",
+      "contact": "cellular",
+      "day": 8,
+      "month": "aug",
+      "duration": 189,
+      "campaign": 2,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_008",
+      "event_time": "2026-01-01T00:01:30+00:00",
+      "arrival_batch": 4,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 37,
+      "job": "unemployed",
+      "marital": "single",
+      "education": "tertiary",
+      "default": "yes",
+      "balance": 0,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 10,
+      "month": "jul",
+      "duration": 108,
+      "campaign": 1,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_009",
+      "event_time": "2026-01-01T00:01:31+00:00",
+      "arrival_batch": 4,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 32,
+      "job": "admin.",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 3540,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 18,
+      "month": "may",
+      "duration": 213,
+      "campaign": 1,
+      "pdays": 178,
+      "previous": 1,
+      "poutcome": "failure",
+      "y": "no",
+      "event_id": "event_010",
+      "event_time": "2026-01-01T00:01:32+00:00",
+      "arrival_batch": 4,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 72,
+      "job": "retired",
+      "marital": "married",
+      "education": "primary",
+      "default": "no",
+      "balance": 796,
+      "housing": "no",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 24,
+      "month": "apr",
+      "duration": 173,
+      "campaign": 2,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_011",
+      "event_time": "2026-01-01T00:01:35+00:00",
+      "arrival_batch": 5,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 48,
+      "job": "management",
+      "marital": "married",
+      "education": "primary",
+      "default": "no",
+      "balance": 3230,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "telephone",
+      "day": 20,
+      "month": "nov",
+      "duration": 207,
+      "campaign": 3,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_012",
+      "event_time": "2026-01-01T00:01:36+00:00",
+      "arrival_batch": 5,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 48,
+      "job": "management",
+      "marital": "married",
+      "education": "tertiary",
+      "default": "no",
+      "balance": 5057,
+      "housing": "no",
+      "loan": "yes",
+      "contact": "cellular",
+      "day": 19,
+      "month": "nov",
+      "duration": 37,
+      "campaign": 1,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_013",
+      "event_time": "2026-01-01T00:00:04+00:00",
+      "arrival_batch": 6,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 32,
+      "job": "blue-collar",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 3514,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "unknown",
+      "day": 20,
+      "month": "may",
+      "duration": 226,
+      "campaign": 2,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_014",
+      "event_time": "2026-01-01T00:03:00+00:00",
+      "arrival_batch": 6,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 39,
+      "job": "services",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 0,
+      "housing": "yes",
+      "loan": "no",
+      "contact": "cellular",
+      "day": 8,
+      "month": "may",
+      "duration": 503,
+      "campaign": 1,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_015",
+      "event_time": "2026-01-01T00:03:01+00:00",
+      "arrival_batch": 6,
+      "synthetic_event_time": true
+    },
+    {
+      "age": 41,
+      "job": "technician",
+      "marital": "married",
+      "education": "secondary",
+      "default": "no",
+      "balance": 902,
+      "housing": "no",
+      "loan": "no",
+      "contact": "unknown",
+      "day": 16,
+      "month": "jun",
+      "duration": 35,
+      "campaign": 6,
+      "pdays": -1,
+      "previous": 0,
+      "poutcome": "unknown",
+      "y": "no",
+      "event_id": "event_016",
+      "event_time": "2026-01-01T00:03:02+00:00",
+      "arrival_batch": 6,
+      "synthetic_event_time": true
+    }
+  ],
+  "queries": {
+    "bank_predictions": {
+      "rows": [
+        {
+          "event_id": "event_000",
+          "event_time": "2026-01-01 00:00:00",
+          "arrival_batch": 1,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_001",
+          "event_time": "2026-01-01 00:00:01",
+          "arrival_batch": 1,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_002",
+          "event_time": "2026-01-01 00:00:02",
+          "arrival_batch": 1,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_003",
+          "event_time": "2026-01-01 00:00:12",
+          "arrival_batch": 2,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_004",
+          "event_time": "2026-01-01 00:00:13",
+          "arrival_batch": 2,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.13636363636363635
+        },
+        {
+          "event_id": "event_005",
+          "event_time": "2026-01-01 00:00:14",
+          "arrival_batch": 2,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_006",
+          "event_time": "2026-01-01 00:00:07",
+          "arrival_batch": 3,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_007",
+          "event_time": "2026-01-01 00:00:08",
+          "arrival_batch": 3,
+          "y": "no",
+          "prediction": 1.0,
+          "subscription_probability": 0.7605633802816901
+        },
+        {
+          "event_id": "event_008",
+          "event_time": "2026-01-01 00:01:30",
+          "arrival_batch": 4,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_009",
+          "event_time": "2026-01-01 00:01:31",
+          "arrival_batch": 4,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_010",
+          "event_time": "2026-01-01 00:01:32",
+          "arrival_batch": 4,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_011",
+          "event_time": "2026-01-01 00:01:35",
+          "arrival_batch": 5,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_012",
+          "event_time": "2026-01-01 00:01:36",
+          "arrival_batch": 5,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_013",
+          "event_time": "2026-01-01 00:00:04",
+          "arrival_batch": 6,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_014",
+          "event_time": "2026-01-01 00:03:00",
+          "arrival_batch": 6,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_015",
+          "event_time": "2026-01-01 00:03:01",
+          "arrival_batch": 6,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        },
+        {
+          "event_id": "event_016",
+          "event_time": "2026-01-01 00:03:02",
+          "arrival_batch": 6,
+          "y": "no",
+          "prediction": 0.0,
+          "subscription_probability": 0.09437751004016064
+        }
+      ],
+      "progress": [
+        {
+          "id": "f883e362-6df7-4e86-8711-de5164db46b0",
+          "runId": "aaa0fdf9-082e-4c7f-b887-6262e7a21f59",
+          "name": "bank_predictions",
+          "timestamp": "2026-10-21T04:47:58.945Z",
+          "batchId": 0,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.12417732522041476,
+          "durationMs": {
+            "addBatch": 18245,
+            "commitOffsets": 1511,
+            "getBatch": 349,
+            "latestOffset": 1311,
+            "queryPlanning": 1463,
+            "triggerExecution": 24157,
+            "walCommit": 1116
+          },
+          "stateOperators": [],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": null,
+              "endOffset": {
+                "logOffset": 0
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.12417732522041476
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "f883e362-6df7-4e86-8711-de5164db46b0",
+          "runId": "aaa0fdf9-082e-4c7f-b887-6262e7a21f59",
+          "name": "bank_predictions",
+          "timestamp": "2026-10-21T04:48:23.213Z",
+          "batchId": 1,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.12361958134168452,
+          "processedRowsPerSecond": 0.5176876617773943,
+          "durationMs": {
+            "addBatch": 2281,
+            "commitOffsets": 797,
+            "getBatch": 199,
+            "latestOffset": 1366,
+            "queryPlanning": 393,
+            "triggerExecution": 5795,
+            "walCommit": 749
+          },
+          "stateOperators": [],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 0
+              },
+              "endOffset": {
+                "logOffset": 1
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.12361958134168452,
+              "processedRowsPerSecond": 0.5176876617773943
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "f883e362-6df7-4e86-8711-de5164db46b0",
+          "runId": "aaa0fdf9-082e-4c7f-b887-6262e7a21f59",
+          "name": "bank_predictions",
+          "timestamp": "2026-10-21T04:48:29.010Z",
+          "batchId": 2,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.3450060376056581,
+          "processedRowsPerSecond": 0.08488964346349746,
+          "durationMs": {
+            "addBatch": 15216,
+            "commitOffsets": 3754,
+            "getBatch": 228,
+            "latestOffset": 3135,
+            "queryPlanning": 248,
+            "triggerExecution": 23560,
+            "walCommit": 970
+          },
+          "stateOperators": [],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 1
+              },
+              "endOffset": {
+                "logOffset": 2
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.3450060376056581,
+              "processedRowsPerSecond": 0.08488964346349746
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "f883e362-6df7-4e86-8711-de5164db46b0",
+          "runId": "aaa0fdf9-082e-4c7f-b887-6262e7a21f59",
+          "name": "bank_predictions",
+          "timestamp": "2026-10-21T04:48:52.573Z",
+          "batchId": 3,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.12731825319356618,
+          "processedRowsPerSecond": 0.6400682739492212,
+          "durationMs": {
+            "addBatch": 1762,
+            "commitOffsets": 798,
+            "getBatch": 225,
+            "latestOffset": 1053,
+            "queryPlanning": 275,
+            "triggerExecution": 4687,
+            "walCommit": 566
+          },
+          "stateOperators": [],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 2
+              },
+              "endOffset": {
+                "logOffset": 3
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.12731825319356618,
+              "processedRowsPerSecond": 0.6400682739492212
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "f883e362-6df7-4e86-8711-de5164db46b0",
+          "runId": "aaa0fdf9-082e-4c7f-b887-6262e7a21f59",
+          "name": "bank_predictions",
+          "timestamp": "2026-10-21T04:48:57.262Z",
+          "batchId": 4,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.42653017701002344,
+          "processedRowsPerSecond": 0.21748586341887777,
+          "durationMs": {
+            "addBatch": 5375,
+            "commitOffsets": 1401,
+            "getBatch": 179,
+            "latestOffset": 956,
+            "queryPlanning": 310,
+            "triggerExecution": 9196,
+            "walCommit": 968
+          },
+          "stateOperators": [],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 3
+              },
+              "endOffset": {
+                "logOffset": 4
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.42653017701002344,
+              "processedRowsPerSecond": 0.21748586341887777
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "f883e362-6df7-4e86-8711-de5164db46b0",
+          "runId": "aaa0fdf9-082e-4c7f-b887-6262e7a21f59",
+          "name": "bank_predictions",
+          "timestamp": "2026-10-21T04:49:06.460Z",
+          "batchId": 5,
+          "numInputRows": 4,
+          "inputRowsPerSecond": 0.4348771472059143,
+          "processedRowsPerSecond": 0.6233442418575659,
+          "durationMs": {
+            "addBatch": 3475,
+            "commitOffsets": 1016,
+            "getBatch": 262,
+            "latestOffset": 592,
+            "queryPlanning": 279,
+            "triggerExecution": 6417,
+            "walCommit": 786
+          },
+          "stateOperators": [],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 4
+              },
+              "endOffset": {
+                "logOffset": 5
+              },
+              "latestOffset": null,
+              "numInputRows": 4,
+              "inputRowsPerSecond": 0.4348771472059143,
+              "processedRowsPerSecond": 0.6233442418575659
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        }
+      ],
+      "batch_outputs": [
+        {
+          "batch_id": 0,
+          "rows": [
+            {
+              "event_id": "event_000",
+              "event_time": "2026-01-01 00:00:00",
+              "arrival_batch": 1,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_001",
+              "event_time": "2026-01-01 00:00:01",
+              "arrival_batch": 1,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_002",
+              "event_time": "2026-01-01 00:00:02",
+              "arrival_batch": 1,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            }
+          ]
+        },
+        {
+          "batch_id": 1,
+          "rows": [
+            {
+              "event_id": "event_003",
+              "event_time": "2026-01-01 00:00:12",
+              "arrival_batch": 2,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_004",
+              "event_time": "2026-01-01 00:00:13",
+              "arrival_batch": 2,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.13636363636363635
+            },
+            {
+              "event_id": "event_005",
+              "event_time": "2026-01-01 00:00:14",
+              "arrival_batch": 2,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            }
+          ]
+        },
+        {
+          "batch_id": 2,
+          "rows": [
+            {
+              "event_id": "event_006",
+              "event_time": "2026-01-01 00:00:07",
+              "arrival_batch": 3,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_007",
+              "event_time": "2026-01-01 00:00:08",
+              "arrival_batch": 3,
+              "y": "no",
+              "prediction": 1.0,
+              "subscription_probability": 0.7605633802816901
+            }
+          ]
+        },
+        {
+          "batch_id": 3,
+          "rows": [
+            {
+              "event_id": "event_008",
+              "event_time": "2026-01-01 00:01:30",
+              "arrival_batch": 4,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_009",
+              "event_time": "2026-01-01 00:01:31",
+              "arrival_batch": 4,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_010",
+              "event_time": "2026-01-01 00:01:32",
+              "arrival_batch": 4,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            }
+          ]
+        },
+        {
+          "batch_id": 4,
+          "rows": [
+            {
+              "event_id": "event_011",
+              "event_time": "2026-01-01 00:01:35",
+              "arrival_batch": 5,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_012",
+              "event_time": "2026-01-01 00:01:36",
+              "arrival_batch": 5,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            }
+          ]
+        },
+        {
+          "batch_id": 5,
+          "rows": [
+            {
+              "event_id": "event_013",
+              "event_time": "2026-01-01 00:00:04",
+              "arrival_batch": 6,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_014",
+              "event_time": "2026-01-01 00:03:00",
+              "arrival_batch": 6,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_015",
+              "event_time": "2026-01-01 00:03:01",
+              "arrival_batch": 6,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            },
+            {
+              "event_id": "event_016",
+              "event_time": "2026-01-01 00:03:02",
+              "arrival_batch": 6,
+              "y": "no",
+              "prediction": 0.0,
+              "subscription_probability": 0.09437751004016064
+            }
+          ]
+        }
+      ]
+    },
+    "bank_job_live": {
+      "rows": [
+        {
+          "job": "services",
+          "records": 2,
+          "avg_balance": 0.0,
+          "avg_call_seconds": 332.0
+        },
+        {
+          "job": "unemployed",
+          "records": 1,
+          "avg_balance": 0.0,
+          "avg_call_seconds": 108.0
+        },
+        {
+          "job": "management",
+          "records": 3,
+          "avg_balance": 6357.666666666667,
+          "avg_call_seconds": 118.33333333333333
+        },
+        {
+          "job": "blue-collar",
+          "records": 2,
+          "avg_balance": 2367.5,
+          "avg_call_seconds": 204.0
+        },
+        {
+          "job": "admin.",
+          "records": 4,
+          "avg_balance": 1512.5,
+          "avg_call_seconds": 629.75
+        },
+        {
+          "job": "technician",
+          "records": 3,
+          "avg_balance": 5083.666666666667,
+          "avg_call_seconds": 108.33333333333333
+        },
+        {
+          "job": "retired",
+          "records": 2,
+          "avg_balance": 605.5,
+          "avg_call_seconds": 248.0
+        }
+      ],
+      "progress": [
+        {
+          "id": "eaebfc98-ea61-47f4-a18e-256a2ffd13aa",
+          "runId": "0258f48f-06c9-4de5-a15e-d9b84b4eebfa",
+          "name": "bank_job_live",
+          "timestamp": "2026-10-21T04:49:27.230Z",
+          "batchId": 0,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.10471569688296276,
+          "durationMs": {
+            "addBatch": 22702,
+            "commitOffsets": 1561,
+            "getBatch": 149,
+            "latestOffset": 1850,
+            "queryPlanning": 378,
+            "triggerExecution": 28649,
+            "walCommit": 1903
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 3,
+              "numRowsUpdated": 3,
+              "allUpdatesTimeMs": 3057,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 5615,
+              "memoryUsedBytes": 1712,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 0,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 1136
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": null,
+              "endOffset": {
+                "logOffset": 0
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.10471569688296276
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "eaebfc98-ea61-47f4-a18e-256a2ffd13aa",
+          "runId": "0258f48f-06c9-4de5-a15e-d9b84b4eebfa",
+          "name": "bank_job_live",
+          "timestamp": "2026-10-21T04:49:55.884Z",
+          "batchId": 1,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.1046974244433587,
+          "processedRowsPerSecond": 0.23912003825920614,
+          "durationMs": {
+            "addBatch": 9794,
+            "commitOffsets": 557,
+            "getBatch": 170,
+            "latestOffset": 1185,
+            "queryPlanning": 56,
+            "triggerExecution": 12546,
+            "walCommit": 776
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 5,
+              "numRowsUpdated": 2,
+              "allUpdatesTimeMs": 815,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 4885,
+              "memoryUsedBytes": 3008,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 8,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 1536
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 0
+              },
+              "endOffset": {
+                "logOffset": 1
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.1046974244433587,
+              "processedRowsPerSecond": 0.23912003825920614
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "eaebfc98-ea61-47f4-a18e-256a2ffd13aa",
+          "runId": "0258f48f-06c9-4de5-a15e-d9b84b4eebfa",
+          "name": "bank_job_live",
+          "timestamp": "2026-10-21T04:50:08.433Z",
+          "batchId": 2,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.1593752490238266,
+          "processedRowsPerSecond": 0.1365001365001365,
+          "durationMs": {
+            "addBatch": 9854,
+            "commitOffsets": 1008,
+            "getBatch": 326,
+            "latestOffset": 2772,
+            "queryPlanning": 75,
+            "triggerExecution": 14652,
+            "walCommit": 613
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 6,
+              "numRowsUpdated": 2,
+              "allUpdatesTimeMs": 691,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 6568,
+              "memoryUsedBytes": 3360,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 16,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 1760
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 1
+              },
+              "endOffset": {
+                "logOffset": 2
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.1593752490238266,
+              "processedRowsPerSecond": 0.1365001365001365
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "eaebfc98-ea61-47f4-a18e-256a2ffd13aa",
+          "runId": "0258f48f-06c9-4de5-a15e-d9b84b4eebfa",
+          "name": "bank_job_live",
+          "timestamp": "2026-10-21T04:50:23.087Z",
+          "batchId": 3,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.2047222601337519,
+          "processedRowsPerSecond": 0.29038815216339176,
+          "durationMs": {
+            "addBatch": 8025,
+            "commitOffsets": 591,
+            "getBatch": 162,
+            "latestOffset": 835,
+            "queryPlanning": 76,
+            "triggerExecution": 10331,
+            "walCommit": 638
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 7,
+              "numRowsUpdated": 2,
+              "allUpdatesTimeMs": 389,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 4361,
+              "memoryUsedBytes": 3656,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 24,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 2024
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 2
+              },
+              "endOffset": {
+                "logOffset": 3
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.2047222601337519,
+              "processedRowsPerSecond": 0.29038815216339176
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "eaebfc98-ea61-47f4-a18e-256a2ffd13aa",
+          "runId": "0258f48f-06c9-4de5-a15e-d9b84b4eebfa",
+          "name": "bank_job_live",
+          "timestamp": "2026-10-21T04:50:33.420Z",
+          "batchId": 4,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.19355463079454174,
+          "processedRowsPerSecond": 0.19756989034871086,
+          "durationMs": {
+            "addBatch": 7430,
+            "commitOffsets": 359,
+            "getBatch": 255,
+            "latestOffset": 1193,
+            "queryPlanning": 68,
+            "triggerExecution": 10123,
+            "walCommit": 810
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 7,
+              "numRowsUpdated": 2,
+              "allUpdatesTimeMs": 910,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 3624,
+              "memoryUsedBytes": 3848,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 32,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 2040
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 3
+              },
+              "endOffset": {
+                "logOffset": 4
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.19355463079454174,
+              "processedRowsPerSecond": 0.19756989034871086
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "eaebfc98-ea61-47f4-a18e-256a2ffd13aa",
+          "runId": "0258f48f-06c9-4de5-a15e-d9b84b4eebfa",
+          "name": "bank_job_live",
+          "timestamp": "2026-10-21T04:50:43.546Z",
+          "batchId": 5,
+          "numInputRows": 4,
+          "inputRowsPerSecond": 0.39502271380604387,
+          "processedRowsPerSecond": 0.31318509238960224,
+          "durationMs": {
+            "addBatch": 9880,
+            "commitOffsets": 821,
+            "getBatch": 678,
+            "latestOffset": 864,
+            "queryPlanning": 131,
+            "triggerExecution": 12772,
+            "walCommit": 392
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 7,
+              "numRowsUpdated": 4,
+              "allUpdatesTimeMs": 1816,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 5139,
+              "memoryUsedBytes": 4072,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 40,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 2040
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 4
+              },
+              "endOffset": {
+                "logOffset": 5
+              },
+              "latestOffset": null,
+              "numInputRows": 4,
+              "inputRowsPerSecond": 0.39502271380604387,
+              "processedRowsPerSecond": 0.31318509238960224
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        }
+      ],
+      "batch_outputs": [
+        {
+          "batch_id": 0,
+          "rows": [
+            {
+              "job": "services",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 161.0
+            },
+            {
+              "job": "management",
+              "records": 1,
+              "avg_balance": 10786.0,
+              "avg_call_seconds": 111.0
+            },
+            {
+              "job": "admin.",
+              "records": 1,
+              "avg_balance": 199.0,
+              "avg_call_seconds": 978.0
+            }
+          ]
+        },
+        {
+          "batch_id": 1,
+          "rows": [
+            {
+              "job": "services",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 161.0
+            },
+            {
+              "job": "management",
+              "records": 1,
+              "avg_balance": 10786.0,
+              "avg_call_seconds": 111.0
+            },
+            {
+              "job": "admin.",
+              "records": 1,
+              "avg_balance": 199.0,
+              "avg_call_seconds": 978.0
+            },
+            {
+              "job": "technician",
+              "records": 2,
+              "avg_balance": 7174.5,
+              "avg_call_seconds": 145.0
+            },
+            {
+              "job": "retired",
+              "records": 1,
+              "avg_balance": 415.0,
+              "avg_call_seconds": 323.0
+            }
+          ]
+        },
+        {
+          "batch_id": 2,
+          "rows": [
+            {
+              "job": "services",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 161.0
+            },
+            {
+              "job": "management",
+              "records": 1,
+              "avg_balance": 10786.0,
+              "avg_call_seconds": 111.0
+            },
+            {
+              "job": "admin.",
+              "records": 2,
+              "avg_balance": 1211.0,
+              "avg_call_seconds": 1058.5
+            },
+            {
+              "job": "blue-collar",
+              "records": 1,
+              "avg_balance": 1221.0,
+              "avg_call_seconds": 182.0
+            },
+            {
+              "job": "technician",
+              "records": 2,
+              "avg_balance": 7174.5,
+              "avg_call_seconds": 145.0
+            },
+            {
+              "job": "retired",
+              "records": 1,
+              "avg_balance": 415.0,
+              "avg_call_seconds": 323.0
+            }
+          ]
+        },
+        {
+          "batch_id": 3,
+          "rows": [
+            {
+              "job": "services",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 161.0
+            },
+            {
+              "job": "unemployed",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 108.0
+            },
+            {
+              "job": "management",
+              "records": 1,
+              "avg_balance": 10786.0,
+              "avg_call_seconds": 111.0
+            },
+            {
+              "job": "blue-collar",
+              "records": 1,
+              "avg_balance": 1221.0,
+              "avg_call_seconds": 182.0
+            },
+            {
+              "job": "admin.",
+              "records": 4,
+              "avg_balance": 1512.5,
+              "avg_call_seconds": 629.75
+            },
+            {
+              "job": "technician",
+              "records": 2,
+              "avg_balance": 7174.5,
+              "avg_call_seconds": 145.0
+            },
+            {
+              "job": "retired",
+              "records": 1,
+              "avg_balance": 415.0,
+              "avg_call_seconds": 323.0
+            }
+          ]
+        },
+        {
+          "batch_id": 4,
+          "rows": [
+            {
+              "job": "services",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 161.0
+            },
+            {
+              "job": "unemployed",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 108.0
+            },
+            {
+              "job": "management",
+              "records": 2,
+              "avg_balance": 7008.0,
+              "avg_call_seconds": 159.0
+            },
+            {
+              "job": "blue-collar",
+              "records": 1,
+              "avg_balance": 1221.0,
+              "avg_call_seconds": 182.0
+            },
+            {
+              "job": "admin.",
+              "records": 4,
+              "avg_balance": 1512.5,
+              "avg_call_seconds": 629.75
+            },
+            {
+              "job": "technician",
+              "records": 2,
+              "avg_balance": 7174.5,
+              "avg_call_seconds": 145.0
+            },
+            {
+              "job": "retired",
+              "records": 2,
+              "avg_balance": 605.5,
+              "avg_call_seconds": 248.0
+            }
+          ]
+        },
+        {
+          "batch_id": 5,
+          "rows": [
+            {
+              "job": "services",
+              "records": 2,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 332.0
+            },
+            {
+              "job": "unemployed",
+              "records": 1,
+              "avg_balance": 0.0,
+              "avg_call_seconds": 108.0
+            },
+            {
+              "job": "management",
+              "records": 3,
+              "avg_balance": 6357.666666666667,
+              "avg_call_seconds": 118.33333333333333
+            },
+            {
+              "job": "blue-collar",
+              "records": 2,
+              "avg_balance": 2367.5,
+              "avg_call_seconds": 204.0
+            },
+            {
+              "job": "admin.",
+              "records": 4,
+              "avg_balance": 1512.5,
+              "avg_call_seconds": 629.75
+            },
+            {
+              "job": "technician",
+              "records": 3,
+              "avg_balance": 5083.666666666667,
+              "avg_call_seconds": 108.33333333333333
+            },
+            {
+              "job": "retired",
+              "records": 2,
+              "avg_balance": 605.5,
+              "avg_call_seconds": 248.0
+            }
+          ]
+        }
+      ]
+    },
+    "bank_window_10s": {
+      "rows": [
+        {
+          "window": {
+            "start": "2026-01-01 00:00:00",
+            "end": "2026-01-01 00:00:10"
+          },
+          "records": 5,
+          "avg_balance": 2885.8
+        },
+        {
+          "window": {
+            "start": "2026-01-01 00:00:10",
+            "end": "2026-01-01 00:00:20"
+          },
+          "records": 3,
+          "avg_balance": 4921.333333333333
+        },
+        {
+          "window": {
+            "start": "2026-01-01 00:01:30",
+            "end": "2026-01-01 00:01:40"
+          },
+          "records": 5,
+          "avg_balance": 1530.8
+        }
+      ],
+      "progress": [
+        {
+          "id": "d4a8b575-36c7-41ad-b8d5-b41e05b953b8",
+          "runId": "a0d63589-b567-4fed-8664-81de4f845c90",
+          "name": "bank_window_10s",
+          "timestamp": "2026-10-21T04:51:05.875Z",
+          "batchId": 0,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.17478443253320902,
+          "durationMs": {
+            "addBatch": 11968,
+            "commitOffsets": 1318,
+            "getBatch": 243,
+            "latestOffset": 592,
+            "queryPlanning": 464,
+            "triggerExecution": 17164,
+            "walCommit": 2501
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:00:01.000Z",
+            "max": "2026-01-01T00:00:02.000Z",
+            "min": "2026-01-01T00:00:00.000Z",
+            "watermark": "1970-01-01T00:00:00.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 526,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 542,
+              "commitTimeMs": 3156,
+              "memoryUsedBytes": 1256,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 0,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 680
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": null,
+              "endOffset": {
+                "logOffset": 0
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.17478443253320902
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "d4a8b575-36c7-41ad-b8d5-b41e05b953b8",
+          "runId": "a0d63589-b567-4fed-8664-81de4f845c90",
+          "name": "bank_window_10s",
+          "timestamp": "2026-10-21T04:51:23.055Z",
+          "batchId": 1,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.17462165308498254,
+          "processedRowsPerSecond": 0.2240980055277508,
+          "durationMs": {
+            "addBatch": 9704,
+            "commitOffsets": 735,
+            "getBatch": 384,
+            "latestOffset": 1839,
+            "queryPlanning": 144,
+            "triggerExecution": 13387,
+            "walCommit": 555
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:00:13.000Z",
+            "max": "2026-01-01T00:00:14.000Z",
+            "min": "2026-01-01T00:00:12.000Z",
+            "watermark": "2025-12-31T23:59:42.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 545,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 241,
+              "commitTimeMs": 7069,
+              "memoryUsedBytes": 2248,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 8,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 920
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 0
+              },
+              "endOffset": {
+                "logOffset": 1
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.17462165308498254,
+              "processedRowsPerSecond": 0.2240980055277508
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "d4a8b575-36c7-41ad-b8d5-b41e05b953b8",
+          "runId": "a0d63589-b567-4fed-8664-81de4f845c90",
+          "name": "bank_window_10s",
+          "timestamp": "2026-10-21T04:51:36.445Z",
+          "batchId": 2,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.14936519790888722,
+          "processedRowsPerSecond": 0.14022295449765126,
+          "durationMs": {
+            "addBatch": 6687,
+            "commitOffsets": 1952,
+            "getBatch": 1706,
+            "latestOffset": 1314,
+            "queryPlanning": 121,
+            "triggerExecution": 14263,
+            "walCommit": 2453
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:00:07.500Z",
+            "max": "2026-01-01T00:00:08.000Z",
+            "min": "2026-01-01T00:00:07.000Z",
+            "watermark": "2025-12-31T23:59:54.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 230,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 75,
+              "commitTimeMs": 3760,
+              "memoryUsedBytes": 2408,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 16,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 936
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 1
+              },
+              "endOffset": {
+                "logOffset": 2
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.14936519790888722,
+              "processedRowsPerSecond": 0.14022295449765126
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "d4a8b575-36c7-41ad-b8d5-b41e05b953b8",
+          "runId": "a0d63589-b567-4fed-8664-81de4f845c90",
+          "name": "bank_window_10s",
+          "timestamp": "2026-10-21T04:51:50.710Z",
+          "batchId": 3,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.2103049421661409,
+          "processedRowsPerSecond": 0.30734555885667453,
+          "durationMs": {
+            "addBatch": 7276,
+            "commitOffsets": 1168,
+            "getBatch": 141,
+            "latestOffset": 736,
+            "queryPlanning": 69,
+            "triggerExecution": 9761,
+            "walCommit": 357
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:01:31.000Z",
+            "max": "2026-01-01T00:01:32.000Z",
+            "min": "2026-01-01T00:01:30.000Z",
+            "watermark": "2025-12-31T23:59:54.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 3,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 436,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 52,
+              "commitTimeMs": 3911,
+              "memoryUsedBytes": 2552,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 24,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 1152
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 2
+              },
+              "endOffset": {
+                "logOffset": 3
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.2103049421661409,
+              "processedRowsPerSecond": 0.30734555885667453
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "d4a8b575-36c7-41ad-b8d5-b41e05b953b8",
+          "runId": "a0d63589-b567-4fed-8664-81de4f845c90",
+          "name": "bank_window_10s",
+          "timestamp": "2026-10-21T04:52:00.474Z",
+          "batchId": 4,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.20483408439164277,
+          "processedRowsPerSecond": 0.132459103251871,
+          "durationMs": {
+            "addBatch": 7338,
+            "commitOffsets": 964,
+            "getBatch": 1575,
+            "latestOffset": 1943,
+            "queryPlanning": 184,
+            "triggerExecution": 15099,
+            "walCommit": 3056
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:01:35.500Z",
+            "max": "2026-01-01T00:01:36.000Z",
+            "min": "2026-01-01T00:01:35.000Z",
+            "watermark": "2026-01-01T00:01:12.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 268,
+              "numRowsRemoved": 2,
+              "allRemovalsTimeMs": 69,
+              "commitTimeMs": 5397,
+              "memoryUsedBytes": 2640,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 32,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 752
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 3
+              },
+              "endOffset": {
+                "logOffset": 4
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.20483408439164277,
+              "processedRowsPerSecond": 0.132459103251871
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "d4a8b575-36c7-41ad-b8d5-b41e05b953b8",
+          "runId": "a0d63589-b567-4fed-8664-81de4f845c90",
+          "name": "bank_window_10s",
+          "timestamp": "2026-10-21T04:52:15.577Z",
+          "batchId": 5,
+          "numInputRows": 4,
+          "inputRowsPerSecond": 0.2648480434350791,
+          "processedRowsPerSecond": 0.3785727806170736,
+          "durationMs": {
+            "addBatch": 6843,
+            "commitOffsets": 1603,
+            "getBatch": 251,
+            "latestOffset": 1104,
+            "queryPlanning": 44,
+            "triggerExecution": 10566,
+            "walCommit": 715
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:02:16.750Z",
+            "max": "2026-01-01T00:03:02.000Z",
+            "min": "2026-01-01T00:00:04.000Z",
+            "watermark": "2026-01-01T00:01:16.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 624,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 344,
+              "commitTimeMs": 5571,
+              "memoryUsedBytes": 2312,
+              "numRowsDroppedByWatermark": 1,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 40,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 912
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 4
+              },
+              "endOffset": {
+                "logOffset": 5
+              },
+              "latestOffset": null,
+              "numInputRows": 4,
+              "inputRowsPerSecond": 0.2648480434350791,
+              "processedRowsPerSecond": 0.3785727806170736
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "d4a8b575-36c7-41ad-b8d5-b41e05b953b8",
+          "runId": "a0d63589-b567-4fed-8664-81de4f845c90",
+          "name": "bank_window_10s",
+          "timestamp": "2026-10-21T04:52:26.145Z",
+          "batchId": 6,
+          "numInputRows": 0,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.0,
+          "durationMs": {
+            "addBatch": 6978,
+            "commitOffsets": 1435,
+            "getBatch": 11,
+            "latestOffset": 0,
+            "queryPlanning": 154,
+            "triggerExecution": 9144,
+            "walCommit": 561
+          },
+          "eventTime": {
+            "watermark": "2026-01-01T00:02:42.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 0,
+              "allUpdatesTimeMs": 45,
+              "numRowsRemoved": 1,
+              "allRemovalsTimeMs": 145,
+              "commitTimeMs": 5430,
+              "memoryUsedBytes": 2256,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 48,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 696
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 5
+              },
+              "endOffset": {
+                "logOffset": 5
+              },
+              "latestOffset": null,
+              "numInputRows": 0,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.0
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        }
+      ],
+      "batch_outputs": [
+        {
+          "batch_id": 0,
+          "rows": []
+        },
+        {
+          "batch_id": 1,
+          "rows": []
+        },
+        {
+          "batch_id": 2,
+          "rows": []
+        },
+        {
+          "batch_id": 3,
+          "rows": []
+        },
+        {
+          "batch_id": 4,
+          "rows": [
+            {
+              "window": {
+                "start": "2026-01-01 00:00:00",
+                "end": "2026-01-01 00:00:10"
+              },
+              "records": 5,
+              "avg_balance": 2885.8
+            },
+            {
+              "window": {
+                "start": "2026-01-01 00:00:10",
+                "end": "2026-01-01 00:00:20"
+              },
+              "records": 3,
+              "avg_balance": 4921.333333333333
+            }
+          ]
+        },
+        {
+          "batch_id": 5,
+          "rows": []
+        },
+        {
+          "batch_id": 6,
+          "rows": [
+            {
+              "window": {
+                "start": "2026-01-01 00:01:30",
+                "end": "2026-01-01 00:01:40"
+              },
+              "records": 5,
+              "avg_balance": 1530.8
+            }
+          ]
+        }
+      ]
+    },
+    "bank_window_1m": {
+      "rows": [
+        {
+          "window": {
+            "start": "2026-01-01 00:00:00",
+            "end": "2026-01-01 00:01:00"
+          },
+          "records": 8,
+          "avg_balance": 3649.125
+        },
+        {
+          "window": {
+            "start": "2026-01-01 00:01:00",
+            "end": "2026-01-01 00:02:00"
+          },
+          "records": 5,
+          "avg_balance": 1530.8
+        }
+      ],
+      "progress": [
+        {
+          "id": "43c35b9c-1657-433e-a1e9-f7750550b06b",
+          "runId": "89ec98f5-a5a7-4760-b40b-6a57cc71d6a0",
+          "name": "bank_window_1m",
+          "timestamp": "2026-10-21T04:52:42.379Z",
+          "batchId": 0,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.3078817733990148,
+          "durationMs": {
+            "addBatch": 6677,
+            "commitOffsets": 733,
+            "getBatch": 183,
+            "latestOffset": 1159,
+            "queryPlanning": 76,
+            "triggerExecution": 9744,
+            "walCommit": 850
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:00:01.000Z",
+            "max": "2026-01-01T00:00:02.000Z",
+            "min": "2026-01-01T00:00:00.000Z",
+            "watermark": "1970-01-01T00:00:00.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 221,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 50,
+              "commitTimeMs": 3006,
+              "memoryUsedBytes": 1256,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 0,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 680
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": null,
+              "endOffset": {
+                "logOffset": 0
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.3078817733990148
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "43c35b9c-1657-433e-a1e9-f7750550b06b",
+          "runId": "89ec98f5-a5a7-4760-b40b-6a57cc71d6a0",
+          "name": "bank_window_1m",
+          "timestamp": "2026-10-21T04:52:52.125Z",
+          "batchId": 1,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.3078185922429715,
+          "processedRowsPerSecond": 0.2486943546381497,
+          "durationMs": {
+            "addBatch": 9010,
+            "commitOffsets": 871,
+            "getBatch": 217,
+            "latestOffset": 1255,
+            "queryPlanning": 85,
+            "triggerExecution": 12063,
+            "walCommit": 620
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:00:13.000Z",
+            "max": "2026-01-01T00:00:14.000Z",
+            "min": "2026-01-01T00:00:12.000Z",
+            "watermark": "2025-12-31T23:59:42.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 232,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 23,
+              "commitTimeMs": 7435,
+              "memoryUsedBytes": 2112,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 8,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 696
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 0
+              },
+              "endOffset": {
+                "logOffset": 1
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.3078185922429715,
+              "processedRowsPerSecond": 0.2486943546381497
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "43c35b9c-1657-433e-a1e9-f7750550b06b",
+          "runId": "89ec98f5-a5a7-4760-b40b-6a57cc71d6a0",
+          "name": "bank_window_1m",
+          "timestamp": "2026-10-21T04:53:04.190Z",
+          "batchId": 2,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.16576875259013676,
+          "processedRowsPerSecond": 0.21475357027810585,
+          "durationMs": {
+            "addBatch": 5682,
+            "commitOffsets": 1890,
+            "getBatch": 134,
+            "latestOffset": 655,
+            "queryPlanning": 38,
+            "triggerExecution": 9313,
+            "walCommit": 911
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:00:07.500Z",
+            "max": "2026-01-01T00:00:08.000Z",
+            "min": "2026-01-01T00:00:07.000Z",
+            "watermark": "2025-12-31T23:59:54.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 164,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 44,
+              "commitTimeMs": 3149,
+              "memoryUsedBytes": 2128,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 16,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 696
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 1
+              },
+              "endOffset": {
+                "logOffset": 2
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.16576875259013676,
+              "processedRowsPerSecond": 0.21475357027810585
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "43c35b9c-1657-433e-a1e9-f7750550b06b",
+          "runId": "89ec98f5-a5a7-4760-b40b-6a57cc71d6a0",
+          "name": "bank_window_1m",
+          "timestamp": "2026-10-21T04:53:13.505Z",
+          "batchId": 3,
+          "numInputRows": 3,
+          "inputRowsPerSecond": 0.32206119162640906,
+          "processedRowsPerSecond": 0.3240090722540231,
+          "durationMs": {
+            "addBatch": 4222,
+            "commitOffsets": 759,
+            "getBatch": 247,
+            "latestOffset": 2265,
+            "queryPlanning": 76,
+            "triggerExecution": 9258,
+            "walCommit": 1685
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:01:31.000Z",
+            "max": "2026-01-01T00:01:32.000Z",
+            "min": "2026-01-01T00:01:30.000Z",
+            "watermark": "2025-12-31T23:59:54.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 101,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 42,
+              "commitTimeMs": 2866,
+              "memoryUsedBytes": 2256,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 24,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 912
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 2
+              },
+              "endOffset": {
+                "logOffset": 3
+              },
+              "latestOffset": null,
+              "numInputRows": 3,
+              "inputRowsPerSecond": 0.32206119162640906,
+              "processedRowsPerSecond": 0.3240090722540231
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "43c35b9c-1657-433e-a1e9-f7750550b06b",
+          "runId": "89ec98f5-a5a7-4760-b40b-6a57cc71d6a0",
+          "name": "bank_window_1m",
+          "timestamp": "2026-10-21T04:53:22.766Z",
+          "batchId": 4,
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.21595939963286903,
+          "processedRowsPerSecond": 0.2992220227408737,
+          "durationMs": {
+            "addBatch": 4299,
+            "commitOffsets": 698,
+            "getBatch": 326,
+            "latestOffset": 651,
+            "queryPlanning": 83,
+            "triggerExecution": 6684,
+            "walCommit": 622
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:01:35.500Z",
+            "max": "2026-01-01T00:01:36.000Z",
+            "min": "2026-01-01T00:01:35.000Z",
+            "watermark": "2026-01-01T00:01:12.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 296,
+              "numRowsRemoved": 1,
+              "allRemovalsTimeMs": 247,
+              "commitTimeMs": 2763,
+              "memoryUsedBytes": 2344,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 32,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 696
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 3
+              },
+              "endOffset": {
+                "logOffset": 4
+              },
+              "latestOffset": null,
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.21595939963286903,
+              "processedRowsPerSecond": 0.2992220227408737
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "43c35b9c-1657-433e-a1e9-f7750550b06b",
+          "runId": "89ec98f5-a5a7-4760-b40b-6a57cc71d6a0",
+          "name": "bank_window_1m",
+          "timestamp": "2026-10-21T04:53:29.453Z",
+          "batchId": 5,
+          "numInputRows": 4,
+          "inputRowsPerSecond": 0.598175564528189,
+          "processedRowsPerSecond": 0.41480866950119255,
+          "durationMs": {
+            "addBatch": 4995,
+            "commitOffsets": 851,
+            "getBatch": 732,
+            "latestOffset": 2072,
+            "queryPlanning": 90,
+            "triggerExecution": 9642,
+            "walCommit": 881
+          },
+          "eventTime": {
+            "avg": "2026-01-01T00:02:16.750Z",
+            "max": "2026-01-01T00:03:02.000Z",
+            "min": "2026-01-01T00:00:04.000Z",
+            "watermark": "2026-01-01T00:01:16.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 1,
+              "allUpdatesTimeMs": 283,
+              "numRowsRemoved": 0,
+              "allRemovalsTimeMs": 55,
+              "commitTimeMs": 3478,
+              "memoryUsedBytes": 2256,
+              "numRowsDroppedByWatermark": 1,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 40,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 912
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 4
+              },
+              "endOffset": {
+                "logOffset": 5
+              },
+              "latestOffset": null,
+              "numInputRows": 4,
+              "inputRowsPerSecond": 0.598175564528189,
+              "processedRowsPerSecond": 0.41480866950119255
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        },
+        {
+          "id": "43c35b9c-1657-433e-a1e9-f7750550b06b",
+          "runId": "89ec98f5-a5a7-4760-b40b-6a57cc71d6a0",
+          "name": "bank_window_1m",
+          "timestamp": "2026-10-21T04:53:39.098Z",
+          "batchId": 6,
+          "numInputRows": 0,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.0,
+          "durationMs": {
+            "addBatch": 3855,
+            "commitOffsets": 718,
+            "getBatch": 0,
+            "latestOffset": 0,
+            "queryPlanning": 44,
+            "triggerExecution": 5161,
+            "walCommit": 539
+          },
+          "eventTime": {
+            "watermark": "2026-01-01T00:02:42.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "stateStoreSave",
+              "numRowsTotal": 1,
+              "numRowsUpdated": 0,
+              "allUpdatesTimeMs": 46,
+              "numRowsRemoved": 1,
+              "allRemovalsTimeMs": 312,
+              "commitTimeMs": 2120,
+              "memoryUsedBytes": 2256,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 4,
+              "numStateStoreInstances": 4,
+              "customMetrics": {
+                "loadedMapCacheHitCount": 48,
+                "loadedMapCacheMissCount": 0,
+                "stateOnCurrentVersionSizeBytes": 696
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/workspace/runtime/stream_input/1792557887333004753]",
+              "startOffset": {
+                "logOffset": 5
+              },
+              "endOffset": {
+                "logOffset": 5
+              },
+              "latestOffset": null,
+              "numInputRows": 0,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.0
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1
+          }
+        }
+      ],
+      "batch_outputs": [
+        {
+          "batch_id": 0,
+          "rows": []
+        },
+        {
+          "batch_id": 1,
+          "rows": []
+        },
+        {
+          "batch_id": 2,
+          "rows": []
+        },
+        {
+          "batch_id": 3,
+          "rows": []
+        },
+        {
+          "batch_id": 4,
+          "rows": [
+            {
+              "window": {
+                "start": "2026-01-01 00:00:00",
+                "end": "2026-01-01 00:01:00"
+              },
+              "records": 8,
+              "avg_balance": 3649.125
+            }
+          ]
+        },
+        {
+          "batch_id": 5,
+          "rows": []
+        },
+        {
+          "batch_id": 6,
+          "rows": [
+            {
+              "window": {
+                "start": "2026-01-01 00:01:00",
+                "end": "2026-01-01 00:02:00"
+              },
+              "records": 5,
+              "avg_balance": 1530.8
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "dropped_by_watermark": {
+    "bank_predictions": 0,
+    "bank_job_live": 0,
+    "bank_window_10s": 1,
+    "bank_window_1m": 1
+  },
+  "semantics": "Simulated marketing-record arrivals, not payment transactions. Prediction query scores every arrival. Window queries discard excessively late events. Final event-time windows remain open until watermark passes window end."
+}

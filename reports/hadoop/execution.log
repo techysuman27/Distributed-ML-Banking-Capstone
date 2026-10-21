@@ -1,0 +1,1207 @@
++ hdfs dfs -mkdir -p /banking/raw
++ hdfs dfs -put -f /workspace/data/bank.csv /banking/raw/bank.csv
++ hdfs dfs -ls /banking/raw
+Found 1 items
+-rw-r--r--   1 root supergroup     375542 2026-10-20 18:46 /banking/raw/bank.csv
++ hdfs dfsadmin -report
+Configured Capacity: 1081101176832 (1006.85 GB)
+Present Capacity: 988887695360 (920.97 GB)
+DFS Remaining: 988887277568 (920.97 GB)
+DFS Used: 417792 (408 KB)
+DFS Used%: 0.00%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (1):
+
+Name: 172.21.0.2:9866 (hadoop-hive)
+Hostname: hadoop-hive
+Decommission Status : Normal
+Configured Capacity: 1081101176832 (1006.85 GB)
+DFS Used: 417792 (408 KB)
+Non DFS Used: 37221126144 (34.66 GB)
+DFS Remaining: 988887277568 (920.97 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 91.47%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Tue Oct 20 18:47:01 UTC 2026
+Last Block Report: Tue Oct 20 18:46:44 UTC 2026
+Num of Blocks: 1
+
+
+++ date +%Y%m%d%H%M%S
++ run_id=20261020184703
++ for mode in job_balance education_housing month_subscription outcome_duration age_balance
++ reducer_mode=mean
++ '[' job_balance = education_housing ']'
++ '[' job_balance = month_subscription ']'
++ hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -D mapreduce.framework.name=local -D mapreduce.job.name=Banking_job_balance -D mapreduce.job.reduces=1 -files /workspace/hadoop/mapper.py,/workspace/hadoop/reducer.py -mapper 'python3 mapper.py job_balance' -reducer 'python3 reducer.py mean' -input /banking/raw/bank.csv -output /banking/mapreduce/20261020184703/job_balance
+2026-10-20 18:47:09,884 INFO impl.MetricsConfig: Loaded properties from hadoop-metrics2.properties
+2026-10-20 18:47:10,482 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+2026-10-20 18:47:10,483 INFO impl.MetricsSystemImpl: JobTracker metrics system started
+2026-10-20 18:47:10,562 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:47:11,560 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-10-20 18:47:11,934 INFO mapreduce.JobSubmitter: number of splits:1
+2026-10-20 18:47:13,253 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local429764008_0001
+2026-10-20 18:47:13,253 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-20 18:47:15,947 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local429764008_0001_ae1c0701-8c9d-441f-b2bb-73af502d352a/mapper.py <- /workspace/mapper.py
+2026-10-20 18:47:16,014 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/mapper.py as file:/hdfs/tmp/mapred/local/job_local429764008_0001_ae1c0701-8c9d-441f-b2bb-73af502d352a/mapper.py
+2026-10-20 18:47:16,197 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local429764008_0001_3687427d-fa6b-4c27-9b7c-9548faa761af/reducer.py <- /workspace/reducer.py
+2026-10-20 18:47:16,227 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/reducer.py as file:/hdfs/tmp/mapred/local/job_local429764008_0001_3687427d-fa6b-4c27-9b7c-9548faa761af/reducer.py
+2026-10-20 18:47:17,039 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+2026-10-20 18:47:17,047 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+2026-10-20 18:47:17,048 INFO mapreduce.Job: Running job: job_local429764008_0001
+2026-10-20 18:47:17,061 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
+2026-10-20 18:47:17,078 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:47:17,078 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:47:17,242 INFO mapred.LocalJobRunner: Waiting for map tasks
+2026-10-20 18:47:17,255 INFO mapred.LocalJobRunner: Starting task: attempt_local429764008_0001_m_000000_0
+2026-10-20 18:47:17,350 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:47:17,351 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:47:17,434 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:47:17,469 INFO mapred.MapTask: Processing split: hdfs://hadoop-hive:9000/banking/raw/bank.csv:0+375542
+2026-10-20 18:47:17,522 INFO mapred.MapTask: numReduceTasks: 1
+2026-10-20 18:47:18,072 INFO mapreduce.Job: Job job_local429764008_0001 running in uber mode : false
+2026-10-20 18:47:18,076 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-20 18:47:19,223 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
+2026-10-20 18:47:19,223 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
+2026-10-20 18:47:19,223 INFO mapred.MapTask: soft limit at 83886080
+2026-10-20 18:47:19,223 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
+2026-10-20 18:47:19,223 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
+2026-10-20 18:47:19,231 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
+2026-10-20 18:47:19,293 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, mapper.py, job_balance]
+2026-10-20 18:47:19,335 INFO Configuration.deprecation: mapred.work.output.dir is deprecated. Instead, use mapreduce.task.output.dir
+2026-10-20 18:47:19,350 INFO Configuration.deprecation: mapred.local.dir is deprecated. Instead, use mapreduce.cluster.local.dir
+2026-10-20 18:47:19,351 INFO Configuration.deprecation: map.input.file is deprecated. Instead, use mapreduce.map.input.file
+2026-10-20 18:47:19,356 INFO Configuration.deprecation: map.input.length is deprecated. Instead, use mapreduce.map.input.length
+2026-10-20 18:47:19,359 INFO Configuration.deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+2026-10-20 18:47:19,365 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+2026-10-20 18:47:19,385 INFO Configuration.deprecation: map.input.start is deprecated. Instead, use mapreduce.map.input.start
+2026-10-20 18:47:19,386 INFO Configuration.deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+2026-10-20 18:47:19,388 INFO Configuration.deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+2026-10-20 18:47:19,392 INFO Configuration.deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+2026-10-20 18:47:19,399 INFO Configuration.deprecation: mapred.skip.on is deprecated. Instead, use mapreduce.job.skiprecords
+2026-10-20 18:47:19,402 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
+2026-10-20 18:47:22,002 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:0=1/2 [rec/s] out:0=0/2 [rec/s]
+2026-10-20 18:47:22,012 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:5=10/2 [rec/s] out:0=0/2 [rec/s]
+2026-10-20 18:47:22,015 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:50=100/2 [rec/s] out:0=0/2 [rec/s]
+2026-10-20 18:47:22,072 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:500=1000/2 [rec/s] out:0=0/2 [rec/s]
+2026-10-20 18:47:22,125 INFO streaming.PipeMapRed: Records R/W=2378/1
+2026-10-20 18:47:22,368 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:47:22,375 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:47:22,390 INFO mapred.LocalJobRunner: 
+2026-10-20 18:47:22,390 INFO mapred.MapTask: Starting flush of map output
+2026-10-20 18:47:22,390 INFO mapred.MapTask: Spilling map output
+2026-10-20 18:47:22,390 INFO mapred.MapTask: bufstart = 0; bufend = 75260; bufvoid = 104857600
+2026-10-20 18:47:22,390 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 26196316(104785264); length = 18081/6553600
+2026-10-20 18:47:22,477 INFO mapred.MapTask: Finished spill 0
+2026-10-20 18:47:22,709 INFO mapred.Task: Task:attempt_local429764008_0001_m_000000_0 is done. And is in the process of committing
+2026-10-20 18:47:22,733 INFO mapred.LocalJobRunner: Records R/W=2378/1
+2026-10-20 18:47:22,734 INFO mapred.Task: Task 'attempt_local429764008_0001_m_000000_0' done.
+2026-10-20 18:47:22,876 INFO mapred.Task: Final Counters for attempt_local429764008_0001_m_000000_0: Counters: 23
+	File System Counters
+		FILE: Number of bytes read=142883
+		FILE: Number of bytes written=869845
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=5
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=1
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=75260
+		Map output materialized bytes=84308
+		Input split bytes=96
+		Combine input records=0
+		Spilled Records=4521
+		Failed Shuffles=0
+		Merged Map outputs=0
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=271056896
+	File Input Format Counters 
+		Bytes Read=375542
+2026-10-20 18:47:22,886 INFO mapred.LocalJobRunner: Finishing task: attempt_local429764008_0001_m_000000_0
+2026-10-20 18:47:22,893 INFO mapred.LocalJobRunner: map task executor complete.
+2026-10-20 18:47:22,926 INFO mapred.LocalJobRunner: Waiting for reduce tasks
+2026-10-20 18:47:22,927 INFO mapred.LocalJobRunner: Starting task: attempt_local429764008_0001_r_000000_0
+2026-10-20 18:47:23,067 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:47:23,068 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:47:23,097 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:47:23,235 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-20 18:47:23,475 INFO mapred.ReduceTask: Using ShuffleConsumerPlugin: org.apache.hadoop.mapreduce.task.reduce.Shuffle@160c5398
+2026-10-20 18:47:23,565 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:47:24,131 INFO reduce.MergeManagerImpl: MergerManager: memoryLimit=618764672, maxSingleShuffleLimit=154691168, mergeThreshold=408384704, ioSortFactor=10, memToMemMergeOutputsThreshold=10
+2026-10-20 18:47:24,164 INFO reduce.EventFetcher: attempt_local429764008_0001_r_000000_0 Thread started: EventFetcher for fetching Map Completion Events
+2026-10-20 18:47:24,782 INFO reduce.LocalFetcher: localfetcher#1 about to shuffle output of map attempt_local429764008_0001_m_000000_0 decomp: 84304 len: 84308 to MEMORY
+2026-10-20 18:47:24,804 INFO reduce.InMemoryMapOutput: Read 84304 bytes from map-output for attempt_local429764008_0001_m_000000_0
+2026-10-20 18:47:24,825 INFO reduce.MergeManagerImpl: closeInMemoryFile -> map-output of size: 84304, inMemoryMapOutputs.size() -> 1, commitMemory -> 0, usedMemory ->84304
+2026-10-20 18:47:24,841 INFO reduce.EventFetcher: EventFetcher is interrupted.. Returning
+2026-10-20 18:47:24,848 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:47:24,867 INFO reduce.MergeManagerImpl: finalMerge called with 1 in-memory map-outputs and 0 on-disk map-outputs
+2026-10-20 18:47:24,968 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:47:24,969 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 84295 bytes
+2026-10-20 18:47:25,025 INFO reduce.MergeManagerImpl: Merged 1 segments, 84304 bytes to disk to satisfy reduce memory limit
+2026-10-20 18:47:25,037 INFO reduce.MergeManagerImpl: Merging 1 files, 84308 bytes from disk
+2026-10-20 18:47:25,080 INFO reduce.MergeManagerImpl: Merging 0 segments, 0 bytes from memory into reduce
+2026-10-20 18:47:25,080 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:47:25,085 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 84295 bytes
+2026-10-20 18:47:25,091 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:47:25,147 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, reducer.py, mean]
+2026-10-20 18:47:25,174 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
+2026-10-20 18:47:25,231 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+2026-10-20 18:47:25,958 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:25,971 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:25,972 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:25,997 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:26,092 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:47:26,092 INFO streaming.PipeMapRed: Records R/W=4521/1
+2026-10-20 18:47:26,094 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:47:26,709 INFO mapred.Task: Task:attempt_local429764008_0001_r_000000_0 is done. And is in the process of committing
+2026-10-20 18:47:26,722 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:47:26,726 INFO mapred.Task: Task attempt_local429764008_0001_r_000000_0 is allowed to commit now
+2026-10-20 18:47:26,980 INFO output.FileOutputCommitter: Saved output of task 'attempt_local429764008_0001_r_000000_0' to hdfs://hadoop-hive:9000/banking/mapreduce/20261020184703/job_balance
+2026-10-20 18:47:26,999 INFO mapred.LocalJobRunner: Records R/W=4521/1 > reduce
+2026-10-20 18:47:26,999 INFO mapred.Task: Task 'attempt_local429764008_0001_r_000000_0' done.
+2026-10-20 18:47:27,000 INFO mapred.Task: Final Counters for attempt_local429764008_0001_r_000000_0: Counters: 30
+	File System Counters
+		FILE: Number of bytes read=311531
+		FILE: Number of bytes written=954153
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=312
+		HDFS: Number of read operations=10
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=3
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=12
+		Reduce shuffle bytes=84308
+		Reduce input records=4521
+		Reduce output records=12
+		Spilled Records=4521
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=271056896
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Output Format Counters 
+		Bytes Written=312
+2026-10-20 18:47:27,000 INFO mapred.LocalJobRunner: Finishing task: attempt_local429764008_0001_r_000000_0
+2026-10-20 18:47:27,004 INFO mapred.LocalJobRunner: reduce task executor complete.
+2026-10-20 18:47:27,612 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-20 18:47:28,615 INFO mapreduce.Job: Job job_local429764008_0001 completed successfully
+2026-10-20 18:47:28,648 INFO mapreduce.Job: Counters: 36
+	File System Counters
+		FILE: Number of bytes read=454414
+		FILE: Number of bytes written=1823998
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=751084
+		HDFS: Number of bytes written=312
+		HDFS: Number of read operations=15
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=75260
+		Map output materialized bytes=84308
+		Input split bytes=96
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=12
+		Reduce shuffle bytes=84308
+		Reduce input records=4521
+		Reduce output records=12
+		Spilled Records=9042
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=542113792
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=375542
+	File Output Format Counters 
+		Bytes Written=312
+2026-10-20 18:47:28,649 INFO streaming.StreamJob: Output directory: /banking/mapreduce/20261020184703/job_balance
++ hdfs dfs -cat '/banking/mapreduce/20261020184703/job_balance/part-*'
++ tee /workspace/reports/hadoop/job_balance.tsv
+admin.	478	1226.736402
+blue-collar	946	1085.161734
+entrepreneur	168	1645.125000
+housemaid	112	2083.803571
+management	969	1766.928793
+retired	230	2319.191304
+self-employed	183	1392.409836
+services	417	1103.956835
+student	84	1543.821429
+technician	768	1330.996094
+unemployed	128	1089.421875
+unknown	38	1501.710526
++ for mode in job_balance education_housing month_subscription outcome_duration age_balance
++ reducer_mode=mean
++ '[' education_housing = education_housing ']'
++ reducer_mode=count
++ hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -D mapreduce.framework.name=local -D mapreduce.job.name=Banking_education_housing -D mapreduce.job.reduces=1 -files /workspace/hadoop/mapper.py,/workspace/hadoop/reducer.py -mapper 'python3 mapper.py education_housing' -reducer 'python3 reducer.py count' -input /banking/raw/bank.csv -output /banking/mapreduce/20261020184703/education_housing
+2026-10-20 18:47:41,573 INFO impl.MetricsConfig: Loaded properties from hadoop-metrics2.properties
+2026-10-20 18:47:41,924 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+2026-10-20 18:47:41,924 INFO impl.MetricsSystemImpl: JobTracker metrics system started
+2026-10-20 18:47:41,954 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:47:42,779 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-10-20 18:47:43,013 INFO mapreduce.JobSubmitter: number of splits:1
+2026-10-20 18:47:43,461 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local1357368964_0001
+2026-10-20 18:47:43,462 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-20 18:47:43,989 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local1357368964_0001_cb8e6e19-5c5c-4f0f-bb58-9a69d72d1373/mapper.py <- /workspace/mapper.py
+2026-10-20 18:47:44,000 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/mapper.py as file:/hdfs/tmp/mapred/local/job_local1357368964_0001_cb8e6e19-5c5c-4f0f-bb58-9a69d72d1373/mapper.py
+2026-10-20 18:47:44,058 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local1357368964_0001_411615ce-ef8d-4d30-b463-5d5e30062c08/reducer.py <- /workspace/reducer.py
+2026-10-20 18:47:44,068 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/reducer.py as file:/hdfs/tmp/mapred/local/job_local1357368964_0001_411615ce-ef8d-4d30-b463-5d5e30062c08/reducer.py
+2026-10-20 18:47:44,226 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+2026-10-20 18:47:44,238 INFO mapreduce.Job: Running job: job_local1357368964_0001
+2026-10-20 18:47:44,239 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+2026-10-20 18:47:44,263 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
+2026-10-20 18:47:44,289 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:47:44,289 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:47:44,445 INFO mapred.LocalJobRunner: Waiting for map tasks
+2026-10-20 18:47:44,457 INFO mapred.LocalJobRunner: Starting task: attempt_local1357368964_0001_m_000000_0
+2026-10-20 18:47:44,539 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:47:44,539 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:47:44,580 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:47:44,596 INFO mapred.MapTask: Processing split: hdfs://hadoop-hive:9000/banking/raw/bank.csv:0+375542
+2026-10-20 18:47:44,647 INFO mapred.MapTask: numReduceTasks: 1
+2026-10-20 18:47:45,265 INFO mapreduce.Job: Job job_local1357368964_0001 running in uber mode : false
+2026-10-20 18:47:45,272 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-20 18:47:46,559 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
+2026-10-20 18:47:46,559 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
+2026-10-20 18:47:46,559 INFO mapred.MapTask: soft limit at 83886080
+2026-10-20 18:47:46,559 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
+2026-10-20 18:47:46,559 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
+2026-10-20 18:47:46,571 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
+2026-10-20 18:47:46,611 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, mapper.py, education_housing]
+2026-10-20 18:47:46,625 INFO Configuration.deprecation: mapred.work.output.dir is deprecated. Instead, use mapreduce.task.output.dir
+2026-10-20 18:47:46,631 INFO Configuration.deprecation: mapred.local.dir is deprecated. Instead, use mapreduce.cluster.local.dir
+2026-10-20 18:47:46,637 INFO Configuration.deprecation: map.input.file is deprecated. Instead, use mapreduce.map.input.file
+2026-10-20 18:47:46,638 INFO Configuration.deprecation: map.input.length is deprecated. Instead, use mapreduce.map.input.length
+2026-10-20 18:47:46,638 INFO Configuration.deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+2026-10-20 18:47:46,638 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+2026-10-20 18:47:46,640 INFO Configuration.deprecation: map.input.start is deprecated. Instead, use mapreduce.map.input.start
+2026-10-20 18:47:46,640 INFO Configuration.deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+2026-10-20 18:47:46,640 INFO Configuration.deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+2026-10-20 18:47:46,641 INFO Configuration.deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+2026-10-20 18:47:46,641 INFO Configuration.deprecation: mapred.skip.on is deprecated. Instead, use mapreduce.job.skiprecords
+2026-10-20 18:47:46,642 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
+2026-10-20 18:47:47,008 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:47,009 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:47,012 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:47,028 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:47,051 INFO streaming.PipeMapRed: Records R/W=2141/1
+2026-10-20 18:47:47,098 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:47:47,117 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:47:47,129 INFO mapred.LocalJobRunner: 
+2026-10-20 18:47:47,129 INFO mapred.MapTask: Starting flush of map output
+2026-10-20 18:47:47,129 INFO mapred.MapTask: Spilling map output
+2026-10-20 18:47:47,129 INFO mapred.MapTask: bufstart = 0; bufend = 76336; bufvoid = 104857600
+2026-10-20 18:47:47,129 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 26196316(104785264); length = 18081/6553600
+2026-10-20 18:47:47,201 INFO mapred.MapTask: Finished spill 0
+2026-10-20 18:47:47,285 INFO mapred.Task: Task:attempt_local1357368964_0001_m_000000_0 is done. And is in the process of committing
+2026-10-20 18:47:47,351 INFO mapred.LocalJobRunner: Records R/W=2141/1
+2026-10-20 18:47:47,351 INFO mapred.Task: Task 'attempt_local1357368964_0001_m_000000_0' done.
+2026-10-20 18:47:47,406 INFO mapred.Task: Final Counters for attempt_local1357368964_0001_m_000000_0: Counters: 23
+	File System Counters
+		FILE: Number of bytes read=142883
+		FILE: Number of bytes written=874075
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=5
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=1
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=76336
+		Map output materialized bytes=85384
+		Input split bytes=96
+		Combine input records=0
+		Spilled Records=4521
+		Failed Shuffles=0
+		Merged Map outputs=0
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=266862592
+	File Input Format Counters 
+		Bytes Read=375542
+2026-10-20 18:47:47,406 INFO mapred.LocalJobRunner: Finishing task: attempt_local1357368964_0001_m_000000_0
+2026-10-20 18:47:47,411 INFO mapred.LocalJobRunner: map task executor complete.
+2026-10-20 18:47:47,418 INFO mapred.LocalJobRunner: Waiting for reduce tasks
+2026-10-20 18:47:47,422 INFO mapred.LocalJobRunner: Starting task: attempt_local1357368964_0001_r_000000_0
+2026-10-20 18:47:47,445 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:47:47,445 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:47:47,446 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:47:47,458 INFO mapred.ReduceTask: Using ShuffleConsumerPlugin: org.apache.hadoop.mapreduce.task.reduce.Shuffle@43055c8f
+2026-10-20 18:47:47,464 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:47:47,531 INFO reduce.MergeManagerImpl: MergerManager: memoryLimit=618764672, maxSingleShuffleLimit=154691168, mergeThreshold=408384704, ioSortFactor=10, memToMemMergeOutputsThreshold=10
+2026-10-20 18:47:47,549 INFO reduce.EventFetcher: attempt_local1357368964_0001_r_000000_0 Thread started: EventFetcher for fetching Map Completion Events
+2026-10-20 18:47:47,628 INFO reduce.LocalFetcher: localfetcher#1 about to shuffle output of map attempt_local1357368964_0001_m_000000_0 decomp: 85380 len: 85384 to MEMORY
+2026-10-20 18:47:47,640 INFO reduce.InMemoryMapOutput: Read 85380 bytes from map-output for attempt_local1357368964_0001_m_000000_0
+2026-10-20 18:47:47,653 INFO reduce.MergeManagerImpl: closeInMemoryFile -> map-output of size: 85380, inMemoryMapOutputs.size() -> 1, commitMemory -> 0, usedMemory ->85380
+2026-10-20 18:47:47,657 INFO reduce.EventFetcher: EventFetcher is interrupted.. Returning
+2026-10-20 18:47:47,660 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:47:47,660 INFO reduce.MergeManagerImpl: finalMerge called with 1 in-memory map-outputs and 0 on-disk map-outputs
+2026-10-20 18:47:47,682 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:47:47,683 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 85367 bytes
+2026-10-20 18:47:47,714 INFO reduce.MergeManagerImpl: Merged 1 segments, 85380 bytes to disk to satisfy reduce memory limit
+2026-10-20 18:47:47,716 INFO reduce.MergeManagerImpl: Merging 1 files, 85384 bytes from disk
+2026-10-20 18:47:47,719 INFO reduce.MergeManagerImpl: Merging 0 segments, 0 bytes from memory into reduce
+2026-10-20 18:47:47,719 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:47:47,721 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 85367 bytes
+2026-10-20 18:47:47,722 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:47:47,744 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, reducer.py, count]
+2026-10-20 18:47:47,749 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
+2026-10-20 18:47:47,755 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+2026-10-20 18:47:48,032 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:48,032 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:48,039 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:48,059 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:47:48,136 INFO streaming.PipeMapRed: Records R/W=4521/1
+2026-10-20 18:47:48,148 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:47:48,149 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:47:48,353 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-20 18:47:48,396 INFO mapred.Task: Task:attempt_local1357368964_0001_r_000000_0 is done. And is in the process of committing
+2026-10-20 18:47:48,410 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:47:48,414 INFO mapred.Task: Task attempt_local1357368964_0001_r_000000_0 is allowed to commit now
+2026-10-20 18:47:48,564 INFO output.FileOutputCommitter: Saved output of task 'attempt_local1357368964_0001_r_000000_0' to hdfs://hadoop-hive:9000/banking/mapreduce/20261020184703/education_housing
+2026-10-20 18:47:48,568 INFO mapred.LocalJobRunner: Records R/W=4521/1 > reduce
+2026-10-20 18:47:48,568 INFO mapred.Task: Task 'attempt_local1357368964_0001_r_000000_0' done.
+2026-10-20 18:47:48,569 INFO mapred.Task: Final Counters for attempt_local1357368964_0001_r_000000_0: Counters: 30
+	File System Counters
+		FILE: Number of bytes read=313683
+		FILE: Number of bytes written=959459
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=130
+		HDFS: Number of read operations=10
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=3
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=8
+		Reduce shuffle bytes=85384
+		Reduce input records=4521
+		Reduce output records=8
+		Spilled Records=4521
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=266862592
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Output Format Counters 
+		Bytes Written=130
+2026-10-20 18:47:48,569 INFO mapred.LocalJobRunner: Finishing task: attempt_local1357368964_0001_r_000000_0
+2026-10-20 18:47:48,576 INFO mapred.LocalJobRunner: reduce task executor complete.
+2026-10-20 18:47:49,354 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-20 18:47:49,355 INFO mapreduce.Job: Job job_local1357368964_0001 completed successfully
+2026-10-20 18:47:49,483 INFO mapreduce.Job: Counters: 36
+	File System Counters
+		FILE: Number of bytes read=456566
+		FILE: Number of bytes written=1833534
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=751084
+		HDFS: Number of bytes written=130
+		HDFS: Number of read operations=15
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=76336
+		Map output materialized bytes=85384
+		Input split bytes=96
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=8
+		Reduce shuffle bytes=85384
+		Reduce input records=4521
+		Reduce output records=8
+		Spilled Records=9042
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=533725184
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=375542
+	File Output Format Counters 
+		Bytes Written=130
+2026-10-20 18:47:49,483 INFO streaming.StreamJob: Output directory: /banking/mapreduce/20261020184703/education_housing
++ hdfs dfs -cat '/banking/mapreduce/20261020184703/education_housing/part-*'
++ tee /workspace/reports/hadoop/education_housing.tsv
+primary|no	295
+primary|yes	383
+secondary|no	876
+secondary|yes	1430
+tertiary|no	687
+tertiary|yes	663
+unknown|no	104
+unknown|yes	83
++ for mode in job_balance education_housing month_subscription outcome_duration age_balance
++ reducer_mode=mean
++ '[' month_subscription = education_housing ']'
++ '[' month_subscription = month_subscription ']'
++ reducer_mode=count
++ hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -D mapreduce.framework.name=local -D mapreduce.job.name=Banking_month_subscription -D mapreduce.job.reduces=1 -files /workspace/hadoop/mapper.py,/workspace/hadoop/reducer.py -mapper 'python3 mapper.py month_subscription' -reducer 'python3 reducer.py count' -input /banking/raw/bank.csv -output /banking/mapreduce/20261020184703/month_subscription
+2026-10-20 18:48:02,717 INFO impl.MetricsConfig: Loaded properties from hadoop-metrics2.properties
+2026-10-20 18:48:03,084 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+2026-10-20 18:48:03,084 INFO impl.MetricsSystemImpl: JobTracker metrics system started
+2026-10-20 18:48:03,171 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:48:04,128 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-10-20 18:48:04,555 INFO mapreduce.JobSubmitter: number of splits:1
+2026-10-20 18:48:04,930 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local1761162517_0001
+2026-10-20 18:48:04,934 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-20 18:48:06,131 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local1761162517_0001_dd4d2e59-8346-49e0-af9b-8ca2a0d2596b/mapper.py <- /workspace/mapper.py
+2026-10-20 18:48:06,181 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/mapper.py as file:/hdfs/tmp/mapred/local/job_local1761162517_0001_dd4d2e59-8346-49e0-af9b-8ca2a0d2596b/mapper.py
+2026-10-20 18:48:06,447 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local1761162517_0001_119f6a67-2e92-4234-b9cf-2b64c76ed45e/reducer.py <- /workspace/reducer.py
+2026-10-20 18:48:06,494 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/reducer.py as file:/hdfs/tmp/mapred/local/job_local1761162517_0001_119f6a67-2e92-4234-b9cf-2b64c76ed45e/reducer.py
+2026-10-20 18:48:07,480 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+2026-10-20 18:48:07,483 INFO mapreduce.Job: Running job: job_local1761162517_0001
+2026-10-20 18:48:07,500 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+2026-10-20 18:48:07,504 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
+2026-10-20 18:48:07,547 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:48:07,547 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:48:07,828 INFO mapred.LocalJobRunner: Waiting for map tasks
+2026-10-20 18:48:07,846 INFO mapred.LocalJobRunner: Starting task: attempt_local1761162517_0001_m_000000_0
+2026-10-20 18:48:07,960 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:48:07,961 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:48:08,169 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:48:08,211 INFO mapred.MapTask: Processing split: hdfs://hadoop-hive:9000/banking/raw/bank.csv:0+375542
+2026-10-20 18:48:08,321 INFO mapred.MapTask: numReduceTasks: 1
+2026-10-20 18:48:08,553 INFO mapreduce.Job: Job job_local1761162517_0001 running in uber mode : false
+2026-10-20 18:48:08,557 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-20 18:48:10,298 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
+2026-10-20 18:48:10,298 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
+2026-10-20 18:48:10,298 INFO mapred.MapTask: soft limit at 83886080
+2026-10-20 18:48:10,298 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
+2026-10-20 18:48:10,299 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
+2026-10-20 18:48:10,307 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
+2026-10-20 18:48:10,356 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, mapper.py, month_subscription]
+2026-10-20 18:48:10,383 INFO Configuration.deprecation: mapred.work.output.dir is deprecated. Instead, use mapreduce.task.output.dir
+2026-10-20 18:48:10,420 INFO Configuration.deprecation: mapred.local.dir is deprecated. Instead, use mapreduce.cluster.local.dir
+2026-10-20 18:48:10,458 INFO Configuration.deprecation: map.input.file is deprecated. Instead, use mapreduce.map.input.file
+2026-10-20 18:48:10,458 INFO Configuration.deprecation: map.input.length is deprecated. Instead, use mapreduce.map.input.length
+2026-10-20 18:48:10,459 INFO Configuration.deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+2026-10-20 18:48:10,464 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+2026-10-20 18:48:10,523 INFO Configuration.deprecation: map.input.start is deprecated. Instead, use mapreduce.map.input.start
+2026-10-20 18:48:10,524 INFO Configuration.deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+2026-10-20 18:48:10,524 INFO Configuration.deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+2026-10-20 18:48:10,524 INFO Configuration.deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+2026-10-20 18:48:10,525 INFO Configuration.deprecation: mapred.skip.on is deprecated. Instead, use mapreduce.job.skiprecords
+2026-10-20 18:48:10,526 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
+2026-10-20 18:48:12,358 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:1=1/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:48:12,358 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:10=10/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:48:12,373 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:100=100/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:48:12,486 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:1000=1000/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:48:12,703 INFO streaming.PipeMapRed: Records R/W=3195/1
+2026-10-20 18:48:13,126 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:48:13,147 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:48:13,166 INFO mapred.LocalJobRunner: 
+2026-10-20 18:48:13,186 INFO mapred.MapTask: Starting flush of map output
+2026-10-20 18:48:13,187 INFO mapred.MapTask: Spilling map output
+2026-10-20 18:48:13,188 INFO mapred.MapTask: bufstart = 0; bufend = 50252; bufvoid = 104857600
+2026-10-20 18:48:13,188 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 26196316(104785264); length = 18081/6553600
+2026-10-20 18:48:14,265 INFO mapred.MapTask: Finished spill 0
+2026-10-20 18:48:14,818 INFO mapred.Task: Task:attempt_local1761162517_0001_m_000000_0 is done. And is in the process of committing
+2026-10-20 18:48:14,868 INFO mapred.LocalJobRunner: Records R/W=3195/1
+2026-10-20 18:48:14,868 INFO mapred.Task: Task 'attempt_local1761162517_0001_m_000000_0' done.
+2026-10-20 18:48:15,110 INFO mapred.Task: Final Counters for attempt_local1761162517_0001_m_000000_0: Counters: 23
+	File System Counters
+		FILE: Number of bytes read=142883
+		FILE: Number of bytes written=847997
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=5
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=1
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=50252
+		Map output materialized bytes=59300
+		Input split bytes=96
+		Combine input records=0
+		Spilled Records=4521
+		Failed Shuffles=0
+		Merged Map outputs=0
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=245366784
+	File Input Format Counters 
+		Bytes Read=375542
+2026-10-20 18:48:15,111 INFO mapred.LocalJobRunner: Finishing task: attempt_local1761162517_0001_m_000000_0
+2026-10-20 18:48:15,115 INFO mapred.LocalJobRunner: map task executor complete.
+2026-10-20 18:48:15,132 INFO mapred.LocalJobRunner: Waiting for reduce tasks
+2026-10-20 18:48:15,135 INFO mapred.LocalJobRunner: Starting task: attempt_local1761162517_0001_r_000000_0
+2026-10-20 18:48:15,476 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:48:15,476 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:48:15,511 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:48:15,651 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-20 18:48:16,251 INFO mapred.ReduceTask: Using ShuffleConsumerPlugin: org.apache.hadoop.mapreduce.task.reduce.Shuffle@43055c8f
+2026-10-20 18:48:16,425 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:48:17,362 INFO reduce.MergeManagerImpl: MergerManager: memoryLimit=618764672, maxSingleShuffleLimit=154691168, mergeThreshold=408384704, ioSortFactor=10, memToMemMergeOutputsThreshold=10
+2026-10-20 18:48:17,584 INFO reduce.EventFetcher: attempt_local1761162517_0001_r_000000_0 Thread started: EventFetcher for fetching Map Completion Events
+2026-10-20 18:48:18,075 INFO reduce.LocalFetcher: localfetcher#1 about to shuffle output of map attempt_local1761162517_0001_m_000000_0 decomp: 59296 len: 59300 to MEMORY
+2026-10-20 18:48:18,118 INFO reduce.InMemoryMapOutput: Read 59296 bytes from map-output for attempt_local1761162517_0001_m_000000_0
+2026-10-20 18:48:18,171 INFO reduce.MergeManagerImpl: closeInMemoryFile -> map-output of size: 59296, inMemoryMapOutputs.size() -> 1, commitMemory -> 0, usedMemory ->59296
+2026-10-20 18:48:18,209 INFO reduce.EventFetcher: EventFetcher is interrupted.. Returning
+2026-10-20 18:48:18,210 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:48:18,211 INFO reduce.MergeManagerImpl: finalMerge called with 1 in-memory map-outputs and 0 on-disk map-outputs
+2026-10-20 18:48:18,289 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:48:18,290 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 59287 bytes
+2026-10-20 18:48:18,499 INFO reduce.MergeManagerImpl: Merged 1 segments, 59296 bytes to disk to satisfy reduce memory limit
+2026-10-20 18:48:18,501 INFO reduce.MergeManagerImpl: Merging 1 files, 59300 bytes from disk
+2026-10-20 18:48:18,669 INFO reduce.MergeManagerImpl: Merging 0 segments, 0 bytes from memory into reduce
+2026-10-20 18:48:18,669 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:48:18,672 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 59287 bytes
+2026-10-20 18:48:18,685 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:48:18,769 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, reducer.py, count]
+2026-10-20 18:48:18,789 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
+2026-10-20 18:48:18,838 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+2026-10-20 18:48:19,403 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:48:19,403 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:48:19,405 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:48:19,457 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:48:19,608 INFO streaming.PipeMapRed: Records R/W=4521/1
+2026-10-20 18:48:19,659 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:48:19,662 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:48:20,174 INFO mapred.Task: Task:attempt_local1761162517_0001_r_000000_0 is done. And is in the process of committing
+2026-10-20 18:48:20,208 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:48:20,211 INFO mapred.Task: Task attempt_local1761162517_0001_r_000000_0 is allowed to commit now
+2026-10-20 18:48:20,533 INFO output.FileOutputCommitter: Saved output of task 'attempt_local1761162517_0001_r_000000_0' to hdfs://hadoop-hive:9000/banking/mapreduce/20261020184703/month_subscription
+2026-10-20 18:48:20,535 INFO mapred.LocalJobRunner: Records R/W=4521/1 > reduce
+2026-10-20 18:48:20,535 INFO mapred.Task: Task 'attempt_local1761162517_0001_r_000000_0' done.
+2026-10-20 18:48:20,546 INFO mapred.Task: Final Counters for attempt_local1761162517_0001_r_000000_0: Counters: 30
+	File System Counters
+		FILE: Number of bytes read=261515
+		FILE: Number of bytes written=907297
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=260
+		HDFS: Number of read operations=10
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=3
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=24
+		Reduce shuffle bytes=59300
+		Reduce input records=4521
+		Reduce output records=24
+		Spilled Records=4521
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=150
+		Total committed heap usage (bytes)=286261248
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Output Format Counters 
+		Bytes Written=260
+2026-10-20 18:48:20,548 INFO mapred.LocalJobRunner: Finishing task: attempt_local1761162517_0001_r_000000_0
+2026-10-20 18:48:20,559 INFO mapred.LocalJobRunner: reduce task executor complete.
+2026-10-20 18:48:20,686 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-20 18:48:21,703 INFO mapreduce.Job: Job job_local1761162517_0001 completed successfully
+2026-10-20 18:48:21,834 INFO mapreduce.Job: Counters: 36
+	File System Counters
+		FILE: Number of bytes read=404398
+		FILE: Number of bytes written=1755294
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=751084
+		HDFS: Number of bytes written=260
+		HDFS: Number of read operations=15
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=50252
+		Map output materialized bytes=59300
+		Input split bytes=96
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=24
+		Reduce shuffle bytes=59300
+		Reduce input records=4521
+		Reduce output records=24
+		Spilled Records=9042
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=150
+		Total committed heap usage (bytes)=531628032
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=375542
+	File Output Format Counters 
+		Bytes Written=260
+2026-10-20 18:48:21,834 INFO streaming.StreamJob: Output directory: /banking/mapreduce/20261020184703/month_subscription
++ hdfs dfs -cat '/banking/mapreduce/20261020184703/month_subscription/part-*'
++ tee /workspace/reports/hadoop/month_subscription.tsv
+apr|no	237
+apr|yes	56
+aug|no	554
+aug|yes	79
+dec|no	11
+dec|yes	9
+feb|no	184
+feb|yes	38
+jan|no	132
+jan|yes	16
+jul|no	645
+jul|yes	61
+jun|no	476
+jun|yes	55
+mar|no	28
+mar|yes	21
+may|no	1305
+may|yes	93
+nov|no	350
+nov|yes	39
+oct|no	43
+oct|yes	37
+sep|no	35
+sep|yes	17
++ for mode in job_balance education_housing month_subscription outcome_duration age_balance
++ reducer_mode=mean
++ '[' outcome_duration = education_housing ']'
++ '[' outcome_duration = month_subscription ']'
++ hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -D mapreduce.framework.name=local -D mapreduce.job.name=Banking_outcome_duration -D mapreduce.job.reduces=1 -files /workspace/hadoop/mapper.py,/workspace/hadoop/reducer.py -mapper 'python3 mapper.py outcome_duration' -reducer 'python3 reducer.py mean' -input /banking/raw/bank.csv -output /banking/mapreduce/20261020184703/outcome_duration
+2026-10-20 18:49:30,843 INFO impl.MetricsConfig: Loaded properties from hadoop-metrics2.properties
+2026-10-20 18:49:31,759 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+2026-10-20 18:49:31,760 INFO impl.MetricsSystemImpl: JobTracker metrics system started
+2026-10-20 18:49:31,902 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:49:34,045 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-10-20 18:49:35,199 INFO mapreduce.JobSubmitter: number of splits:1
+2026-10-20 18:49:36,362 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local972611356_0001
+2026-10-20 18:49:36,362 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-20 18:49:38,116 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local972611356_0001_a12b00f8-3b7a-450e-acd2-223a453bb815/mapper.py <- /workspace/mapper.py
+2026-10-20 18:49:38,148 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/mapper.py as file:/hdfs/tmp/mapred/local/job_local972611356_0001_a12b00f8-3b7a-450e-acd2-223a453bb815/mapper.py
+2026-10-20 18:49:38,295 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local972611356_0001_5e0c9c10-61af-4c6b-944f-e203f7d12cda/reducer.py <- /workspace/reducer.py
+2026-10-20 18:49:38,332 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/reducer.py as file:/hdfs/tmp/mapred/local/job_local972611356_0001_5e0c9c10-61af-4c6b-944f-e203f7d12cda/reducer.py
+2026-10-20 18:49:41,253 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+2026-10-20 18:49:41,263 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+2026-10-20 18:49:41,272 INFO mapreduce.Job: Running job: job_local972611356_0001
+2026-10-20 18:49:41,327 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
+2026-10-20 18:49:41,359 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:49:41,359 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:49:41,698 INFO mapred.LocalJobRunner: Waiting for map tasks
+2026-10-20 18:49:41,721 INFO mapred.LocalJobRunner: Starting task: attempt_local972611356_0001_m_000000_0
+2026-10-20 18:49:41,783 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:49:41,787 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:49:41,858 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:49:41,877 INFO mapred.MapTask: Processing split: hdfs://hadoop-hive:9000/banking/raw/bank.csv:0+375542
+2026-10-20 18:49:41,928 INFO mapred.MapTask: numReduceTasks: 1
+2026-10-20 18:49:42,361 INFO mapreduce.Job: Job job_local972611356_0001 running in uber mode : false
+2026-10-20 18:49:43,867 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
+2026-10-20 18:49:43,868 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
+2026-10-20 18:49:43,868 INFO mapred.MapTask: soft limit at 83886080
+2026-10-20 18:49:43,868 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
+2026-10-20 18:49:43,868 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
+2026-10-20 18:49:43,883 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-20 18:49:43,894 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
+2026-10-20 18:49:43,979 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, mapper.py, outcome_duration]
+2026-10-20 18:49:43,993 INFO Configuration.deprecation: mapred.work.output.dir is deprecated. Instead, use mapreduce.task.output.dir
+2026-10-20 18:49:43,995 INFO Configuration.deprecation: mapred.local.dir is deprecated. Instead, use mapreduce.cluster.local.dir
+2026-10-20 18:49:43,995 INFO Configuration.deprecation: map.input.file is deprecated. Instead, use mapreduce.map.input.file
+2026-10-20 18:49:43,995 INFO Configuration.deprecation: map.input.length is deprecated. Instead, use mapreduce.map.input.length
+2026-10-20 18:49:43,996 INFO Configuration.deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+2026-10-20 18:49:43,996 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+2026-10-20 18:49:43,997 INFO Configuration.deprecation: map.input.start is deprecated. Instead, use mapreduce.map.input.start
+2026-10-20 18:49:43,997 INFO Configuration.deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+2026-10-20 18:49:43,997 INFO Configuration.deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+2026-10-20 18:49:43,998 INFO Configuration.deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+2026-10-20 18:49:43,998 INFO Configuration.deprecation: mapred.skip.on is deprecated. Instead, use mapreduce.job.skiprecords
+2026-10-20 18:49:43,999 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
+2026-10-20 18:49:44,695 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:44,695 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:44,700 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:44,734 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:44,811 INFO streaming.PipeMapRed: Records R/W=3195/1
+2026-10-20 18:49:44,912 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:49:44,916 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:49:44,930 INFO mapred.LocalJobRunner: 
+2026-10-20 18:49:44,930 INFO mapred.MapTask: Starting flush of map output
+2026-10-20 18:49:44,930 INFO mapred.MapTask: Spilling map output
+2026-10-20 18:49:44,930 INFO mapred.MapTask: bufstart = 0; bufend = 61912; bufvoid = 104857600
+2026-10-20 18:49:44,930 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 26196316(104785264); length = 18081/6553600
+2026-10-20 18:49:45,017 INFO mapred.MapTask: Finished spill 0
+2026-10-20 18:49:45,145 INFO mapred.Task: Task:attempt_local972611356_0001_m_000000_0 is done. And is in the process of committing
+2026-10-20 18:49:45,259 INFO mapred.LocalJobRunner: Records R/W=3195/1
+2026-10-20 18:49:45,259 INFO mapred.Task: Task 'attempt_local972611356_0001_m_000000_0' done.
+2026-10-20 18:49:45,357 INFO mapred.Task: Final Counters for attempt_local972611356_0001_m_000000_0: Counters: 23
+	File System Counters
+		FILE: Number of bytes read=142883
+		FILE: Number of bytes written=856527
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=5
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=1
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=61912
+		Map output materialized bytes=70960
+		Input split bytes=96
+		Combine input records=0
+		Spilled Records=4521
+		Failed Shuffles=0
+		Merged Map outputs=0
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=264765440
+	File Input Format Counters 
+		Bytes Read=375542
+2026-10-20 18:49:45,358 INFO mapred.LocalJobRunner: Finishing task: attempt_local972611356_0001_m_000000_0
+2026-10-20 18:49:45,358 INFO mapred.LocalJobRunner: map task executor complete.
+2026-10-20 18:49:45,388 INFO mapred.LocalJobRunner: Waiting for reduce tasks
+2026-10-20 18:49:45,388 INFO mapred.LocalJobRunner: Starting task: attempt_local972611356_0001_r_000000_0
+2026-10-20 18:49:45,429 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:49:45,429 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:49:45,441 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:49:45,460 INFO mapred.ReduceTask: Using ShuffleConsumerPlugin: org.apache.hadoop.mapreduce.task.reduce.Shuffle@5a2b6f1b
+2026-10-20 18:49:45,474 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:49:45,617 INFO reduce.MergeManagerImpl: MergerManager: memoryLimit=618764672, maxSingleShuffleLimit=154691168, mergeThreshold=408384704, ioSortFactor=10, memToMemMergeOutputsThreshold=10
+2026-10-20 18:49:45,633 INFO reduce.EventFetcher: attempt_local972611356_0001_r_000000_0 Thread started: EventFetcher for fetching Map Completion Events
+2026-10-20 18:49:45,735 INFO reduce.LocalFetcher: localfetcher#1 about to shuffle output of map attempt_local972611356_0001_m_000000_0 decomp: 70956 len: 70960 to MEMORY
+2026-10-20 18:49:45,747 INFO reduce.InMemoryMapOutput: Read 70956 bytes from map-output for attempt_local972611356_0001_m_000000_0
+2026-10-20 18:49:45,752 INFO reduce.MergeManagerImpl: closeInMemoryFile -> map-output of size: 70956, inMemoryMapOutputs.size() -> 1, commitMemory -> 0, usedMemory ->70956
+2026-10-20 18:49:45,761 INFO reduce.EventFetcher: EventFetcher is interrupted.. Returning
+2026-10-20 18:49:45,765 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:49:45,765 INFO reduce.MergeManagerImpl: finalMerge called with 1 in-memory map-outputs and 0 on-disk map-outputs
+2026-10-20 18:49:45,785 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:49:45,785 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 70946 bytes
+2026-10-20 18:49:45,835 INFO reduce.MergeManagerImpl: Merged 1 segments, 70956 bytes to disk to satisfy reduce memory limit
+2026-10-20 18:49:45,836 INFO reduce.MergeManagerImpl: Merging 1 files, 70960 bytes from disk
+2026-10-20 18:49:45,837 INFO reduce.MergeManagerImpl: Merging 0 segments, 0 bytes from memory into reduce
+2026-10-20 18:49:45,837 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:49:45,855 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 70946 bytes
+2026-10-20 18:49:45,856 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:49:45,913 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-20 18:49:45,958 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, reducer.py, mean]
+2026-10-20 18:49:45,967 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
+2026-10-20 18:49:45,983 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+2026-10-20 18:49:46,132 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:46,133 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:46,134 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:46,171 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:49:46,254 INFO streaming.PipeMapRed: Records R/W=4521/1
+2026-10-20 18:49:46,263 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:49:46,263 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:49:47,216 INFO mapred.Task: Task:attempt_local972611356_0001_r_000000_0 is done. And is in the process of committing
+2026-10-20 18:49:47,232 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:49:47,233 INFO mapred.Task: Task attempt_local972611356_0001_r_000000_0 is allowed to commit now
+2026-10-20 18:49:47,423 INFO output.FileOutputCommitter: Saved output of task 'attempt_local972611356_0001_r_000000_0' to hdfs://hadoop-hive:9000/banking/mapreduce/20261020184703/outcome_duration
+2026-10-20 18:49:47,430 INFO mapred.LocalJobRunner: Records R/W=4521/1 > reduce
+2026-10-20 18:49:47,430 INFO mapred.Task: Task 'attempt_local972611356_0001_r_000000_0' done.
+2026-10-20 18:49:47,431 INFO mapred.Task: Final Counters for attempt_local972611356_0001_r_000000_0: Counters: 30
+	File System Counters
+		FILE: Number of bytes read=284835
+		FILE: Number of bytes written=927487
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=91
+		HDFS: Number of read operations=10
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=3
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=4
+		Reduce shuffle bytes=70960
+		Reduce input records=4521
+		Reduce output records=4
+		Spilled Records=4521
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=264765440
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Output Format Counters 
+		Bytes Written=91
+2026-10-20 18:49:47,431 INFO mapred.LocalJobRunner: Finishing task: attempt_local972611356_0001_r_000000_0
+2026-10-20 18:49:47,432 INFO mapred.LocalJobRunner: reduce task executor complete.
+2026-10-20 18:49:47,918 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-20 18:49:47,919 INFO mapreduce.Job: Job job_local972611356_0001 completed successfully
+2026-10-20 18:49:47,959 INFO mapreduce.Job: Counters: 36
+	File System Counters
+		FILE: Number of bytes read=427718
+		FILE: Number of bytes written=1784014
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=751084
+		HDFS: Number of bytes written=91
+		HDFS: Number of read operations=15
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=61912
+		Map output materialized bytes=70960
+		Input split bytes=96
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=4
+		Reduce shuffle bytes=70960
+		Reduce input records=4521
+		Reduce output records=4
+		Spilled Records=9042
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=529530880
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=375542
+	File Output Format Counters 
+		Bytes Written=91
+2026-10-20 18:49:47,959 INFO streaming.StreamJob: Output directory: /banking/mapreduce/20261020184703/outcome_duration
++ tee /workspace/reports/hadoop/outcome_duration.tsv
++ hdfs dfs -cat '/banking/mapreduce/20261020184703/outcome_duration/part-*'
+failure	490	254.383673
+other	197	273.832487
+success	129	338.635659
+unknown	3705	262.103104
++ for mode in job_balance education_housing month_subscription outcome_duration age_balance
++ reducer_mode=mean
++ '[' age_balance = education_housing ']'
++ '[' age_balance = month_subscription ']'
++ hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -D mapreduce.framework.name=local -D mapreduce.job.name=Banking_age_balance -D mapreduce.job.reduces=1 -files /workspace/hadoop/mapper.py,/workspace/hadoop/reducer.py -mapper 'python3 mapper.py age_balance' -reducer 'python3 reducer.py mean' -input /banking/raw/bank.csv -output /banking/mapreduce/20261020184703/age_balance
+2026-10-20 18:50:14,578 INFO impl.MetricsConfig: Loaded properties from hadoop-metrics2.properties
+2026-10-20 18:50:16,076 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+2026-10-20 18:50:16,076 INFO impl.MetricsSystemImpl: JobTracker metrics system started
+2026-10-20 18:50:16,163 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:50:21,306 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-10-20 18:50:22,236 INFO mapreduce.JobSubmitter: number of splits:1
+2026-10-20 18:50:22,918 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local917904193_0001
+2026-10-20 18:50:22,919 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-20 18:50:24,535 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local917904193_0001_0876de28-a961-4859-b8dc-991136034c85/mapper.py <- /workspace/mapper.py
+2026-10-20 18:50:24,592 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/mapper.py as file:/hdfs/tmp/mapred/local/job_local917904193_0001_0876de28-a961-4859-b8dc-991136034c85/mapper.py
+2026-10-20 18:50:24,707 INFO mapred.LocalDistributedCacheManager: Creating symlink: /hdfs/tmp/mapred/local/job_local917904193_0001_649e5186-baa5-4da1-b964-77e945336337/reducer.py <- /workspace/reducer.py
+2026-10-20 18:50:24,721 INFO mapred.LocalDistributedCacheManager: Localized file:/workspace/hadoop/reducer.py as file:/hdfs/tmp/mapred/local/job_local917904193_0001_649e5186-baa5-4da1-b964-77e945336337/reducer.py
+2026-10-20 18:50:25,272 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+2026-10-20 18:50:25,276 INFO mapreduce.Job: Running job: job_local917904193_0001
+2026-10-20 18:50:25,289 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+2026-10-20 18:50:25,296 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
+2026-10-20 18:50:25,314 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:50:25,316 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:50:25,421 INFO mapred.LocalJobRunner: Waiting for map tasks
+2026-10-20 18:50:25,429 INFO mapred.LocalJobRunner: Starting task: attempt_local917904193_0001_m_000000_0
+2026-10-20 18:50:25,492 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:50:25,492 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:50:25,574 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:50:25,606 INFO mapred.MapTask: Processing split: hdfs://hadoop-hive:9000/banking/raw/bank.csv:0+375542
+2026-10-20 18:50:25,751 INFO mapred.MapTask: numReduceTasks: 1
+2026-10-20 18:50:26,299 INFO mapreduce.Job: Job job_local917904193_0001 running in uber mode : false
+2026-10-20 18:50:26,305 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-20 18:50:28,860 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
+2026-10-20 18:50:28,860 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
+2026-10-20 18:50:28,860 INFO mapred.MapTask: soft limit at 83886080
+2026-10-20 18:50:28,860 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
+2026-10-20 18:50:28,860 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
+2026-10-20 18:50:28,871 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
+2026-10-20 18:50:28,939 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, mapper.py, age_balance]
+2026-10-20 18:50:28,945 INFO Configuration.deprecation: mapred.work.output.dir is deprecated. Instead, use mapreduce.task.output.dir
+2026-10-20 18:50:28,956 INFO Configuration.deprecation: mapred.local.dir is deprecated. Instead, use mapreduce.cluster.local.dir
+2026-10-20 18:50:28,956 INFO Configuration.deprecation: map.input.file is deprecated. Instead, use mapreduce.map.input.file
+2026-10-20 18:50:28,957 INFO Configuration.deprecation: map.input.length is deprecated. Instead, use mapreduce.map.input.length
+2026-10-20 18:50:28,957 INFO Configuration.deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+2026-10-20 18:50:28,958 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+2026-10-20 18:50:28,959 INFO Configuration.deprecation: map.input.start is deprecated. Instead, use mapreduce.map.input.start
+2026-10-20 18:50:28,960 INFO Configuration.deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+2026-10-20 18:50:28,970 INFO Configuration.deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+2026-10-20 18:50:28,970 INFO Configuration.deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+2026-10-20 18:50:28,971 INFO Configuration.deprecation: mapred.skip.on is deprecated. Instead, use mapreduce.job.skiprecords
+2026-10-20 18:50:28,971 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
+2026-10-20 18:50:30,242 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:1=1/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:50:30,242 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:10=10/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:50:30,282 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:100=100/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:50:30,340 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:1000=1000/1 [rec/s] out:0=0/1 [rec/s]
+2026-10-20 18:50:30,381 INFO streaming.PipeMapRed: Records R/W=2161/1
+2026-10-20 18:50:30,520 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:50:30,532 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:50:30,537 INFO mapred.LocalJobRunner: 
+2026-10-20 18:50:30,538 INFO mapred.MapTask: Starting flush of map output
+2026-10-20 18:50:30,538 INFO mapred.MapTask: Spilling map output
+2026-10-20 18:50:30,538 INFO mapred.MapTask: bufstart = 0; bufend = 45696; bufvoid = 104857600
+2026-10-20 18:50:30,538 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 26196316(104785264); length = 18081/6553600
+2026-10-20 18:50:30,702 INFO mapred.MapTask: Finished spill 0
+2026-10-20 18:50:30,766 INFO mapred.Task: Task:attempt_local917904193_0001_m_000000_0 is done. And is in the process of committing
+2026-10-20 18:50:30,809 INFO mapred.LocalJobRunner: Records R/W=2161/1
+2026-10-20 18:50:30,809 INFO mapred.Task: Task 'attempt_local917904193_0001_m_000000_0' done.
+2026-10-20 18:50:30,863 INFO mapred.Task: Final Counters for attempt_local917904193_0001_m_000000_0: Counters: 23
+	File System Counters
+		FILE: Number of bytes read=142883
+		FILE: Number of bytes written=840281
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=5
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=1
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=45696
+		Map output materialized bytes=54744
+		Input split bytes=96
+		Combine input records=0
+		Spilled Records=4521
+		Failed Shuffles=0
+		Merged Map outputs=0
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=265289728
+	File Input Format Counters 
+		Bytes Read=375542
+2026-10-20 18:50:30,863 INFO mapred.LocalJobRunner: Finishing task: attempt_local917904193_0001_m_000000_0
+2026-10-20 18:50:30,864 INFO mapred.LocalJobRunner: map task executor complete.
+2026-10-20 18:50:30,873 INFO mapred.LocalJobRunner: Waiting for reduce tasks
+2026-10-20 18:50:30,877 INFO mapred.LocalJobRunner: Starting task: attempt_local917904193_0001_r_000000_0
+2026-10-20 18:50:30,879 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-20 18:50:30,911 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2026-10-20 18:50:30,911 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2026-10-20 18:50:30,918 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2026-10-20 18:50:30,925 INFO mapred.ReduceTask: Using ShuffleConsumerPlugin: org.apache.hadoop.mapreduce.task.reduce.Shuffle@3e0c2f57
+2026-10-20 18:50:30,957 WARN impl.MetricsSystemImpl: JobTracker metrics system already initialized!
+2026-10-20 18:50:31,036 INFO reduce.MergeManagerImpl: MergerManager: memoryLimit=618764672, maxSingleShuffleLimit=154691168, mergeThreshold=408384704, ioSortFactor=10, memToMemMergeOutputsThreshold=10
+2026-10-20 18:50:31,065 INFO reduce.EventFetcher: attempt_local917904193_0001_r_000000_0 Thread started: EventFetcher for fetching Map Completion Events
+2026-10-20 18:50:31,188 INFO reduce.LocalFetcher: localfetcher#1 about to shuffle output of map attempt_local917904193_0001_m_000000_0 decomp: 54740 len: 54744 to MEMORY
+2026-10-20 18:50:31,226 INFO reduce.InMemoryMapOutput: Read 54740 bytes from map-output for attempt_local917904193_0001_m_000000_0
+2026-10-20 18:50:31,254 INFO reduce.MergeManagerImpl: closeInMemoryFile -> map-output of size: 54740, inMemoryMapOutputs.size() -> 1, commitMemory -> 0, usedMemory ->54740
+2026-10-20 18:50:31,265 INFO reduce.EventFetcher: EventFetcher is interrupted.. Returning
+2026-10-20 18:50:31,273 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:50:31,274 INFO reduce.MergeManagerImpl: finalMerge called with 1 in-memory map-outputs and 0 on-disk map-outputs
+2026-10-20 18:50:31,328 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:50:31,335 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 54734 bytes
+2026-10-20 18:50:31,415 INFO reduce.MergeManagerImpl: Merged 1 segments, 54740 bytes to disk to satisfy reduce memory limit
+2026-10-20 18:50:31,417 INFO reduce.MergeManagerImpl: Merging 1 files, 54744 bytes from disk
+2026-10-20 18:50:31,420 INFO reduce.MergeManagerImpl: Merging 0 segments, 0 bytes from memory into reduce
+2026-10-20 18:50:31,420 INFO mapred.Merger: Merging 1 sorted segments
+2026-10-20 18:50:31,432 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 54734 bytes
+2026-10-20 18:50:31,434 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:50:31,499 INFO streaming.PipeMapRed: PipeMapRed exec [/usr/local/bin/python3, reducer.py, mean]
+2026-10-20 18:50:31,502 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
+2026-10-20 18:50:31,520 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+2026-10-20 18:50:31,841 INFO streaming.PipeMapRed: R/W/S=1/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:50:31,842 INFO streaming.PipeMapRed: R/W/S=10/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:50:31,844 INFO streaming.PipeMapRed: R/W/S=100/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:50:31,890 INFO streaming.PipeMapRed: R/W/S=1000/0/0 in:NA [rec/s] out:NA [rec/s]
+2026-10-20 18:50:32,006 INFO streaming.PipeMapRed: MRErrorThread done
+2026-10-20 18:50:32,019 INFO streaming.PipeMapRed: Records R/W=4521/1
+2026-10-20 18:50:32,021 INFO streaming.PipeMapRed: mapRedFinished
+2026-10-20 18:50:32,665 INFO mapred.Task: Task:attempt_local917904193_0001_r_000000_0 is done. And is in the process of committing
+2026-10-20 18:50:32,754 INFO mapred.LocalJobRunner: 1 / 1 copied.
+2026-10-20 18:50:32,756 INFO mapred.Task: Task attempt_local917904193_0001_r_000000_0 is allowed to commit now
+2026-10-20 18:50:32,935 INFO output.FileOutputCommitter: Saved output of task 'attempt_local917904193_0001_r_000000_0' to hdfs://hadoop-hive:9000/banking/mapreduce/20261020184703/age_balance
+2026-10-20 18:50:32,937 INFO mapred.LocalJobRunner: Records R/W=4521/1 > reduce
+2026-10-20 18:50:32,937 INFO mapred.Task: Task 'attempt_local917904193_0001_r_000000_0' done.
+2026-10-20 18:50:32,938 INFO mapred.Task: Final Counters for attempt_local917904193_0001_r_000000_0: Counters: 30
+	File System Counters
+		FILE: Number of bytes read=252403
+		FILE: Number of bytes written=895025
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=375542
+		HDFS: Number of bytes written=157
+		HDFS: Number of read operations=10
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=3
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=8
+		Reduce shuffle bytes=54744
+		Reduce input records=4521
+		Reduce output records=8
+		Spilled Records=4521
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=265289728
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Output Format Counters 
+		Bytes Written=157
+2026-10-20 18:50:32,938 INFO mapred.LocalJobRunner: Finishing task: attempt_local917904193_0001_r_000000_0
+2026-10-20 18:50:32,939 INFO mapred.LocalJobRunner: reduce task executor complete.
+2026-10-20 18:50:33,888 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-20 18:50:33,889 INFO mapreduce.Job: Job job_local917904193_0001 completed successfully
+2026-10-20 18:50:34,117 INFO mapreduce.Job: Counters: 36
+	File System Counters
+		FILE: Number of bytes read=395286
+		FILE: Number of bytes written=1735306
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=751084
+		HDFS: Number of bytes written=157
+		HDFS: Number of read operations=15
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+		HDFS: Number of bytes read erasure-coded=0
+	Map-Reduce Framework
+		Map input records=4522
+		Map output records=4521
+		Map output bytes=45696
+		Map output materialized bytes=54744
+		Input split bytes=96
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=8
+		Reduce shuffle bytes=54744
+		Reduce input records=4521
+		Reduce output records=8
+		Spilled Records=9042
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=0
+		Total committed heap usage (bytes)=530579456
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=375542
+	File Output Format Counters 
+		Bytes Written=157
+2026-10-20 18:50:34,117 INFO streaming.StreamJob: Output directory: /banking/mapreduce/20261020184703/age_balance
++ hdfs dfs -cat '/banking/mapreduce/20261020184703/age_balance/part-*'
++ tee /workspace/reports/hadoop/age_balance.tsv
+10s	4	393.500000
+20s	478	1063.656904
+30s	1808	1298.147124
+40s	1203	1474.692436
+50s	854	1547.420375
+60s	113	2619.778761
+70s	47	3280.872340
+80s	14	2071.142857

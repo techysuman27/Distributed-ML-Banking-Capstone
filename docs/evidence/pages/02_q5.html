@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q5. Education subscription rate and default prevalence</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q5. Education subscription rate and default prevalence</h1>
+<p>The default field describes existing credit default. Calling this a future loan-default probability would overstate what the data supports. Counts accompany rates to expose small samples.</p><h2>Code excerpt</h2><pre>education=df.groupBy(&#x27;education&#x27;).agg(F.count(&#x27;*&#x27;).alias(&#x27;clients&#x27;),F.sum((F.col(&#x27;y&#x27;)==&#x27;yes&#x27;).cast(&#x27;int&#x27;)).alias(&#x27;subscribers&#x27;)).withColumn(&#x27;subscription_pct&#x27;,100*F.col(&#x27;subscribers&#x27;)/F.col(&#x27;clients&#x27;)).orderBy(F.desc(&#x27;subscription_pct&#x27;))
+education.show()
+defaults=df.groupBy(&#x27;job&#x27;).agg(F.count(&#x27;*&#x27;).alias(&#x27;clients&#x27;),F.sum((F.col(&#x27;default&#x27;)==&#x27;yes&#x27;).cast(&#x27;int&#x27;)).alias(&#x27;default_count&#x27;)).withColumn(&#x27;default_pct&#x27;,100*F.col(&#x27;default_count&#x27;)/F.col(&#x27;clients&#x27;)).orderBy(F.desc(&#x27;default_pct&#x27;),F.desc(&#x27;clients&#x27;))
+defaults.show(3)
+save_json(&#x27;eda_education.json&#x27;,rows(education))
+save_json(&#x27;eda_default_rates.json&#x27;,rows(defaults))</pre>
+<h2>Recorded output excerpt</h2><pre>+---------+-------+-----------+------------------+
+|education|clients|subscribers|  subscription_pct|
++---------+-------+-----------+------------------+
+| tertiary|   1350|        193|14.296296296296296|
+|secondary|   2306|        245|10.624457935819601|
+|  unknown|    187|         19| 10.16042780748663|
+|  primary|    678|         64|  9.43952802359882|
++---------+-------+-----------+------------------+
+
+
++-------------+-------+-------------+-----------------+
+|          job|clients|default_count|      default_pct|
++-------------+-------+-------------+-----------------+
+| entrepreneur|    168|            7|4.166666666666667|
+|   unemployed|    128|            3|          2.34375|
+|self-employed|    183|            4|2.185792349726776|
++-------------+-------+-------------+-----------------+
+... additional output is retained in the notebook or transcript.</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

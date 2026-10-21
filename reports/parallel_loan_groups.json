@@ -1,0 +1,35 @@
+{
+  "limitation": "No loan amount is present; this ranks counts only.",
+  "results": [
+    {
+      "age_decade": 30,
+      "clients": 1808,
+      "loan_holders": 271,
+      "loan_pct": 14.988938053097344
+    },
+    {
+      "age_decade": 40,
+      "clients": 1203,
+      "loan_holders": 184,
+      "loan_pct": 15.295095594347465
+    },
+    {
+      "age_decade": 50,
+      "clients": 854,
+      "loan_holders": 160,
+      "loan_pct": 18.73536299765808
+    },
+    {
+      "age_decade": 20,
+      "clients": 478,
+      "loan_holders": 68,
+      "loan_pct": 14.225941422594142
+    },
+    {
+      "age_decade": 60,
+      "clients": 113,
+      "loan_holders": 8,
+      "loan_pct": 7.079646017699115
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Streaming Q1: Updated job aggregates</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Streaming Q1: Updated job aggregates</h1>
+<p>Actual Structured Streaming outputs; marketing records with synthetic timestamps. Full per-batch outputs and query progress accompany the submission.</p><h2>Code excerpt</h2><pre>raw=spark.readStream.schema(schema).option(&#x27;maxFilesPerTrigger&#x27;,1).json(str(input_dir))
+summary=raw.groupBy(&#x27;job&#x27;).agg(F.count(&#x27;*&#x27;).alias(&#x27;records&#x27;), F.avg(&#x27;balance&#x27;).alias(&#x27;avg_balance&#x27;), F.avg(&#x27;duration&#x27;).alias(&#x27;avg_call_seconds&#x27;))
+execute(summary,&#x27;bank_job_live&#x27;,&#x27;complete&#x27;)</pre>
+<h2>Recorded output excerpt</h2><pre>{&quot;job&quot;: &quot;services&quot;, &quot;records&quot;: 2, &quot;avg_balance&quot;: 0.0, &quot;avg_call_seconds&quot;: 332.0}
+{&quot;job&quot;: &quot;unemployed&quot;, &quot;records&quot;: 1, &quot;avg_balance&quot;: 0.0, &quot;avg_call_seconds&quot;: 108.0}
+{&quot;job&quot;: &quot;management&quot;, &quot;records&quot;: 3, &quot;avg_balance&quot;: 6357.666666666667, &quot;avg_call_seconds&quot;: 118.33333333333333}
+{&quot;job&quot;: &quot;blue-collar&quot;, &quot;records&quot;: 2, &quot;avg_balance&quot;: 2367.5, &quot;avg_call_seconds&quot;: 204.0}
+{&quot;job&quot;: &quot;admin.&quot;, &quot;records&quot;: 4, &quot;avg_balance&quot;: 1512.5, &quot;avg_call_seconds&quot;: 629.75}
+{&quot;job&quot;: &quot;technician&quot;, &quot;records&quot;: 3, &quot;avg_balance&quot;: 5083.666666666667, &quot;avg_call_seconds&quot;: 108.33333333333333}
+{&quot;job&quot;: &quot;retired&quot;, &quot;records&quot;: 2, &quot;avg_balance&quot;: 605.5, &quot;avg_call_seconds&quot;: 248.0}</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

@@ -1,0 +1,7 @@
+FROM python:3.9-slim-bullseye AS python-runtime
+FROM apache/hive:4.0.0
+USER root
+COPY --from=python-runtime /usr/local /usr/local
+RUN ldconfig && python3 --version
+ENV HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+WORKDIR /workspace

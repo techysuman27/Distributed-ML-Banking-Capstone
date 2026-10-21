@@ -1,0 +1,57 @@
+{
+  "url": "spark://spark-master:7077",
+  "workers": [
+    {
+      "id": "worker-20261020184855-172.21.0.5-39873",
+      "host": "172.21.0.5",
+      "port": 39873,
+      "webuiaddress": "http://172.21.0.5:8081",
+      "cores": 1,
+      "coresused": 0,
+      "coresfree": 1,
+      "memory": 768,
+      "memoryused": 0,
+      "memoryfree": 768,
+      "resources": {},
+      "resourcesused": {},
+      "resourcesfree": {},
+      "state": "ALIVE",
+      "lastheartbeat": 1792522165410
+    },
+    {
+      "id": "worker-20261020184854-172.21.0.4-36847",
+      "host": "172.21.0.4",
+      "port": 36847,
+      "webuiaddress": "http://172.21.0.4:8081",
+      "cores": 1,
+      "coresused": 0,
+      "coresfree": 1,
+      "memory": 768,
+      "memoryused": 0,
+      "memoryfree": 768,
+      "resources": {},
+      "resourcesused": {},
+      "resourcesfree": {},
+      "state": "ALIVE",
+      "lastheartbeat": 1792522165023
+    }
+  ],
+  "aliveworkers": 2,
+  "cores": 2,
+  "coresused": 0,
+  "memory": 1536,
+  "memoryused": 0,
+  "resources": [
+    {},
+    {}
+  ],
+  "resourcesused": [
+    {},
+    {}
+  ],
+  "activeapps": [],
+  "completedapps": [],
+  "activedrivers": [],
+  "completeddrivers": [],
+  "status": "ALIVE"
+}

@@ -1,0 +1,177 @@
+{
+  "part1": [
+    {
+      "index": 131,
+      "answer": "I created /banking/raw in HDFS and copied the original 375,542-byte bank.csv into it. The directory listing and filesystem report confirm one live DataNode. Replication is 1 for this local demonstration, so it does not provide replica failover.",
+      "images": [
+        "01_hadoop_q1"
+      ]
+    },
+    {
+      "index": 540,
+      "answer": "The Python CSV mapper emits keyed values; Hadoop shuffles matching keys and the reducer combines sums and counts. Average balance uses total balance divided by count. For example, retired clients have the highest occupation mean at 2,319.19 across 230 records. Housing-loan counts are grouped by education and yes/no status. Monthly contacts are grouped by month and subscription label; May has 1,305 no and 93 yes records, totaling 1,398. All jobs preserve 4,521 data records and skip the header. These jobs use genuine Hadoop Streaming with LocalJobRunner over HDFS; no YARN execution is claimed.",
+      "images": [
+        "01_mr_job_balance",
+        "01_mr_education_housing",
+        "01_mr_month_subscription"
+      ]
+    },
+    {
+      "index": 772,
+      "answer": "I computed mean call duration by previous campaign outcome and mean balance by age decade. Average balances generally rise through the older decades in this sample, but the oldest groups have few observations: 14 records are in the 80s group. Age and balance have a weak Pearson correlation of 0.0838, so age alone explains little linear variation in balance. These group comparisons describe associations, not a causal effect.",
+      "images": [
+        "01_mr_outcome_duration",
+        "01_mr_age_balance"
+      ]
+    },
+    {
+      "index": 1020,
+      "answer": "I created banking_data, staged the CSV using OpenCSVSerde, and created client_info as a typed ORC table in HDFS. Numeric fields are explicitly cast to INT and categorical fields remain STRING. A defensive numeric-age and valid-label condition excludes the header; the final table has 4,521 records.",
+      "images": [
+        "01_hive_q1"
+      ]
+    },
+    {
+      "index": 1160,
+      "answer": "SELECT COUNT(*) confirms 4,521 clients. LIMIT 10 displays ten records for inspection. Without an ORDER BY, these are an execution-order sample and should not be interpreted as the earliest ten contacts.",
+      "images": [
+        "01_hive_q2"
+      ]
+    },
+    {
+      "index": 1363,
+      "answer": "I retrieved all rows where marital='married' and loan='yes', then separately ranked records by descending balance. The highest balance in the sample is 71,188, recorded for a retired married client. The screenshot shows an excerpt; the full result set is preserved in reports/hive-results.txt.",
+      "images": [
+        "01_hive_q3"
+      ]
+    },
+    {
+      "index": 1543,
+      "answer": "I grouped by job to calculate average age and grouped existing credit-default records by education. Retired clients have the highest mean age at about 61.87. Default counts are 10 primary, 46 secondary, 17 tertiary and 3 unknown, totaling 76. Counts must be considered alongside education group sizes.",
+      "images": [
+        "01_hive_q4"
+      ]
+    },
+    {
+      "index": 1906,
+      "answer": "The five highest mean balances are retired 2,319.19, housemaid 2,083.80, management 1,766.93, entrepreneur 1,645.13 and student 1,543.82. Their subscription rates are included in the result. May has the most contacts, 1,398, with a 6.65% subscription rate. A high contact count does not necessarily imply a high success rate.",
+      "images": [
+        "01_hive_q5"
+      ]
+    },
+    {
+      "index": 1995,
+      "answer": "The Pearson age/balance correlation is approximately 0.08382. This is a weak positive linear association, not evidence that age causes a higher balance. Skewed balances and small older age groups also limit interpretation.",
+      "images": [
+        "01_hive_q6"
+      ]
+    },
+    {
+      "index": 2080,
+      "answer": "A year-over-year contact trend cannot be calculated because bank.csv contains month and day but no year or complete date. I explicitly report this limitation instead of inventing dates. Monthly contact counts are a separate descriptive analysis and are not substituted for an annual trend.",
+      "images": [
+        "01_hive_q7"
+      ]
+    },
+    {
+      "index": 2194,
+      "answer": "Tertiary education has the highest mean yearly balance, about 1,775.42, followed by unknown 1,701.25, primary 1,411.54 and secondary 1,196.81. Balances are widely dispersed. A within-education three-standard-deviation heuristic flags 53 secondary, 35 tertiary, 6 primary and 4 unknown records for review. These are statistical flags, not fraud labels. The data provides one average-yearly-balance field, not multiple years of balances.",
+      "images": [
+        "01_hive_q8"
+      ]
+    },
+    {
+      "index": 2496,
+      "answer": "Previous success is associated with a 64.34% current subscription rate among 129 records, compared with 19.29% for other, 12.86% for failure and 9.10% for unknown. Subscribers have an average call duration of 552.74 seconds versus 226.35 for non-subscribers. Duration is useful retrospectively but is excluded from the pre-call model because it is not known before contact.",
+      "images": [
+        "01_hive_q9"
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "index": 248,
+      "answer": "Spark loaded the CSV using an explicit 17-column schema and found 4,521 records, no duplicate rows and no null cells. The target contains 521 yes and 4,000 no records, so the positive rate is about 11.52%. Unknown strings are retained as meaningful recorded categories. I inspected sample rows, schema and numerical summaries before transformations.",
+      "images": [
+        "02_q1"
+      ]
+    },
+    {
+      "index": 486,
+      "answer": "Filtering balance > 1000 returns 1,481 records. I mapped the twelve month abbreviations to integers 1–12 and calculated quarter as ceiling(month_number / 3). This creates a quarter category without inventing an unavailable year or full contact date.",
+      "images": [
+        "02_q2"
+      ]
+    },
+    {
+      "index": 706,
+      "answer": "Distributed groupBy computes occupation-level mean balance and approximate median age. Retired clients have the highest mean balance at 2,319.19. Among subscribers, 277 are married, 167 single and 77 divorced. These counts are descriptive and should not be mistaken for subscription probabilities without dividing by each group's total size.",
+      "images": [
+        "02_q3"
+      ]
+    },
+    {
+      "index": 864,
+      "answer": "The required Python UDF assigns ages below 30 to <30, ages 30 through 60 inclusive to 30–60, and ages above 60 to >60. The resulting counts are 482, 3,912 and 127. A built-in CASE expression would usually be preferable at scale because it avoids Python serialization overhead; the UDF is retained to answer this specific exercise.",
+      "images": [
+        "02_q4"
+      ]
+    },
+    {
+      "index": 1082,
+      "answer": "Subscription rates are 14.30% for tertiary education, 10.62% secondary, 10.16% unknown and 9.44% primary. The three highest recorded default prevalences by profession are entrepreneur 4.17% (7/168), unemployed 2.34% (3/128) and self-employed 2.19% (4/183). The source default flag measures existing credit default, not a future loan-default probability. Small counts make these rates uncertain.",
+      "images": [
+        "02_q5"
+      ]
+    },
+    {
+      "index": 1266,
+      "answer": "I used concat_ws to create job_marital and upper to create contact_upper. The transformed columns retain the original categories for traceability. String processing uses Spark functions and remains distributed.",
+      "images": [
+        "02_q6"
+      ]
+    },
+    {
+      "index": 1397,
+      "answer": "The dataset was converted to Pandas after checking that it had no more than 10,000 rows. This explicit guard is appropriate for the supplied 4,521-row sample. The occupation chart itself uses a small Spark-aggregated table: management has 969 records, blue-collar 946 and technician 768. On a large dataset I would collect only aggregates, never the entire table.",
+      "images": [
+        "02_q7"
+      ]
+    },
+    {
+      "index": 1656,
+      "answer": "May is the busiest recorded month, with 1,398 contacts and a 6.65% subscription rate. Average call duration is 552.74 seconds for subscribers and 226.35 seconds for non-subscribers. Duration is a retrospective association and is excluded from the pre-call prediction model to prevent leakage.",
+      "images": [
+        "02_q8"
+      ]
+    },
+    {
+      "index": 1830,
+      "answer": "The age/balance Pearson correlation is 0.08382, agreeing with the Hive result. It indicates a weak positive linear relationship. It does not imply causation and may be influenced by the skewed balance distribution.",
+      "images": [
+        "02_q9"
+      ]
+    },
+    {
+      "index": 1981,
+      "answer": "The existing default indicator is yes for 76 records (about 1.68%) and no for 4,445 (about 98.32%). The chart shows this imbalance directly. Default labels should not be confused with the separate term-deposit subscription target.",
+      "images": [
+        "02_q10"
+      ]
+    },
+    {
+      "index": 2132,
+      "answer": "Telephone has the highest observed subscription rate at 14.62% across 301 contacts, closely followed by cellular at 14.36% across 2,896 contacts. Unknown contact type has 4.61% across 1,324 records. The small difference between telephone and cellular is not sufficient evidence of a causal advantage.",
+      "images": [
+        "02_q11"
+      ]
+    },
+    {
+      "index": 2330,
+      "answer": "I created the bank_clients temporary view and used Spark SQL to summarize average balance by age group and the most common occupations. SQL and DataFrame transformations use the same Spark execution engine. The full executed notebook retains both the queries and their numerical outputs.",
+      "images": [
+        "02_q12"
+      ]
+    }
+  ]
+}

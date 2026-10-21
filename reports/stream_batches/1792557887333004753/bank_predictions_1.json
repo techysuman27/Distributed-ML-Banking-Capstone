@@ -1,0 +1,26 @@
+[
+  {
+    "event_id": "event_003",
+    "event_time": "2026-01-01 00:00:12",
+    "arrival_batch": 2,
+    "y": "no",
+    "prediction": 0.0,
+    "subscription_probability": 0.09437751004016064
+  },
+  {
+    "event_id": "event_004",
+    "event_time": "2026-01-01 00:00:13",
+    "arrival_batch": 2,
+    "y": "no",
+    "prediction": 0.0,
+    "subscription_probability": 0.13636363636363635
+  },
+  {
+    "event_id": "event_005",
+    "event_time": "2026-01-01 00:00:14",
+    "arrival_batch": 2,
+    "y": "no",
+    "prediction": 0.0,
+    "subscription_probability": 0.09437751004016064
+  }
+]

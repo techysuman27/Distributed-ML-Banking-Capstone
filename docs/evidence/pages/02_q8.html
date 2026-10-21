@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q8. Contact volumes, campaign success and duration</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q8. Contact volumes, campaign success and duration</h1>
+<p></p><h2>Code excerpt</h2><pre>monthly=df.groupBy(&#x27;month&#x27;,&#x27;month_num&#x27;).agg(F.count(&#x27;*&#x27;).alias(&#x27;contacts&#x27;),F.avg((F.col(&#x27;y&#x27;)==&#x27;yes&#x27;).cast(&#x27;double&#x27;)).alias(&#x27;subscription_rate&#x27;)).orderBy(F.desc(&#x27;contacts&#x27;))
+monthly.show(12)
+duration=df.groupBy(&#x27;y&#x27;).agg(F.count(&#x27;*&#x27;).alias(&#x27;clients&#x27;),F.avg(&#x27;duration&#x27;).alias(&#x27;avg_call_seconds&#x27;))
+duration.show()
+save_json(&#x27;eda_monthly.json&#x27;,rows(monthly))
+save_json(&#x27;eda_duration.json&#x27;,rows(duration))</pre>
+<h2>Recorded output excerpt</h2><pre>+-----+---------+--------+-------------------+
+|month|month_num|contacts|  subscription_rate|
++-----+---------+--------+-------------------+
+|  may|        5|    1398|0.06652360515021459|
+|  jul|        7|     706|0.08640226628895184|
+|  aug|        8|     633|0.12480252764612954|
+|  jun|        6|     531|0.10357815442561205|
+|  nov|       11|     389|0.10025706940874037|
+|  apr|        4|     293|0.19112627986348124|
+|  feb|        2|     222|0.17117117117117117|
+|  jan|        1|     148|0.10810810810810811|
+|  oct|       10|      80|             0.4625|
+|  sep|        9|      52| 0.3269230769230769|
+|  mar|        3|      49|0.42857142857142855|
+|  dec|       12|      20|               0.45|
++-----+---------+--------+-------------------+
+
+... additional output is retained in the notebook or transcript.</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

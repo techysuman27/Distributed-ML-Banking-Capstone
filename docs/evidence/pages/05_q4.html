@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q4. Partition benchmark and resource monitoring</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q4. Partition benchmark and resource monitoring</h1>
+<p>Compare 1, 2 and 4 partitions over three repetitions on a cached synthetic expansion of the original data (50 repeated copies, 226,050 rows). Repetitions are for demonstrating execution only; they do not create new clients and never enter model evaluation. Materialize each layout before timing to separate repartition cost. Compare results for correctness. Tiny jobs can be slower with more partitions because scheduling and shuffle overhead dominate.</p><h2>Code excerpt</h2><pre>import time,statistics
+expanded=df.crossJoin(spark.range(50).withColumnRenamed(&#x27;id&#x27;,&#x27;replica&#x27;)).cache()
+print(&#x27;Synthetic benchmark rows:&#x27;,expanded.count())
+results=[];reference=None
+for partitions in [1,2,4]:
+    table=expanded.repartition(partitions).cache();table.count()
+    samples=[]
+    for repeat in range(3):
+        start=time.perf_counter()
+        out=table.groupBy(&#x27;job&#x27;).agg(F.round(F.avg(&#x27;balance&#x27;),6).alias(&#x27;avg_balance&#x27;)).orderBy(&#x27;job&#x27;).collect()
+        samples.append(time.perf_counter()-start)
+        current=[r.asDict() for r in out]
+        if reference is None: reference=current
+        assert current==reference, &#x27;Partitioning changed the answer&#x27;
+# ... full code is included in the source notebook or script.</pre>
+<h2>Recorded output excerpt</h2><pre>Synthetic benchmark rows: 226050
+
+{&#x27;partitions&#x27;: 1, &#x27;seconds&#x27;: [1.658956795999984, 0.694336499999963, 0.5722502559999612], &#x27;median_seconds&#x27;: 0.694336499999963}
+{&#x27;partitions&#x27;: 2, &#x27;seconds&#x27;: [2.302231971999845, 1.7368574510001054, 1.5461548109999512], &#x27;median_seconds&#x27;: 1.7368574510001054}
+{&#x27;partitions&#x27;: 4, &#x27;seconds&#x27;: [2.385744036999995, 1.2354557399999067, 1.0999513089998345], &#x27;median_seconds&#x27;: 1.2354557399999067}</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

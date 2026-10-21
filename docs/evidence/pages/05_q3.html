@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q3. Train on partitioned data</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q3. Train on partitioned data</h1>
+<p>A Spark logistic model distributes computation over row partitions and combines gradient statistics. It is not a separate independent model per partition. Use the same stable held-out split as Part 3. Resource monitoring below covers this training and the parallel processing tasks.</p><h2>Code excerpt</h2><pre>from banking.monitor import ResourceMonitor
+monitor=ResourceMonitor().start()
+from banking.modeling import make_pipeline,stable_split,evaluate
+from pyspark.ml.classification import LogisticRegression
+train,test=stable_split(features(df))
+trained=make_pipeline(LogisticRegression(maxIter=40,regParam=0.1)).fit(train.repartition(4))
+parallel_metrics=evaluate(trained.transform(test))
+print(&#x27;Held-out metrics for partitioned logistic model:&#x27;,parallel_metrics)
+save_json(&#x27;parallel_model.json&#x27;,parallel_metrics)</pre>
+<h2>Recorded output excerpt</h2><pre>Held-out metrics for partitioned logistic model: {&#x27;accuracy&#x27;: 0.8881278538812786, &#x27;precision&#x27;: 0.45454545454545453, &#x27;recall&#x27;: 0.05154639175257732, &#x27;f1&#x27;: 0.09259259259259259, &#x27;confusion&#x27;: {&#x27;tn&#x27;: 773, &#x27;fp&#x27;: 6, &#x27;fn&#x27;: 92, &#x27;tp&#x27;: 5}, &#x27;roc_auc&#x27;: 0.7058481002607093, &#x27;pr_auc&#x27;: 0.2643724760947851}</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

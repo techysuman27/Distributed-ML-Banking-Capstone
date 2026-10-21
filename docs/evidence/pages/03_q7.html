@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q7. Model interpretation</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q7. Model interpretation</h1>
+<p>Coefficients refer to standardized features. They describe association within this model and cannot establish a causal marketing effect. For the tree, importances are impurity based and can favor features with many possible splits.</p><h2>Code excerpt</h2><pre>from banking.modeling import feature_importance
+importance=feature_importance(winner,train)
+for row in importance[:15]: print(row)
+save_json(&#x27;model_importance.json&#x27;,importance)
+train.unpersist();test.unpersist();df.unpersist();spark.stop()</pre>
+<h2>Recorded output excerpt</h2><pre>{&#x27;feature&#x27;: &#x27;poutcome_vec_success&#x27;, &#x27;value&#x27;: 0.6976868644145604}
+{&#x27;feature&#x27;: &#x27;month_vec_oct&#x27;, &#x27;value&#x27;: 0.15392332873980966}
+{&#x27;feature&#x27;: &#x27;day_imputed&#x27;, &#x27;value&#x27;: 0.08437372379446195}
+{&#x27;feature&#x27;: &#x27;housing_vec_yes&#x27;, &#x27;value&#x27;: 0.04118885316192775}
+{&#x27;feature&#x27;: &#x27;balance_log_imputed&#x27;, &#x27;value&#x27;: 0.022827229889240328}
+{&#x27;feature&#x27;: &#x27;age_imputed&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;campaign_log_imputed&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;previous_log_imputed&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;previously_contacted_imputed&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;pdays_clean_imputed&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;job_vec_blue-collar&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;job_vec_management&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;job_vec_technician&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;job_vec_admin.&#x27;, &#x27;value&#x27;: 0.0}
+{&#x27;feature&#x27;: &#x27;job_vec_services&#x27;, &#x27;value&#x27;: 0.0}</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

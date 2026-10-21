@@ -1,0 +1,120 @@
+{
+  "folder": {
+    "success": true,
+    "id": "1bZle80G-EToAdZvMIGnYqyVfpfDt5S01",
+    "url": "https://drive.google.com/drive/folders/1bZle80G-EToAdZvMIGnYqyVfpfDt5S01",
+    "title": "Module 2 Distributed ML Capstone",
+    "parent_id": "root"
+  },
+  "documents": [
+    {
+      "success": true,
+      "id": "1yzsBzkZ9feQr8UT01OIVC_c8H1wA_8L27DkIOtmus8k",
+      "title": "01 Hadoop and Hive Answers",
+      "mimeType": "application/vnd.google-apps.document",
+      "url": "https://docs.google.com/document/d/1yzsBzkZ9feQr8UT01OIVC_c8H1wA_8L27DkIOtmus8k/edit?usp=drivesdk",
+      "made_private": false
+    },
+    {
+      "success": true,
+      "id": "1D_GeuwaKPRWpgu0chRyJ4WpTLAsZyvXYktWhbRyby6Y",
+      "title": "02 Spark EDA Answers",
+      "mimeType": "application/vnd.google-apps.document",
+      "url": "https://docs.google.com/document/d/1D_GeuwaKPRWpgu0chRyJ4WpTLAsZyvXYktWhbRyby6Y/edit?usp=drivesdk",
+      "made_private": false
+    },
+    {
+      "success": true,
+      "id": "11WcUu06btgJiL8G47sVVjNO9ym1sEPRDYUFOHrK8SP4",
+      "title": "03 Spark ML Answers",
+      "mimeType": "application/vnd.google-apps.document",
+      "url": "https://docs.google.com/document/d/11WcUu06btgJiL8G47sVVjNO9ym1sEPRDYUFOHrK8SP4/edit?usp=drivesdk",
+      "made_private": false
+    },
+    {
+      "success": true,
+      "id": "1BxXNEaJTn9SOnn2QEmbfyMFGedRfy9xtyL0nQtJyxNs",
+      "title": "04 Spark Streaming Answers",
+      "mimeType": "application/vnd.google-apps.document",
+      "url": "https://docs.google.com/document/d/1BxXNEaJTn9SOnn2QEmbfyMFGedRfy9xtyL0nQtJyxNs/edit?usp=drivesdk",
+      "made_private": false
+    },
+    {
+      "success": true,
+      "id": "1dy9PJGRqJz6UBBtcGvMEn-MyYaO1tiW549rJfyN-Slw",
+      "title": "05 Data Parallelism Answers",
+      "mimeType": "application/vnd.google-apps.document",
+      "url": "https://docs.google.com/document/d/1dy9PJGRqJz6UBBtcGvMEn-MyYaO1tiW549rJfyN-Slw/edit?usp=drivesdk",
+      "made_private": false
+    }
+  ],
+  "repository": "https://github.com/techysuman27/Distributed-ML-Banking-Capstone",
+  "reflection": {
+    "id": "12RFcsnB-XxxOh78uxafrhlebcKvzE6ltuedJbCD0mYU",
+    "url": "https://docs.google.com/document/d/12RFcsnB-XxxOh78uxafrhlebcKvzE6ltuedJbCD0mYU/edit"
+  },
+  "uploads": [
+    {
+      "name": "01_hadoop_hive.ipynb",
+      "id": "1GoLGEwQ5HxJG0KzxTYr4yHrigjw3gJan",
+      "url": "https://drive.google.com/file/d/1GoLGEwQ5HxJG0KzxTYr4yHrigjw3gJan/view"
+    },
+    {
+      "name": "02_spark_eda.ipynb",
+      "id": "18csSHFPKEZUs-4FWkZXd3b1IhuXiL7ZQ",
+      "url": "https://drive.google.com/file/d/18csSHFPKEZUs-4FWkZXd3b1IhuXiL7ZQ/view"
+    },
+    {
+      "name": "recording_guide.md",
+      "id": "1RrlY3PvzRtnYx17zQu12ggA0UjsaX1Uo",
+      "url": "https://drive.google.com/file/d/1RrlY3PvzRtnYx17zQu12ggA0UjsaX1Uo/view"
+    },
+    {
+      "name": "bank.csv",
+      "id": "1CR9MoJmnuOLDvdN0-x7hdFGY1FK0Qvzn",
+      "url": "https://drive.google.com/file/d/1CR9MoJmnuOLDvdN0-x7hdFGY1FK0Qvzn/view"
+    },
+    {
+      "name": "03_spark_ml.ipynb",
+      "id": "1AW0fLGUGi4Tb_vBR0Cc6PxIG5Ct74lJm",
+      "url": "https://drive.google.com/file/d/1AW0fLGUGi4Tb_vBR0Cc6PxIG5Ct74lJm/view"
+    },
+    {
+      "name": "04_spark_streaming.ipynb",
+      "id": "1sO4ELNgNR7-xa8sBJHritHgVVnpifGVJ",
+      "url": "https://drive.google.com/file/d/1sO4ELNgNR7-xa8sBJHritHgVVnpifGVJ/view"
+    },
+    {
+      "name": "05_data_parallelism.ipynb",
+      "id": "1XzoHG57rzwAiU-LaiLQHVMZ9OiksI3ys",
+      "url": "https://drive.google.com/file/d/1XzoHG57rzwAiU-LaiLQHVMZ9OiksI3ys/view"
+    },
+    {
+      "name": "presentation_figures.md",
+      "id": "1niMCz2CGjZjte_ymVwukqS4IdGybNikQ",
+      "url": "https://drive.google.com/file/d/1niMCz2CGjZjte_ymVwukqS4IdGybNikQ/view"
+    },
+    {
+      "name": "submission_checklist.md",
+      "id": "1xEEqCGPCRAISs0s61QlxP7GsbCwW2Eec",
+      "url": "https://drive.google.com/file/d/1xEEqCGPCRAISs0s61QlxP7GsbCwW2Eec/view"
+    },
+    {
+      "name": "Distributed_ML_Banking_Capstone.zip",
+      "id": "1rh1GnshIWUr0tvgdkz41nJMo8HTjg3O2",
+      "url": "https://drive.google.com/file/d/1rh1GnshIWUr0tvgdkz41nJMo8HTjg3O2/view"
+    },
+    {
+      "name": "Streaming_Sample_Batches.zip",
+      "id": "1EFq1HKEYXcfjNJfg5PwxyxFCdNiVdvvb",
+      "url": "https://drive.google.com/file/d/1EFq1HKEYXcfjNJfg5PwxyxFCdNiVdvvb/view"
+    },
+    {
+      "name": "Trained_Subscription_Pipeline.zip",
+      "id": "16olUHABWTdPCMphNlucPuxrFXIM6DO6B",
+      "url": "https://drive.google.com/file/d/16olUHABWTdPCMphNlucPuxrFXIM6DO6B/view"
+    }
+  ],
+  "video_status": "Student recording required; minimum 15 minutes. No placeholder link submitted.",
+  "folder_access": "Anyone with the link, reader; verified from Drive permission metadata."
+}

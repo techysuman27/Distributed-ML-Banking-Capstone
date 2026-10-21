@@ -1,0 +1,22 @@
+{
+  "selected_model": "decision_tree",
+  "test": {
+    "accuracy": 0.889269406392694,
+    "precision": 0.5,
+    "recall": 0.13402061855670103,
+    "f1": 0.21138211382113822,
+    "confusion": {
+      "tn": 766,
+      "fp": 13,
+      "fn": 84,
+      "tp": 13
+    },
+    "roc_auc": 0.5797083228564244,
+    "pr_auc": 0.32642806091780463
+  },
+  "baseline": {
+    "accuracy": 0.889269406392694,
+    "positive_recall": 0.0,
+    "pr_auc_no_skill": 0.11073059360730593
+  }
+}

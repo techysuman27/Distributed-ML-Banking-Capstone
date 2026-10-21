@@ -1,0 +1,12 @@
+[
+  {
+    "y": "no",
+    "clients": 4000,
+    "avg_call_seconds": 226.3475
+  },
+  {
+    "y": "yes",
+    "clients": 521,
+    "avg_call_seconds": 552.7428023032629
+  }
+]

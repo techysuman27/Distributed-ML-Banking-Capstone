@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Hive Q1 Typed table creation</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Hive Q1 Typed table creation</h1>
+<p>Executed in Apache HiveServer2. Header rows are explicitly excluded from the typed table.</p><h2>Code excerpt</h2><pre>DROP TABLE IF EXISTS raw_bank;
+CREATE EXTERNAL TABLE raw_bank (
+ age STRING, job STRING, marital STRING, education STRING, `default` STRING,
+ balance STRING, housing STRING, loan STRING, contact STRING, day STRING,
+ month STRING, duration STRING, campaign STRING, pdays STRING, previous STRING,
+ poutcome STRING, y STRING
+)
+ROW FORMAT SERDE &#x27;org.apache.hadoop.hive.serde2.OpenCSVSerde&#x27;
+WITH SERDEPROPERTIES (&#x27;separatorChar&#x27;=&#x27;,&#x27;, &#x27;quoteChar&#x27;=&#x27;&quot;&#x27;)
+STORED AS TEXTFILE LOCATION &#x27;/banking/raw&#x27;
+TBLPROPERTIES (&#x27;skip.header.line.count&#x27;=&#x27;1&#x27;);
+DROP TABLE IF EXISTS client_info;
+CREATE TABLE client_info STORED AS ORC AS SELECT
+ CAST(age AS INT) age, job, marital, education, `default`,
+# ... full code is included in the source notebook or script.</pre>
+<h2>Recorded output excerpt</h2><pre>col_name	data_type	comment
+age	int
+job	string
+marital	string
+education	string
+default	string
+balance	int
+housing	string
+loan	string
+contact	string
+day	int
+month	string
+duration	int
+campaign	int
+pdays	int
+previous	int
+poutcome	string
+... additional output is retained in the notebook or transcript.</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

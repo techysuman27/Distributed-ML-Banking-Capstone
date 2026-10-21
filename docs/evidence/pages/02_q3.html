@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q3. GroupBy and aggregation</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q3. GroupBy and aggregation</h1>
+<p></p><h2>Code excerpt</h2><pre>job_stats=df.groupBy(&#x27;job&#x27;).agg(F.count(&#x27;*&#x27;).alias(&#x27;clients&#x27;),F.avg(&#x27;balance&#x27;).alias(&#x27;avg_balance&#x27;),F.percentile_approx(&#x27;age&#x27;,0.5).alias(&#x27;median_age&#x27;)).orderBy(F.desc(&#x27;avg_balance&#x27;))
+job_stats.show(truncate=False)
+df.filter(F.col(&#x27;y&#x27;)==&#x27;yes&#x27;).groupBy(&#x27;marital&#x27;).count().show()
+save_json(&#x27;eda_job_stats.json&#x27;,rows(job_stats))</pre>
+<h2>Recorded output excerpt</h2><pre>+-------------+-------+------------------+----------+
+|job          |clients|avg_balance       |median_age|
++-------------+-------+------------------+----------+
+|retired      |230    |2319.191304347826 |59        |
+|housemaid    |112    |2083.8035714285716|49        |
+|management   |969    |1766.9287925696594|38        |
+|entrepreneur |168    |1645.125          |41        |
+|student      |84     |1543.8214285714287|26        |
+|unknown      |38     |1501.7105263157894|49        |
+|self-employed|183    |1392.4098360655737|40        |
+|technician   |768    |1330.99609375     |38        |
+|admin.       |478    |1226.73640167364  |38        |
+|services     |417    |1103.9568345323742|37        |
+|unemployed   |128    |1089.421875       |41        |
+|blue-collar  |946    |1085.161733615222 |39        |
++-------------+-------+------------------+----------+
+
+... additional output is retained in the notebook or transcript.</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

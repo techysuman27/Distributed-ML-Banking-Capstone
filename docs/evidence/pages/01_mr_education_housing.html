@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Hadoop MapReduce Housing loan counts by education</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Hadoop MapReduce Housing loan counts by education</h1>
+<p>Hadoop Streaming with Python and LocalJobRunner over HDFS; no YARN cluster is claimed.</p><h2>Code excerpt</h2><pre># Mapper branch for education_housing
+    elif mode==&#x27;education_housing&#x27;:key,value=r[&#x27;education&#x27;]+&#x27;|&#x27;+r[&#x27;housing&#x27;],1
+
+# Shared reducer
+mode=sys.argv[1]
+for key,group in itertools.groupby(records(),lambda r:r[0]):
+    total=count=0
+    for _,value,n in group:total+=value;count+=n
+    if mode==&#x27;mean&#x27;:print(f&#x27;{key}\t{count}\t{total/count:.6f}&#x27;)
+    elif mode==&#x27;count&#x27;:print(f&#x27;{key}\t{int(total)}&#x27;)
+    else:raise ValueError(&#x27;Unknown reducer mode &#x27;+mode)</pre>
+<h2>Recorded output excerpt</h2><pre>primary|no	295
+primary|yes	383
+secondary|no	876
+secondary|yes	1430
+tertiary|no	687
+tertiary|yes	663
+unknown|no	104
+unknown|yes	83</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

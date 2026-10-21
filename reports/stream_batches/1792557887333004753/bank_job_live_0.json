@@ -1,0 +1,20 @@
+[
+  {
+    "job": "services",
+    "records": 1,
+    "avg_balance": 0.0,
+    "avg_call_seconds": 161.0
+  },
+  {
+    "job": "management",
+    "records": 1,
+    "avg_balance": 10786.0,
+    "avg_call_seconds": 111.0
+  },
+  {
+    "job": "admin.",
+    "records": 1,
+    "avg_balance": 199.0,
+    "avg_call_seconds": 978.0
+  }
+]

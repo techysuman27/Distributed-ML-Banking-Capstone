@@ -1,0 +1,26 @@
+[
+  {
+    "education": "tertiary",
+    "clients": 1350,
+    "subscribers": 193,
+    "subscription_pct": 14.296296296296296
+  },
+  {
+    "education": "secondary",
+    "clients": 2306,
+    "subscribers": 245,
+    "subscription_pct": 10.624457935819601
+  },
+  {
+    "education": "unknown",
+    "clients": 187,
+    "subscribers": 19,
+    "subscription_pct": 10.16042780748663
+  },
+  {
+    "education": "primary",
+    "clients": 678,
+    "subscribers": 64,
+    "subscription_pct": 9.43952802359882
+  }
+]

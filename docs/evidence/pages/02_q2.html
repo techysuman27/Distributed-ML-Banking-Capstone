@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Q2. Filtering and quarter</title>
+<style>*{box-sizing:border-box}body{margin:0;background:white;color:#192732;font:20px Arial,sans-serif}main{width:1180px;padding:32px 42px}h1{font-size:28px;line-height:1.2;margin:10px 0 14px}h2{font-size:21px;margin:18px 0 8px}p{font-size:18px;line-height:1.4;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border:1px solid #d7e0e6;padding:15px;font:18px/1.35 Consolas,monospace;margin:0}small{font-size:16px;color:#485e6d}img{display:block;max-width:100%;max-height:380px;object-fit:contain}.tag{color:#11647d;font-weight:bold;letter-spacing:.05em;font-size:16px}</style></head>
+<body><main><div class="tag">DISTRIBUTED BANKING ML EXECUTION EVIDENCE</div><h1>Q2. Filtering and quarter</h1>
+<p>Map month abbreviations to month numbers; do not invent a date or year.</p><h2>Code excerpt</h2><pre>months=[&#x27;jan&#x27;,&#x27;feb&#x27;,&#x27;mar&#x27;,&#x27;apr&#x27;,&#x27;may&#x27;,&#x27;jun&#x27;,&#x27;jul&#x27;,&#x27;aug&#x27;,&#x27;sep&#x27;,&#x27;oct&#x27;,&#x27;nov&#x27;,&#x27;dec&#x27;]
+month_map=F.create_map(*[v for i,m in enumerate(months,1) for v in (F.lit(m),F.lit(i))])
+df=(df.withColumn(&#x27;month_num&#x27;,month_map[F.lower(F.col(&#x27;month&#x27;))])
+      .withColumn(&#x27;quarter&#x27;,F.ceil(F.col(&#x27;month_num&#x27;)/3).cast(&#x27;int&#x27;)))
+df.filter(F.col(&#x27;balance&#x27;)&gt;1000).select(&#x27;age&#x27;,&#x27;job&#x27;,&#x27;balance&#x27;,&#x27;month&#x27;,&#x27;quarter&#x27;).show(10)
+print(&#x27;Balance &gt; 1000:&#x27;,df.filter(F.col(&#x27;balance&#x27;)&gt;1000).count())
+df.groupBy(&#x27;month&#x27;,&#x27;month_num&#x27;,&#x27;quarter&#x27;).count().orderBy(&#x27;month_num&#x27;).show(12)</pre>
+<h2>Recorded output excerpt</h2><pre>+---+-----------+-------+-----+-------+
+|age|        job|balance|month|quarter|
++---+-----------+-------+-----+-------+
+| 26|blue-collar|   5116|  jul|      3|
+| 41| management|  10758|  jun|      2|
+| 52| management|   1339|  aug|      3|
+| 49| technician|   3726|  aug|      3|
+| 31|  housemaid|  26965|  apr|      2|
+| 31| management|   4945|  aug|      3|
+| 55|     admin.|   1102|  may|      2|
+| 39| technician|   1043|  aug|      3|
+| 33| technician|   9305|  apr|      2|
+| 54|    unknown|   1157|  may|      2|
++---+-----------+-------+-----+-------+
+only showing top 10 rows
+
+
+... additional output is retained in the notebook or transcript.</pre>
+<p><small>Source data: official AlmaBetter bank.csv. The underlying notebook and full execution transcripts accompany this screenshot.</small></p></main></body></html>

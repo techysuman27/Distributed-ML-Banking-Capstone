@@ -1,0 +1,83 @@
+{
+  "part3": [
+    {
+      "index": 450,
+      "answer": "I loaded the original 4,521-row, 17-column CSV using an explicit Spark schema. There are 521 yes and 4,000 no labels, no null cells and no duplicate source records. The schema, example rows and label counts are retained in the executed notebook. Unknown string categories are retained. The objective is term-deposit subscription, not future credit default or fraud.",
+      "images": [
+        "03_q1"
+      ]
+    },
+    {
+      "index": 627,
+      "answer": "I split the data before fitting learned transformations. A stable full-row hash gives 3,645 training and 876 held-out rows. Numerical median imputation, StringIndexer with invalid-category handling and OneHotEncoder are fitted inside each training-fold pipeline. pdays=-1 is represented by a prior-contact flag and nullable recency. A fixed signed-log balance transform preserves negative balances while reducing outlier influence; log1p reduces long campaign/previous-contact tails. I do not delete extreme balances without evidence of errors. Duration is excluded because the completed call length is unavailable before a call.",
+      "images": [
+        "03_q2"
+      ]
+    },
+    {
+      "index": 752,
+      "answer": "The pipeline applies fixed SQL transformations, median imputation, categorical indexing and one-hot encoding. VectorAssembler combines the imputed numeric and encoded categorical columns into raw_features; StandardScaler creates features for the classifier. The target and duration are excluded. Saving the complete PipelineModel preserves exactly the same preprocessing for later streaming inference.",
+      "images": [
+        "03_q3"
+      ]
+    },
+    {
+      "index": 1002,
+      "answer": "I compared logistic regression, an interpretable linear classifier, with a nonlinear decision tree. Both run as Spark ML pipelines across four partitions on two executor cores. The full source-row hash split is fixed before any learned preprocessing. Selection uses three-fold training cross-validation PR-AUC, not held-out scores. logistic_regression: mean CV PR-AUC 0.3657, best parameters {'regParam': 0.1, 'elasticNetParam': 0.0}; decision_tree: mean CV PR-AUC 0.3990, best parameters {'maxDepth': 3, 'minInstancesPerNode': 10}. The selected family is decision_tree. It is refitted on the training data and saved with preprocessing.",
+      "images": [
+        "03_q4"
+      ]
+    },
+    {
+      "index": 1086,
+      "answer": "The untouched 876-row test set gives accuracy 0.8893, precision 0.5000, recall 0.1340, f1 0.2114, roc_auc 0.5797, pr_auc 0.3264. Confusion counts: {'tn': 766, 'fp': 13, 'fn': 84, 'tp': 13}. The majority baseline accuracy is 0.8893; the no-skill PR baseline is the positive prevalence, 0.1107. High accuracy alone is misleading. At the unchanged 0.5 threshold, subscriber recall is 13.40%; the operating threshold would need independent validation before practical use. The test set was not used to tune thresholds. Ranking scores do not establish deployment readiness.",
+      "images": [
+        "03_q5"
+      ]
+    },
+    {
+      "index": 1184,
+      "answer": "ParamGridBuilder tests logistic regParam 0.01 and 0.1 crossed with elasticNetParam 0 and 1, plus tree maxDepth 3 and 5 with minInstancesPerNode 10. CrossValidator uses three folds, seed 42 and parallelism 1 to fit the laptop budget. Its evaluator ranks positive-class probabilities for both model families using areaUnderPR. Learned preprocessing is inside the CV pipeline. logistic_regression: mean CV PR-AUC 0.3657, best parameters {'regParam': 0.1, 'elasticNetParam': 0.0}; decision_tree: mean CV PR-AUC 0.3990, best parameters {'maxDepth': 3, 'minInstancesPerNode': 10}. The resumed execution explicitly reuses previously completed logistic CV; raw logistic scores and probabilities have equivalent rankings. A fresh reproduction without the resume flag trains all candidates.",
+      "images": [
+        "03_q6"
+      ]
+    },
+    {
+      "index": 1367,
+      "answer": "The largest absolute coefficients or importances of the selected decision_tree include poutcome_vec_success = 0.6977; month_vec_oct = 0.1539; day_imputed = 0.0844; housing_vec_yes = 0.0412; balance_log_imputed = 0.0228. For logistic regression the coefficient signs refer to encoded, standardized features; they describe conditional association, not causal effects. Tree importance is impurity based and can favor features with many candidate splits. The complete ranked feature list is retained in model_importance.json. Results are limited by the small sample, no client identifiers and no chronological validation.",
+      "images": [
+        "03_q7"
+      ]
+    }
+  ],
+  "part4": [
+    {
+      "index": 618,
+      "answer": "I replay 17 held-out marketing records as six JSON chunks, with maxFilesPerTrigger=1 and an explicit schema including age, job, balance, duration, y, event ID and synthetic event time. Structured Streaming runs real incremental microbatches. The job aggregation uses count, average balance and average duration in complete output mode, displaying and persisting each update through foreachBatch. Its final counts sum to 17. These are marketing contacts; duration is call duration rather than payment transaction duration. The four queries replay identical input sequentially within the laptop memory budget.",
+      "images": [
+        "04_q1"
+      ]
+    },
+    {
+      "index": 1122,
+      "answer": "The historical-data model is the decision_tree pipeline selected in Part 3 using training cross-validation. PipelineModel.load restores preprocessing and the classifier without refitting. transform(features(raw)) produces a prediction and a positive-class subscription probability for every arrival. The saved output contains 17 distinct event IDs, all with valid probabilities. Scoring uses held-out records and excludes duration. Prediction events are not dropped by watermark rules because that query has no event-time aggregation.",
+      "images": [
+        "04_q2"
+      ]
+    },
+    {
+      "index": 1593,
+      "answer": "I use tumbling 10-second and one-minute event-time windows to aggregate counts and average balances. The retained finalized outputs are bank_window_10s: count 5, mean balance 2885.80, count 3, mean balance 4921.33, count 5, mean balance 1530.80; bank_window_1m: count 8, mean balance 3649.12, count 5, mean balance 1530.80. The first minute groups the eight accepted early events, while the 90-second region groups five contacts in a later minute. The one-minute view smooths the shorter windows by combining their observations. These small synthetic arrivals illustrate mechanics rather than a credible real banking trend. Each query finalizes 13 records; three recent events remain in open windows until the watermark passes their ends. One excessively late event is excluded. availableNow completing the replay does not automatically close every final event-time window.",
+      "images": [
+        "04_q3"
+      ]
+    },
+    {
+      "index": 1809,
+      "answer": "I set withWatermark(event_time, 20 seconds). The watermark follows the maximum observed event time minus 20 seconds and bounds retained state. Events at seconds 7 and 8 arrive after seconds 12\u201314 but remain within the accepted lateness range. The deliberately late second-4 event arrives in the sixth microbatch after 90\u201396-second events and an extra batch for watermark propagation. Actual state-operator progress confirms drops: {'bank_predictions': 0, 'bank_job_live': 0, 'bank_window_10s': 1, 'bank_window_1m': 1}. Both window queries drop one row, while all 17 still receive model predictions. The replay was corrected after checking actual counters; timestamp arithmetic alone is not proof of rejection. Watermarking balances bounded state against completeness, rather than guaranteeing that every arbitrarily late event is included.",
+      "images": [
+        "04_q4"
+      ]
+    }
+  ]
+}

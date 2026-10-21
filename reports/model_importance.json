@@ -1,0 +1,242 @@
+[
+  {
+    "feature": "poutcome_vec_success",
+    "value": 0.6976868644145604
+  },
+  {
+    "feature": "month_vec_oct",
+    "value": 0.15392332873980966
+  },
+  {
+    "feature": "day_imputed",
+    "value": 0.08437372379446195
+  },
+  {
+    "feature": "housing_vec_yes",
+    "value": 0.04118885316192775
+  },
+  {
+    "feature": "balance_log_imputed",
+    "value": 0.022827229889240328
+  },
+  {
+    "feature": "age_imputed",
+    "value": 0.0
+  },
+  {
+    "feature": "campaign_log_imputed",
+    "value": 0.0
+  },
+  {
+    "feature": "previous_log_imputed",
+    "value": 0.0
+  },
+  {
+    "feature": "previously_contacted_imputed",
+    "value": 0.0
+  },
+  {
+    "feature": "pdays_clean_imputed",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_blue-collar",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_management",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_technician",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_admin.",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_services",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_retired",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_self-employed",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_entrepreneur",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_unemployed",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_housemaid",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_student",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec_unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "job_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "marital_vec_married",
+    "value": 0.0
+  },
+  {
+    "feature": "marital_vec_single",
+    "value": 0.0
+  },
+  {
+    "feature": "marital_vec_divorced",
+    "value": 0.0
+  },
+  {
+    "feature": "marital_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "education_vec_secondary",
+    "value": 0.0
+  },
+  {
+    "feature": "education_vec_tertiary",
+    "value": 0.0
+  },
+  {
+    "feature": "education_vec_primary",
+    "value": 0.0
+  },
+  {
+    "feature": "education_vec_unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "education_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "default_vec_no",
+    "value": 0.0
+  },
+  {
+    "feature": "default_vec_yes",
+    "value": 0.0
+  },
+  {
+    "feature": "default_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "housing_vec_no",
+    "value": 0.0
+  },
+  {
+    "feature": "housing_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "loan_vec_no",
+    "value": 0.0
+  },
+  {
+    "feature": "loan_vec_yes",
+    "value": 0.0
+  },
+  {
+    "feature": "loan_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "contact_vec_cellular",
+    "value": 0.0
+  },
+  {
+    "feature": "contact_vec_unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "contact_vec_telephone",
+    "value": 0.0
+  },
+  {
+    "feature": "contact_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_may",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_jul",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_aug",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_jun",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_nov",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_apr",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_feb",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_jan",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_mar",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_sep",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec_dec",
+    "value": 0.0
+  },
+  {
+    "feature": "month_vec___unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "poutcome_vec_unknown",
+    "value": 0.0
+  },
+  {
+    "feature": "poutcome_vec_failure",
+    "value": 0.0
+  },
+  {
+    "feature": "poutcome_vec_other",
+    "value": 0.0
+  },
+  {
+    "feature": "poutcome_vec___unknown",
+    "value": 0.0
+  }
+]

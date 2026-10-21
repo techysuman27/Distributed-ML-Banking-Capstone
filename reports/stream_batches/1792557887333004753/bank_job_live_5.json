@@ -1,0 +1,44 @@
+[
+  {
+    "job": "services",
+    "records": 2,
+    "avg_balance": 0.0,
+    "avg_call_seconds": 332.0
+  },
+  {
+    "job": "unemployed",
+    "records": 1,
+    "avg_balance": 0.0,
+    "avg_call_seconds": 108.0
+  },
+  {
+    "job": "management",
+    "records": 3,
+    "avg_balance": 6357.666666666667,
+    "avg_call_seconds": 118.33333333333333
+  },
+  {
+    "job": "blue-collar",
+    "records": 2,
+    "avg_balance": 2367.5,
+    "avg_call_seconds": 204.0
+  },
+  {
+    "job": "admin.",
+    "records": 4,
+    "avg_balance": 1512.5,
+    "avg_call_seconds": 629.75
+  },
+  {
+    "job": "technician",
+    "records": 3,
+    "avg_balance": 5083.666666666667,
+    "avg_call_seconds": 108.33333333333333
+  },
+  {
+    "job": "retired",
+    "records": 2,
+    "avg_balance": 605.5,
+    "avg_call_seconds": 248.0
+  }
+]
